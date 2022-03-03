@@ -1,11 +1,10 @@
-import "./App.css";
+import "App.css";
+import Administrador from "pages/Administrador";
+import Cliente from "pages/Cliente";
 
 function App() {
-	return (
-		<div className="App">
-			<header className="App-header"></header>
-		</div>
-	);
+	const admin = true;
+	return <div className="App">{admin ? <Administrador /> : <Cliente />}</div>;
 }
 
 export default App;

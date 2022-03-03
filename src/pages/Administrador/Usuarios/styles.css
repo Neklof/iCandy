@@ -1,0 +1,86 @@
+.usuarios-header {
+	/* background: red; */
+	display: flex;
+	width: 100%;
+	height: 15%;
+}
+
+.usuarios-header-contenedor {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+}
+
+.search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 1;
+	margin-left: 150px;
+}
+
+.search-input {
+	font-size: 18px;
+	width: 350px;
+	height: 39px;
+	margin: 0;
+	box-sizing: border-box;
+	padding: 13px;
+	border: 2px solid #3f423f;
+	border-radius: 15px 0 0 15px;
+	backdrop-filter: blur(4px);
+}
+
+.search-input:focus {
+	outline: none;
+}
+
+.search-btn {
+	border: none;
+	cursor: pointer;
+	margin: 0;
+	border: 2px solid #3f423f;
+	border-left: none;
+	border-radius: 0 15px 15px 0;
+	background: white;
+	backdrop-filter: blur(4px);
+}
+
+.search-btn:active {
+	background: #ccc;
+}
+
+.filtrar {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-size: 18px;
+	background: none;
+	border: none;
+	gap: 5px;
+	margin-right: 50px;
+}
+
+.usuarios-content {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.tabla-usuarios {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.tabla-usuarios-header {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	font-size: 26px;
+	color: black;
+}
