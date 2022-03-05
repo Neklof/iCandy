@@ -7,6 +7,7 @@ const NavAdminContainer = ({ children }) => {
 const NavAdmin = styled.nav`
 	display: flex;
 	width: 20vw;
+	min-width: 300px;
 	height: 100vh;
 	justify-self: start;
 	flex-direction: column;

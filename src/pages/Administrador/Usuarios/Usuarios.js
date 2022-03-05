@@ -1,4 +1,5 @@
 import "./styles.css";
+import Button from "components/Button";
 
 const Usuarios = () => {
 	const handleChange = () => {
@@ -36,15 +37,142 @@ const Usuarios = () => {
 			</div>
 			<div className="usuarios-content">
 				<table className="tabla-usuarios">
-					<tr className="tabla-usuarios-header">
-						<td className="tabla-usuarios-header-item">ID</td>
-						<td className="tabla-usuarios-header-item">Producto</td>
-						<td className="tabla-usuarios-header-item">Cantidad</td>
-						<td className="tabla-usuarios-header-item">Modificar</td>
-						<td className="tabla-usuarios-header-item">Eliminar</td>
-						<td className="tabla-usuarios-header-item">Detalles</td>
-					</tr>
+					<thead>
+						<tr className="tabla-usuarios-header">
+							<th className="tabla-usuarios-header-item">ID</th>
+							<th className="tabla-usuarios-header-item">Nombre</th>
+							<th className="tabla-usuarios-header-item">Tipo usuario</th>
+							<th className="tabla-usuarios-header-item">Teléfono</th>
+							<th className="tabla-usuarios-header-item">Correo</th>
+							<th className="tabla-usuarios-header-item">Dirección</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+						<tr className="tabla-usuarios-usuario">
+							<td className="tabla-usuarios-usuario-item">1</td>
+							<td className="tabla-usuarios-usuario-item">Karl Scherzer</td>
+							<td className="tabla-usuarios-usuario-item">Administrador</td>
+							<td className="tabla-usuarios-usuario-item">3316914205</td>
+							<td className="tabla-usuarios-usuario-item">
+								scherzer1999@hotmail.com
+							</td>
+							<td>Atemajac del Valle, Ramon corona #487</td>
+						</tr>
+					</tbody>
 				</table>
+			</div>
+			<div className="contenedor-button">
+				<Button>Agregar usuario</Button>
 			</div>
 		</>
 	);

@@ -11,8 +11,9 @@ const AdminContainer = ({ children }) => {
 const Container = styled.section`
 	display: flex;
 	width: 72.5vw;
+	min-width: 888px;
 	height: 80vh;
-	margin-right: 3.75vw;
+	margin: auto;
 	border: 1px solid rgba(0, 0, 0, 0.5);
 	box-shadow: 6px 24px 4px rgba(0, 0, 0, 0.25);
 `;
