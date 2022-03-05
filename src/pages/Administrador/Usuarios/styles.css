@@ -1,0 +1,126 @@
+.usuarios-header {
+	/* background: red; */
+	display: flex;
+	width: 100%;
+	height: 15%;
+}
+
+.usuarios-header-contenedor {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+}
+
+.search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 1;
+	margin-left: 150px;
+}
+
+.search-input {
+	font-size: 18px;
+	width: 350px;
+	height: 39px;
+	margin: 0;
+	box-sizing: border-box;
+	padding: 13px;
+	border: 2px solid #3f423f;
+	border-radius: 15px 0 0 15px;
+	backdrop-filter: blur(4px);
+}
+
+.search-input:focus {
+	outline: none;
+}
+
+.search-btn {
+	border: none;
+	cursor: pointer;
+	margin: 0;
+	border: 2px solid #3f423f;
+	border-left: none;
+	border-radius: 0 15px 15px 0;
+	background: white;
+	backdrop-filter: blur(4px);
+}
+
+.search-btn:active {
+	background: #ccc;
+}
+
+.filtrar {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	/* font-size: 18px; */
+	font-size: clamp(0.6em, 0.6em, 3em);
+	background: none;
+	border: none;
+	gap: 5px;
+	margin-right: 50px;
+}
+
+.usuarios-content {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: start;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.tabla-usuarios {
+	width: 95%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.tabla-usuarios thead::after {
+	content: "@";
+	display: block;
+	line-height: 15px;
+	text-indent: -99999px;
+}
+
+.tabla-usuarios-header {
+	/* font-size: 0.7em; */
+	font-size: clamp(0.4em, 0.7em, 1em);
+	color: black;
+	padding-bottom: 15px;
+	position: sticky;
+	background: #fff;
+	top: 0;
+}
+
+.tabla-usuarios-header th {
+	border-bottom: 1px solid #000;
+}
+
+.tabla-usuarios-header th,
+.tabla-usuarios-usuario td {
+	padding: 1.25rem;
+}
+
+.tabla-usuarios-usuario {
+	/* font-size: 0.6em; */
+	font-size: clamp(0.3em, 0.6em, 0.9em);
+	color: #000;
+}
+
+.tabla-usuarios-usuario-item {
+	border-right: 1px solid #000;
+}
+
+.contenedor-button {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	width: 95%;
+	height: 15%;
+}
