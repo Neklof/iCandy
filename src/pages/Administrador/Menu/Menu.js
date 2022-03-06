@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 
 const Menu = () => {
 	const { pathname, toLocation } = useLocation();
-	console.log("/" == pathname);
 
 	return (
 		<>

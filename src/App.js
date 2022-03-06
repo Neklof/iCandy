@@ -4,6 +4,7 @@ import Cliente from "pages/Cliente";
 
 function App() {
 	const admin = true;
+
 	return <div className="App">{admin ? <Administrador /> : <Cliente />}</div>;
 }
 

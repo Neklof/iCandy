@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const Button = ({ children }) => {
-	return <Btn>{children}</Btn>;
+const Button = ({ children, onClick }) => {
+	return <Btn onClick={onClick}>{children}</Btn>;
 };
 
 const Btn = styled.button`
@@ -14,7 +14,7 @@ const Btn = styled.button`
 	}
 
 	&:active {
-		background: #5790cf;
+		background: #021e73;
 	}
 `;
 
