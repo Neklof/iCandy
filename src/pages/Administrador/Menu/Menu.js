@@ -2,7 +2,7 @@ import "./styles.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Menu = () => {
-	const { pathname, toLocation } = useLocation();
+	const { pathname } = useLocation();
 
 	return (
 		<>
@@ -11,7 +11,7 @@ const Menu = () => {
 				<Link
 					to="/"
 					className={`nav-admin-links-item ${
-						pathname == "/" && "nav-admin-links-focus"
+						pathname === "/" && "nav-admin-links-focus"
 					}`}
 				>
 					Inicio
@@ -19,7 +19,7 @@ const Menu = () => {
 				<Link
 					to="/productos"
 					className={`nav-admin-links-item ${
-						pathname == "/productos" && "nav-admin-links-focus"
+						pathname === "/productos" && "nav-admin-links-focus"
 					}`}
 				>
 					Productos
@@ -27,7 +27,7 @@ const Menu = () => {
 				<Link
 					to="/surtir_productos"
 					className={`nav-admin-links-item ${
-						pathname == "/surtir_productos" && "nav-admin-links-focus"
+						pathname === "/surtir_productos" && "nav-admin-links-focus"
 					}`}
 				>
 					Surtir productos
@@ -35,7 +35,7 @@ const Menu = () => {
 				<Link
 					to="/usuarios"
 					className={`nav-admin-links-item ${
-						pathname == "/usuarios" && "nav-admin-links-focus"
+						pathname === "/usuarios" && "nav-admin-links-focus"
 					}`}
 				>
 					Usuarios
@@ -43,7 +43,7 @@ const Menu = () => {
 				<Link
 					to="/caja"
 					className={`nav-admin-links-item ${
-						pathname == "/caja" && "nav-admin-links-focus"
+						pathname === "/caja" && "nav-admin-links-focus"
 					}`}
 				>
 					Caja
@@ -51,7 +51,7 @@ const Menu = () => {
 				<Link
 					to="/historial"
 					className={`nav-admin-links-item ${
-						pathname == "/historial" && "nav-admin-links-focus"
+						pathname === "/historial" && "nav-admin-links-focus"
 					}`}
 				>
 					Historial de ventas
@@ -59,7 +59,7 @@ const Menu = () => {
 				<Link
 					to="/pedidos"
 					className={`nav-admin-links-item ${
-						pathname == "/pedidos" && "nav-admin-links-focus"
+						pathname === "/pedidos" && "nav-admin-links-focus"
 					}`}
 				>
 					Pedidos
@@ -67,7 +67,7 @@ const Menu = () => {
 				<Link
 					to="/configuracion"
 					className={`nav-admin-links-item ${
-						pathname == "/configuracion" && "nav-admin-links-focus"
+						pathname === "/configuracion" && "nav-admin-links-focus"
 					}`}
 				>
 					Configuración

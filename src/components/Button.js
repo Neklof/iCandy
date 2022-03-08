@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-const Button = ({ children, onClick }) => {
-	return <Btn onClick={onClick}>{children}</Btn>;
+const Button = ({ children, onClick, onSubmit }) => {
+	return (
+		<Btn onClick={onClick} onSubmit={onSubmit}>
+			{children}
+		</Btn>
+	);
 };
 
 const Btn = styled.button`
@@ -11,6 +15,7 @@ const Btn = styled.button`
 		font-size: 18px;
 		border: none;
 		padding: 6px;
+		cursor: pointer;
 	}
 
 	&:active {

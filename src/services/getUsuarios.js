@@ -1,9 +1,10 @@
 const URL = "http://localhost/icandy/usuarios.php";
+const TIPO = { Type: "Read" };
 
 const getUsuarios = async () => {
 	const response = await fetch(URL, {
 		method: "POST",
-		//body: JSON.stringify(data),
+		body: JSON.stringify(TIPO),
 		headers: {
 			"Content-Type": "application/json",
 		},

@@ -2,10 +2,20 @@ import styled from "styled-components";
 import Modal from "./Modal";
 import Button from "./Button";
 import Campo from "./Campo";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const RegistrarUsuario = ({ modalUsuario, setModalUsuario }) => {
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+	const [data, setData] = useState("");
+
+	const onSubmit = (info) => {
+		console.log(JSON.stringify(info));
+		setData(info);
 	};
 
 	return (
@@ -15,16 +25,56 @@ const RegistrarUsuario = ({ modalUsuario, setModalUsuario }) => {
 			encabezado={true}
 			titulo="Agregar usuario"
 		>
-			<Container onSubmit={handleSubmit}>
-				<Campo nombreCampo={"Nombre(s)"} />
-				<Campo nombreCampo={"Apellido(s)"} />
-				<Campo nombreCampo={"Dirección"} width={"95%"} />
-				<Campo nombreCampo={"Correo electrónico"} />
-				<Campo nombreCampo={"No. teléfono"} />
-				<Campo nombreCampo={"Contraseña"} />
-				<Campo nombreCampo={"Confirmar contraseña"} />
+			<Container onSubmit={handleSubmit(onSubmit)}>
+				<Campo
+					register={register}
+					name="nombre"
+					nombreCampo="Nombre(s)"
+					error={errors.nombre}
+				/>
+				<Campo
+					register={register}
+					name="apellido"
+					nombreCampo="Apellido(s)"
+					error={errors.apellido}
+				/>
+				<Campo
+					register={register}
+					name="direccion"
+					nombreCampo="Dirección"
+					width="95%"
+					error={errors.direccion}
+				/>
+				<Campo
+					register={register}
+					name="correo"
+					nombreCampo="Correo electrónico"
+					type="email"
+					error={errors.correo}
+				/>
+				<Campo
+					register={register}
+					name="telefono"
+					nombreCampo="No. teléfono"
+					type="tel"
+					error={errors.telefono}
+				/>
+				<Campo
+					register={register}
+					name="clave"
+					nombreCampo="Contraseña"
+					type="password"
+					error={errors.clave}
+				/>
+				<Campo
+					register={register}
+					name="confirmarClave"
+					nombreCampo="Confirmar contraseña"
+					type="password"
+					error={errors.confirmarClave}
+				/>
 				<ButtonContainer>
-					<Button onSubmit={handleSubmit}>Agregar usuario</Button>
+					<Button>Agregar usuario</Button>
 				</ButtonContainer>
 			</Container>
 		</Modal>
