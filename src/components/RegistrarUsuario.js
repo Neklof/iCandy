@@ -3,19 +3,26 @@ import Modal from "./Modal";
 import Button from "./Button";
 import Campo from "./Campo";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import addUsuario from "services/addUsuario";
 
-const RegistrarUsuario = ({ modalUsuario, setModalUsuario }) => {
+const RegistrarUsuario = ({
+	modalUsuario,
+	setModalUsuario,
+	addUser,
+	setAddUser,
+}) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const [data, setData] = useState("");
 
 	const onSubmit = (info) => {
-		console.log(JSON.stringify(info));
-		setData(info);
+		addUsuario(info).then((response) => {
+			alert(response);
+			setAddUser(!addUser);
+			setModalUsuario(false);
+		});
 	};
 
 	return (

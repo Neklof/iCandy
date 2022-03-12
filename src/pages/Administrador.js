@@ -4,7 +4,8 @@ import MainContainer from "components/MainContainer";
 import Usuarios from "pages/Administrador/Usuarios/Usuarios";
 import Caja from "pages/Administrador/Caja/Caja";
 import { Routes, Route } from "react-router-dom";
-import Menu from "./Administrador/Menu/Menu";
+import Menu from "pages/Administrador/Menu/Menu";
+import Pedidos from "./Administrador/Pedidos/Pedidos";
 
 const Administrador = () => {
   return (
@@ -12,7 +13,6 @@ const Administrador = () => {
       <NavAdminContainer>
         <Menu></Menu>
       </NavAdminContainer>
-
       <Routes>
         <Route path="/" element={<div />} />
         <Route path="/productos" element={<div />} />
@@ -27,7 +27,14 @@ const Administrador = () => {
         />
         <Route path="/caja" element={<Caja />} />
         <Route path="/historial" element={<div />} />
-        <Route path="/pedidos" element={<div />} />
+        <Route
+          path="/pedidos"
+          element={
+            <AdminContainer>
+              <Pedidos />
+            </AdminContainer>
+          }
+        />
         <Route path="/configuracion" element={<div />} />
 
         <Route path="*" element={<div />}></Route>
