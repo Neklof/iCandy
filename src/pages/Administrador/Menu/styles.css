@@ -2,7 +2,6 @@
 	width: 100%;
 	height: 25%;
 	display: flex;
-	background: gray;
 }
 
 .nav-admin-links {
@@ -17,8 +16,8 @@
 .nav-admin-links-item {
 	color: #fff;
 	background: #0785f2;
-	font-size: 28px;
-	width: max(17vw, 250px);
+	font-size: 20px ;
+	min-width:180px;
 	height: 55px;
 	text-align: center;
 	line-height: 50px;
