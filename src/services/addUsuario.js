@@ -1,7 +1,9 @@
 const URL = "http://localhost/icandy/usuarios.php";
 const TIPO = { Type: "Create" };
 
-const addUsuario = async () => {
+const addUsuario = async (user) => {
+	TIPO["User"] = user;
+
 	const response = await fetch(URL, {
 		method: "POST",
 		body: JSON.stringify(TIPO),
@@ -11,7 +13,7 @@ const addUsuario = async () => {
 	});
 	const responseJSON = await response.json();
 
-	return responseJSON;
+	return responseJSON.success || responseJSON.error;
 };
 
 export default addUsuario;
