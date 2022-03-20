@@ -1,11 +1,11 @@
 import "./styles.css";
 import Buscador from "components/Buscador";
 import { useState } from "react";
-import menu from "assets/menu.png";
-import shoppingCart from "assets/shopping-cart.png";
-import logo_2 from "assets/logo_2.png";
-import logo from "assets/logo.png";
-import defaultProfileImage from "assets/default-profile-image.png";
+import menu from "assets/Img/menu.png";
+import shoppingCart from "assets/Img/shopping-cart.png";
+import logo_2 from "assets/Img/logo_2.png";
+import logo from "assets/Img/logo.png";
+import defaultProfileImage from "assets/Img/default-profile-image.png";
 import { Link } from "react-router-dom";
 
 const Nav = () => {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import searchSvg from "assets/search.png";
+import searchSvg from "assets/Img/search.png";
 
 const handleSearch = (e) => {
 	e.preventDefault();
