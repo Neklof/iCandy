@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Campo = ({ width, nombreCampo, type, register, name, error }) => {
+const Campo = ({ width, nombreCampo, type, register, name, error, value }) => {
 	return (
 		<ContainerCampo width={width || "45%"}>
 			<Label>{nombreCampo}</Label>
@@ -9,9 +9,12 @@ const Campo = ({ width, nombreCampo, type, register, name, error }) => {
 				placeholder={nombreCampo}
 				type={type || "text"}
 				error={error}
+				value={value}
+				
 			></Input>
 			{error?.type === "required" && <Error>Favor de completar</Error>}
 		</ContainerCampo>
+		
 	);
 };
 
