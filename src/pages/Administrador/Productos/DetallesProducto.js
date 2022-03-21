@@ -3,13 +3,16 @@ import Modal from "../../../components/Modal";
 import Button from "../../../components/Button";
 import Campo from "../../../components/Campo";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const RegistrarProducto = ({
-  modalProducto,
-  setModalProducto,
+let arre = [];
+const DetallesProducto = ({
+  modalDetallesProducto,
+  setModalDetallesProducto,
   addProducto,
   setAddProducto,
+  idProducto,
+  poderosoJson,
 }) => {
   const {
     register,
@@ -18,51 +21,67 @@ const RegistrarProducto = ({
   } = useForm();
 
   const [unidad, setUnidad] = useState("");
+  const [laid, setLaid] = useState(idProducto);
 
-  const onSubmit = (info) => {
-    const myJSON = JSON.stringify(info);
-    //console.log(myJSON)
-    //setAddProducto(!addProducto);
-    setModalProducto(false);
-    console.log("INFO->" + myJSON);
-    //console.log(unidad)
+  const onSubmit = (infoMod) => {
+    const myModJSON = JSON.stringify(infoMod);
+    setModalDetallesProducto(false);
+    // console.log("MOOD->" + myModJSON);
   };
 
   const tipounidad = (event) => setUnidad(event.target.value);
 
+  //   if (poderosoJson) {
+  //     console.log("SELECCIONADO: " + JSON.stringify(poderosoJson));
+  //   } else {
+  //     console.log("nothing to show");
+  //   }
+
+  useEffect(() => {
+    setLaid(idProducto);
+    console.log("DETALLLES ->" + poderosoJson);
+  }, [idProducto]);
+  //console.log(idProducto);
+  //console.log(poderosoJson);
+  //console.log(poderosoJson[1]);
+
   return (
     <Modal
-      ventanaModal={modalProducto}
-      setVentanaModal={setModalProducto}
+      ventanaModal={modalDetallesProducto}
+      setVentanaModal={setModalDetallesProducto}
       encabezado={true}
-      titulo="Agregar producto"
+      titulo="Detalles producto"
     >
       <Container onSubmit={handleSubmit(onSubmit)}>
         <Campo
           register={register}
           name="nombre"
           nombreCampo="Nombre:"
-          error={errors.nombre}
+          //error={errors.nombre}
+
+          value={poderosoJson[1]}
         />
         <Campo
           register={register}
           name="precio_inversion"
           nombreCampo="Precio inversión:"
+          value={poderosoJson[4]}
         />
         <Campo
           register={register}
           name="cantidad"
           nombreCampo="Cantidad:"
           type="number"
-          error={errors.nombre}
+          value={poderosoJson[2]}
+          // error={errors.nombre}
         />
         <Campo
           register={register}
           name="precio_publico"
           nombreCampo="Precio público:"
-          error={errors.nombre}
+          value={poderosoJson[3]}
+          //  error={errors.nombre}
         />
-
         <Descripcion>
           <Texto>
             Disponible:
@@ -92,18 +111,17 @@ const RegistrarProducto = ({
             name="unidadPeso_PR"
             {...register("unidadPeso_PR", { required: false })}
             onChange={tipounidad}
+            selected={poderosoJson[8]}
           >
             <option value="Caja">Caja</option>
             <option value="Gramos">Gramos</option>
           </MiSelect>
         </Descripcion>
-
         <Campo
           register={register}
           name="piezasCaja_PR"
           nombreCampo={unidad || "Caja"}
         />
-
         <Descripcion>
           <Texto>Descripción</Texto>
           <MiArea
@@ -112,10 +130,11 @@ const RegistrarProducto = ({
             //nombreCampo="Descripcion:"
             rows="7"
             cols="20"
+            value="hellloooooow"
             {...register("descripcion_pro", { required: false })}
+            disabled
           />
         </Descripcion>
-
         <Descripcion>
           <Texto>Seleccionar imagen:</Texto>
           <img
@@ -125,16 +144,12 @@ const RegistrarProducto = ({
           />
           <input type="file" />
         </Descripcion>
-
-        <ButtonContainer>
-          <Button>Agregar producto</Button>
-        </ButtonContainer>
       </Container>
     </Modal>
   );
 };
 
-export default RegistrarProducto;
+export default DetallesProducto;
 
 const Descripcion = styled.div`
   display: flex;

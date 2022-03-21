@@ -4,8 +4,11 @@ import getProductosInventario from "services/getProductosInventario";
 import { useEffect, useState } from "react";
 import RegistrarProducto from "./RegistrarProducto";
 import ModificarProducto from "./ModificarProducto";
+import DetallesProducto from "./DetallesProducto";
 import Table from "components/Table";
 import AdminBuscador from "components/AdminBuscador";
+import React, { Component } from "react";
+import PubSub from "pubsub-js";
 
 const CAMPOS = [
   "ID",
@@ -17,15 +20,14 @@ const CAMPOS = [
   "Detalles",
 ];
 
-const modificar = (e) => alert(e.target.className);
 const eliminar = (e) => alert(e.target.className);
 const detalles = (e) => alert(e.target.className);
 
-const find = {};
+// const find = {};
 //const funciones = [handleUpdate, eliminar,detalles];
 
 const Productos = () => {
-  const [modalProducto, setModalProducto] = useState(0);
+  const [modalProducto, setModalProducto] = useState(false);
   const [productos, setProductos] = useState([]);
   const [search, setSearch] = useState("");
   const [addProducto, setAddProducto] = useState(false);
@@ -33,48 +35,40 @@ const Productos = () => {
   const [idProducto, setIdProducto] = useState(0);
   const [poderosoJson, setPoderosoJson] = useState({});
 
-  //pal filtro
-  //const [find, setFind] = useState({});
+  //Modificar producto
+  const [modalModificarProducto, setModalModificarProducto] = useState(false);
+  const [modalDetallesProducto, setModalDetallesProducto] = useState(false);
 
-  const [productos1, setProductos1] = useState([]); //HAREMOS UN SPREAD YEL VALOR ACTUAL PARA LLENAR EL ARREGLO  DE JSON
-
+  //Funcion para modal de modificar
   const handleUpdate = (e) => {
-    const id = e.target.className;
-    setIdProducto(id);
-    setModalProducto(!modalProducto);
+    //const id = e.target.className;
 
-    setPoderosoJson(poderosoJson);
-    console.log(handleBuscador(e));
-    //  console.log("id -> " + id);
-    //  console.log("idPROD -> " + idProducto);
-  };
+    const find = productos.find(
+      (producto) => producto.id_PR === e.target.className
+    );
+    setIdProducto(e.target.className);
+    setModalModificarProducto(!modalModificarProducto);
+    setPoderosoJson(Object.values(find));
 
-  const handleBuscador = (e) => {
-    find = productos.find((producto) => producto.id_PR === e.target.className);
-
-    //FileSystemFileHandle(find);
-    if (find) {
-      console.log("nombre: " + find.nombre_PR);
-      console.log("precio inversion: " + find.inversion);
-      console.log("cantidad: " + find.cantidad_PR);
-      console.log("precio publico: " + find.precio_PR);
-      // console.log("descripcion: "+ find.descripcion_PR)
-    }
+    PubSub.publish("saludo", Object.values(find));
   };
 
   const handleAdd = () => {
     setModalProducto(!modalProducto);
   };
 
+  const handleDetal = (e) => {
+    const find = productos.find(
+      (producto) => producto.id_PR === e.target.className
+    );
+    setIdProducto(e.target.className);
+    setModalDetallesProducto(!modalModificarProducto);
+    setPoderosoJson(Object.values(find));
+  };
+
   useEffect(() => {
     getProductosInventario().then((response) => setProductos(response));
   }, []);
-
-  //console.log(productos.map((producto) => producto));
-  const unJsonGeneral = JSON.stringify(productos);
-  //console.log(unJson);
-  //console.log("constate: " +id);
-  console.log("state: " + idProducto);
 
   const nuevas_propiedades = productos.map((producto) => ({
     id_PR: producto.id_PR,
@@ -83,19 +77,18 @@ const Productos = () => {
     precio_PR: producto.precio_PR,
   }));
 
-  console.log(nuevas_propiedades);
+  // console.log(nuevas_propiedades);
 
   return (
     <>
       <AdminBuscador keyword={setSearch} />
       <Table
         campos={CAMPOS}
-        // datos = { Object.values(productos) }  -> pendiente por destructurar el objeto para solo enviar 3 datos: id, nombre, cantidad, precio
         datos={Object.values(nuevas_propiedades)}
         filtro="nombre_PR"
         search={search}
         tipo={2}
-        funciones={[handleUpdate, eliminar, detalles]} //modificar, eliminar, detalles
+        funciones={[handleUpdate, eliminar, handleDetal]} //modificar, eliminar, detalles
       />
 
       <div className="contenedor-button">
@@ -107,16 +100,24 @@ const Productos = () => {
         setModalProducto={setModalProducto}
         addProducto={addProducto}
         setAddProducto={setAddProducto}
-        idProducto={idProducto}
-        poderosoJson={find}
       />
 
-      {/* <ModificarProducto
-        modalModificarProd = { modalModificarProd }
-        setModalModificarProd = { setModalModificarProd }
-        modProducto = { modProducto }
-        setModProducto = { setModProducto }
-      />  */}
+      <ModificarProducto
+        modalModificarProducto={modalModificarProducto}
+        setModalModificarProducto={setModalModificarProducto}
+        addProducto={addProducto}
+        setAddProducto={setAddProducto}
+        idProducto={idProducto}
+        poderosoJson={poderosoJson}
+      />
+      {/* <DetallesProducto
+        modalDetallesProducto={modalDetallesProducto}
+        setModalDetallesProducto={setModalDetallesProducto}
+        addProducto={addProducto}
+        setAddProducto={setAddProducto}
+        idProducto={idProducto}
+        poderosoJson={poderosoJson}
+      /> */}
     </>
   );
 };
