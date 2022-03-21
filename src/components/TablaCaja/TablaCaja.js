@@ -46,13 +46,12 @@ const TablaCaja = ({ arreglo, compra, rend }) => {
 
     addVentaCaja(dataCompra).then((response) => {
       if (response) {
-        console.log(response);
         alertaSucees("¡Se realizo la compra con exito!");
+        rend();
       } else {
         alertaError("¡ups algo salio mal!");
       }
     });
-    rend();
   };
 
   return (

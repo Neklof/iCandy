@@ -43,22 +43,20 @@ const Caja = () => {
 
   useEffect(() => {
     getProductos().then((response) => {
-      setProductos([]);
       setProductos(response);
       if (!response) {
         alerta("Error en base de datos");
       }
     });
+    //console.log("useEffect");
   }, [prueba]);
 
   const renderizar = () => {
-    console.log("se renderizo");
     if (prueba == 0) {
       SetPrueba(1);
     } else if (prueba == 1) {
       SetPrueba(0);
     }
-
     setCarrito([]);
     formatearValores();
   };
@@ -70,7 +68,6 @@ const Caja = () => {
       objecto.total = total;
       //hacer tipo push a un arreglo con uses satet
       setCarrito([...carrito, objecto]);
-      console.log(objecto);
     } else {
       alerta("Debes agregar la cantidad!!!!");
     }
