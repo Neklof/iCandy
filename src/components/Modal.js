@@ -44,7 +44,7 @@ const ContenedorModal = styled.div`
 	min-width: 70vw;
 	max-width: 70vw;
 	min-height: 70vh;
-	max-height: 70vh;
+	max-height: 80vh;
 	background: #fff;
 	position: relative;
 	border-radius: 5px;
