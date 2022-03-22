@@ -1,7 +1,15 @@
-import Card from "./Card";
 import "./styles.css";
+import { useEffect, useState } from "react";
+import getProductos from "services/getProductos";
+import Card from "./Card";
 
 const Inicio = () => {
+	const [productos, setProductos] = useState({});
+
+	useEffect(() => {
+		getProductos().then((response) => setProductos(Object.values(response)));
+	}, []);
+
 	return (
 		<div className="inicio-container">
 			<div className="inicio-filtros">
@@ -15,13 +23,9 @@ const Inicio = () => {
 				</button>
 			</div>
 			<div className="inicio-cards">
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
+				{Object.values(productos).map((producto) => (
+					<Card key={producto.id_PR} producto={producto} />
+				))}
 			</div>
 			<div className="inicio-paginador">
 				<p>{"< | 1 2 3 4 5 | >"}</p>

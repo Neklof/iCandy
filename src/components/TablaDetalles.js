@@ -1,18 +1,8 @@
 import styled from "styled-components";
 
-const TablaDetalles = ({
-	datos = [
-		{
-			id: 384721,
-			unidad: "Caja",
-			producto: "Caja de Nugs",
-			cantidad: 2,
-			precio: "$38.00",
-			importe: "$76.00",
-		},
-	],
-}) => {
+const TablaDetalles = ({ datos }) => {
 	let no = 1;
+	// console.log(datos);
 
 	return (
 		<Table>
@@ -29,10 +19,10 @@ const TablaDetalles = ({
 			</thead>
 			<tbody>
 				{datos.map((fila) => (
-					<tr key={fila.id}>
+					<tr key={fila.id_PR}>
 						<td>{no++}</td>
 						{Object.keys(fila).map((dato) => (
-							<td key={`${dato}_${fila.id}`}>{fila[dato]}</td>
+							<td key={`${dato}_${fila.id_PR}`}>{fila[dato]}</td>
 						))}
 					</tr>
 				))}

@@ -12,7 +12,7 @@ const Cliente = () => {
 			<Nav />
 			<Routes>
 				<Route path="/" element={<Inicio />}></Route>
-				<Route path="/detalles" element={<Detalles />}></Route>
+				<Route path="/detalles/:id" element={<Detalles />}></Route>
 				<Route path="/historial" element={<Historial />}></Route>
 			</Routes>
 			<Footer />
