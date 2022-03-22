@@ -98,7 +98,7 @@
 .inicio-card-image {
 	height: 100%;
 	width: 100%;
-	object-fit: cover;
+	object-fit: scale-down;
 }
 
 .inicio-card-detalles {
@@ -183,7 +183,25 @@
 }
 
 @media (max-width: 540px) {
+	.inicio-filtros {
+		height: 100px;
+	}
+
 	.inicio-cards {
 		justify-content: center;
+		gap: 50px 0;
+	}
+
+	.inicio-card-botones {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.inicio-card {
+		height: 350px;
+	}
+
+	.inicio-card-container {
+		height: 350px;
 	}
 }

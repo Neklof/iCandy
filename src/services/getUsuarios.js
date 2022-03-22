@@ -1,12 +1,8 @@
-const URL = "http://localhost/icandy/usuarios.php";
-const TIPO = { Type: "Read" };
+const URL = "http://localhost/icandy/API/getUsuarios.php";
 
 const getUsuarios = async () => {
-	TIPO["User"] = "N/A";
-
 	const response = await fetch(URL, {
-		method: "POST",
-		body: JSON.stringify(TIPO),
+		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
 		},
