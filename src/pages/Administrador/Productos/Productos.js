@@ -4,8 +4,11 @@ import getProductosInventario from "services/getProductosInventario";
 import { useEffect, useState } from "react";
 import RegistrarProducto from "./RegistrarProducto";
 import ModificarProducto from "./ModificarProducto";
+import DetallesProducto from "./DetallesProducto";
 import Table from "components/Table";
 import AdminBuscador from "components/AdminBuscador";
+import React, { Component } from "react";
+import PubSub from "pubsub-js";
 
 const CAMPOS = [
 	"ID",
@@ -17,11 +20,10 @@ const CAMPOS = [
 	"Detalles",
 ];
 
-const modificar = (e) => alert(e.target.className);
 const eliminar = (e) => alert(e.target.className);
 const detalles = (e) => alert(e.target.className);
 
-const find = {};
+// const find = {};
 //const funciones = [handleUpdate, eliminar,detalles];
 
 const Productos = () => {
