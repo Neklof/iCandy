@@ -175,7 +175,7 @@
 
 .inicio-paginador {
 	display: flex;
-	width: 90%;
+	min-width: 90%;
 	height: 75px;
 	justify-content: center;
 	align-items: center;

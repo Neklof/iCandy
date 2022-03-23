@@ -23,6 +23,6 @@ const Cliente = () => {
 export default Cliente;
 
 const Componente = styled.div`
-	width: 100%;
+	width: 100vw;
 	height: 100%;
 `;

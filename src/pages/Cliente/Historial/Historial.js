@@ -1,6 +1,14 @@
 import "./styles.css";
+import ContenedorHistorial from "./ContenedorHistorial";
+import getPedidos from "services/getPedidos";
+import getDetallesPedido from "services/getDetallesPedido";
+import { useState, useEffect } from "react";
 
 const Historial = () => {
+	const [pedido, setPedido] = useState([]);
+
+	useEffect(() => {}, []);
+
 	return (
 		<div className="historial-aux">
 			<div className="historial-container">
@@ -13,6 +21,9 @@ const Historial = () => {
 						/>
 						<p>Filtrar</p>
 					</button>
+				</div>
+				<div className="historial-container">
+					<ContenedorHistorial />
 				</div>
 			</div>
 		</div>

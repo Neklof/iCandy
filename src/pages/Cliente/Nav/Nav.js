@@ -36,8 +36,10 @@ const Nav = () => {
 						/>
 						<img className="nav-logo nav-logo-movil" src={logo_2} alt="logo" />
 					</Link>
-					<div className="nav-search">
-						<Buscador keyword={setSearch} filter={false} />
+					<div className="nav-search-aux">
+						<div className="nav-search">
+							<Buscador keyword={setSearch} filter={false} />
+						</div>
 					</div>
 					<button className="nav-menu nav-icon" onClick={handleMenuBtn}>
 						<img className="nav-menu-img" src={menu} alt="menu" />
