@@ -1,0 +1,51 @@
+.SurtirProducto {
+  font-family: sans-serif;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.SurtirProducto > div {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.SurtirProducto > div > input {
+  width: 33%;
+  padding: 5px;
+}
+
+.btn-eliminar {
+  flex: none;
+  background-color: #f13030;
+  color: white;
+  margin-left: 5%;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.btn-agregar {
+  background-color: #37c103;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
+  border-radius: 50%;
+  border: none;
+}
+
+.card-container {
+  padding: 1%;
+}
+
+.card-container > input {
+  margin-right: 5%;
+}
+
+.btn-surtir {
+  background: #5790ff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  margin-right: 5px;
+}

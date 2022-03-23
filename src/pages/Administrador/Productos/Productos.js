@@ -8,7 +8,7 @@ import DetallesProducto from "./DetallesProducto";
 import Table from "components/Table";
 import AdminBuscador from "components/AdminBuscador";
 import React, { Component } from "react";
-import PubSub from "pubsub-js";
+//import PubSub from "pubsub-js";
 
 const CAMPOS = [
   "ID",
@@ -50,7 +50,7 @@ const Productos = () => {
     setModalModificarProducto(!modalModificarProducto);
     setPoderosoJson(Object.values(find));
 
-    PubSub.publish("saludo", Object.values(find));
+    //PubSub.publish("saludo", Object.values(find));
   };
 
   const handleAdd = () => {
@@ -110,14 +110,14 @@ const Productos = () => {
         idProducto={idProducto}
         poderosoJson={poderosoJson}
       />
-      {/* <DetallesProducto
+      <DetallesProducto
         modalDetallesProducto={modalDetallesProducto}
         setModalDetallesProducto={setModalDetallesProducto}
         addProducto={addProducto}
         setAddProducto={setAddProducto}
         idProducto={idProducto}
         poderosoJson={poderosoJson}
-      /> */}
+      />
     </>
   );
 };

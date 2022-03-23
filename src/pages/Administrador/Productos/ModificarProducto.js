@@ -4,7 +4,7 @@ import Button from "../../../components/Button";
 import Campo from "../../../components/Campo";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import PubSub from "pubsub-js";
+//import PubSub from "pubsub-js";
 
 let arre = [];
 const ModificarProducto = ({
@@ -43,30 +43,25 @@ const ModificarProducto = ({
   //   }
 
   const handleChange = (event) => {
-    setLades(event.target.value);
+    setLades(event.target[9].value);
   };
 
   useEffect(() => {
-    //setLaid(idProducto);
-    PubSub.subscribe("saludo", (e, data) => {
-      console.log("el new->" + data);
-      setJeison(data);
-      // setLades(data[5]);
-    });
-    // console.log(" MODIFICAR ->" + poderosoJson);
-  });
+    // setLaid(idProducto);
+    if (Array.isArray(poderosoJson)) {
+      //alert("hola bb");
+      setJeison(poderosoJson);
+      //alert(jeison);
+      //setLades(jeison[5]);
+    } else {
+      //alert("no soy gg");
+    }
 
-  // useEffect(() => {
-  //   // setLaid(idProducto);
-  //   console.log(" MODIFICAR ->" + poderosoJson);
-  // }, [idProducto]);
-
-  // console.log(idProducto);
-  //console.log(poderosoJson);
-  //console.log(poderosoJson[1]);
-
-  console.log(jeison);
-
+    //console.log(" MODIFICAR ->" + jeison);
+    //console.log(" Descripción ->" + jeison[5]);
+    // alert("aaah que pedo");
+  }, [idProducto]);
+  console.log(jeison[1]);
   return (
     <Modal
       ventanaModal={modalModificarProducto}
@@ -81,8 +76,9 @@ const ModificarProducto = ({
           nombreCampo="Nombre:"
           //error={errors.nombre}
 
+          // value={jeison[1]}
+
           defaultValue={jeison[1]}
-          // defaultValue={poderosoJson[1]}
         />
         <Campo
           register={register}
@@ -153,7 +149,8 @@ const ModificarProducto = ({
             nombreCampo="Descripcion:"
             rows="7"
             cols="20"
-            // defaultValue={jeison[8]}
+            onChange={handleChange}
+            value={jeison[5]}
             // onChange={handleChange}
             {...register("descripcion_pro", { required: false })}
           />

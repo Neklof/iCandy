@@ -4,6 +4,7 @@ import Button from "../../../components/Button";
 import Campo from "../../../components/Campo";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import addProductos from "services/addProductos";
 
 const RegistrarProducto = ({
   modalProducto,
@@ -23,8 +24,18 @@ const RegistrarProducto = ({
     const myJSON = JSON.stringify(info);
     //console.log(myJSON)
     //setAddProducto(!addProducto);
+
+    addProductos(info).then((response) => {
+      if (response) {
+        alert("se hizo la venta guapo");
+        console.log(response);
+      } else {
+        alert("algo ta mal");
+      }
+    });
     setModalProducto(false);
-    console.log("INFO->" + myJSON);
+    //console.log("INFO->" + myJSON);
+
     //console.log(unidad)
   };
 
