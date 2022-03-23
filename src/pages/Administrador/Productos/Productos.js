@@ -50,7 +50,7 @@ const Productos = () => {
     setModalModificarProducto(!modalModificarProducto);
     setPoderosoJson(Object.values(find));
 
-    //PubSub.publish("saludo", Object.values(find));
+    // PubSub.publish("saludo", Object.values(find));
   };
 
   const handleAdd = () => {

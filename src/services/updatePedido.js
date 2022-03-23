@@ -1,9 +1,9 @@
-const URL = "http://localhost/icandy/API/addUsuarioAdmin.php";
+const URL = "http://localhost/icandy/API/updatePedido.php";
 
-const addUsuario = async (user) => {
+const updatePedido = async (pedido) => {
 	const response = await fetch(URL, {
 		method: "POST",
-		body: JSON.stringify(user),
+		body: JSON.stringify(pedido),
 		headers: {
 			"Content-Type": "application/json",
 		},
@@ -13,4 +13,4 @@ const addUsuario = async (user) => {
 	return responseJSON.success || responseJSON.error;
 };
 
-export default addUsuario;
+export default updatePedido;
