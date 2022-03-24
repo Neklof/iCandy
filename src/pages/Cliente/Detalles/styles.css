@@ -261,7 +261,21 @@
 	width: 100%;
 }
 
-@media (max-width: 470px) {
+@media (min-width: 850px) and (max-width: 1270px) {
+	.detalles-producto-compra {
+		font-size: 0.65em !important;
+	}
+
+	.detalles-descripcion {
+		font-size: 0.8em !important;
+	}
+	.detalles-producto-disponible {
+		padding-left: 15px !important;
+		box-sizing: border-box;
+	}
+}
+
+@media (max-width: 850px) {
 	.detalles-producto {
 		gap: 0;
 		min-height: 700px;
