@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="pie-pagina">
       <div class="grupo-1">
-        <div className="box">
+        <div className="box imagen">
           <figure>
             <a href="#">
               <img src={logo} alt="Logo Icandy" />
