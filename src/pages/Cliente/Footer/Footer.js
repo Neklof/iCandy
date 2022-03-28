@@ -13,7 +13,7 @@ import {
 const Footer = () => {
   return (
     <footer className="pie-pagina">
-      <div class="grupo-1">
+      <div className="grupo-1">
         <div className="box imagen">
           <figure>
             <a href="#">
