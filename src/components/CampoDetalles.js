@@ -4,7 +4,7 @@ const CampoDetalles = ({ nombre, dato, width }) => {
 	return (
 		<P width={width}>
 			{nombre}
-			<span>{dato}</span>
+			<span className={`estado_${dato}`}>{dato}</span>
 		</P>
 	);
 };

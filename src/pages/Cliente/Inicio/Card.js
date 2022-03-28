@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
-import image from "assets/Img/nugs.png";
 import shoppingCart from "assets/Img/shopping-cart.png";
 import newProduct from "assets/Img/new_product.png";
+import addCarrito from "services/addCarrito";
 
-const Card = ({ producto }) => {
+const Card = ({ producto, funcion1 }) => {
+	//const [tempcantidad, setTempcantidad] = useState(0);
+	const objcarrito = {};
+	const handleProductoCarrito = () => {
+		objcarrito.id_C = 2;
+		objcarrito.id_PR = producto.id_PR;
+		objcarrito.cantidad_PR = 1;
+		addCarrito(objcarrito).then((response) => {
+			if (response) {
+				funcion1();
+			} else {
+				// alertaError("¡ups algo salio mal!");
+			}
+		});
+		// console.log(JSON.stringify(objcarrito));
+
+		//setTempcantidad(tempcantidad + 1);
+	};
 	return (
 		<div className="inicio-card-container">
 			<div className="inicio-card">
@@ -34,7 +51,10 @@ const Card = ({ producto }) => {
 					<p className="card-botones-disponible">
 						Disponibles: <span>{producto.cantidad_PR}</span>
 					</p>
-					<button className="card-botones-carrito">
+					<button
+						className="card-botones-carrito"
+						onClick={handleProductoCarrito}
+					>
 						<img
 							className="card-botones-img"
 							src={shoppingCart}

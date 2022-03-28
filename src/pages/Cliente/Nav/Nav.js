@@ -1,25 +1,24 @@
 import "./styles.css";
 import Buscador from "components/Buscador";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import menu from "assets/Img/menu.png";
 import shoppingCart from "assets/Img/shopping-cart.png";
 import logo_2 from "assets/Img/logo_2.png";
 import logo from "assets/Img/logo.png";
 import defaultProfileImage from "assets/Img/default-profile-image.png";
 import { Link } from "react-router-dom";
+import CajaCarrito from "components/cajaCarrito/CajaCarito";
 
-const Nav = () => {
+const Nav = ({ data, tamano, funcion }) => {
 	const [search, setSearch] = useState("");
 	const [menuModal, setMenuModal] = useState(false);
 	const [menuPerfil, setMenuPerfil] = useState(false);
-
 	const handleMenuBtn = () => setMenuModal(!menuModal);
 	const handlePerfilBtn = () => setMenuPerfil(!menuPerfil);
 	const handleModalOff = () => {
 		setMenuModal(false);
 		setMenuPerfil(false);
 	};
-
 	return (
 		<>
 			<div className="nav-aux">
@@ -46,7 +45,9 @@ const Nav = () => {
 					</button>
 					<button className="nav-carrito nav-icon">
 						<img className="nav-carrito-img" src={shoppingCart} alt="carrito" />
+						<p className="nav-carrito-cont">{tamano}</p>
 					</button>
+
 					<div
 						className={`nav-menu-modal ${!menuModal && "componente-oculto"}`}
 					>
@@ -115,7 +116,7 @@ const Nav = () => {
 								Contacto
 							</Link>
 							<Link
-								onClick={handlePerfilBtn}
+								onClick={handleModalOff}
 								className="nav-menu-link nav-perfil-menu-link-movil"
 								to={"/historial"}
 							>
@@ -129,6 +130,25 @@ const Nav = () => {
 							</button>
 						</div>
 					</div>
+				</div>
+				<div className="carrito-productos">
+					<div className="compra-carrito">
+						<h3>Carrito de compras</h3>
+						<Link to="/carrito" className="carrito-productos-link">
+							Comprar carrito
+						</Link>
+					</div>
+					{tamano == 0 ? (
+						<h1>El carrito esta vacio</h1>
+					) : (
+						data.map((carrito) => (
+							<CajaCarrito
+								key={carrito.id_PR}
+								datos={carrito}
+								funcion1={funcion}
+							/>
+						))
+					)}
 				</div>
 			</div>
 			{(menuModal || menuPerfil) && (

@@ -16,6 +16,16 @@
 	height: 150px;
 }
 
+.inicio-filtros p a {
+	color: #000;
+	text-decoration: none;
+}
+
+.inicio-filtros p a:hover {
+	color: #46a;
+	text-decoration: underline;
+}
+
 .inicio-filtros-btn {
 	display: flex;
 	align-items: center;
@@ -97,7 +107,7 @@
 
 .inicio-card-image {
 	height: 100%;
-	width: 100%;
+	width: 98%;
 	object-fit: scale-down;
 }
 
@@ -176,10 +186,36 @@
 .inicio-paginador {
 	display: flex;
 	min-width: 90%;
-	height: 75px;
+	height: 175px;
+	justify-content: center;
+	align-items: flex-end;
+	font-size: 2em;
+}
+
+.paginador-container {
+	display: flex;
+	/* border-top: 1px solid #000; */
+	/* border-bottom: 1px solid #000; */
+}
+
+.paginador-pagina {
+	text-decoration: none;
+	color: #000;
+	box-sizing: border-box;
+	width: 40px;
+	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 2em;
+}
+
+.paginador-anterior,
+.paginador-siguiente {
+	color: #a33;
+}
+
+.paginador-pagina-focus {
+	color: #77f;
+	text-decoration: underline;
 }
 
 @media (max-width: 540px) {

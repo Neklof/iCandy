@@ -1,20 +1,38 @@
 import styled from "styled-components";
 
-const Campo = ({ width, nombreCampo, type, register, name, error, value }) => {
+const Campo = ({
+	width,
+	nombreCampo,
+	type,
+	register,
+	name,
+	error,
+	value,
+	minLength = undefined,
+	maxLength = undefined,
+}) => {
 	return (
 		<ContainerCampo width={width || "45%"}>
 			<Label>{nombreCampo}</Label>
 			<Input
-				{...register(name, { required: true })}
+				{...register(name, {
+					required: true,
+					minLength: minLength,
+					maxLength: maxLength,
+				})}
 				placeholder={nombreCampo}
 				type={type || "text"}
 				error={error}
 				value={value}
-				
 			></Input>
 			{error?.type === "required" && <Error>Favor de completar</Error>}
+			{error?.type === "minLength" && (
+				<Error>{`El campo debe tener mínimo ${minLength} caracteres`}</Error>
+			)}
+			{error?.type === "maxLength" && (
+				<Error>{`El campo debe tener máximo ${maxLength} caracteres`}</Error>
+			)}
 		</ContainerCampo>
-		
 	);
 };
 

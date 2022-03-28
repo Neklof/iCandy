@@ -7,6 +7,22 @@ import getDetallesPedido from "services/getDetallesPedido";
 import { useForm } from "react-hook-form";
 import updatePedido from "services/updatePedido";
 import "./styles.css";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const successAlert = (mensaje) => {
+	toast.success(mensaje, {
+		position: "bottom-left",
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: false,
+		draggable: true,
+		progress: undefined,
+		theme: "colored",
+		transition: Slide,
+	});
+};
 
 const CAMPOS = [
 	"Pedido",
@@ -36,7 +52,7 @@ const Pedidos = () => {
 	const handleEditarPedido = (info) => {
 		info.id_VP = pedidoActual;
 		updatePedido(info).then((response) => {
-			alert(response);
+			successAlert(response);
 			setModalDetalles(!modalDetalles);
 			setPedidoActualizado(!pedidoActualizado);
 		});
@@ -71,7 +87,6 @@ const Pedidos = () => {
 			<Table
 				campos={CAMPOS}
 				datos={pedidos}
-				filtro="id_VP"
 				search={search}
 				tipo={3}
 				funciones={handleDetalles}
@@ -86,8 +101,10 @@ const Pedidos = () => {
 						handleEditarPedido={handleEditarPedido}
 						register={register}
 						handleSubmit={handleSubmit}
+						usuario=""
 					/>
 				)}
+			<ToastContainer />
 		</>
 	);
 };

@@ -1,9 +1,10 @@
 import Pedido from "./Pedido";
 
-const ContenedorHistorial = () => {
+const ContenedorHistorial = ({ fecha, children }) => {
 	return (
 		<div className="caja-historial">
-			<Pedido></Pedido>
+			<h2>{fecha}</h2>
+			{children}
 		</div>
 	);
 };

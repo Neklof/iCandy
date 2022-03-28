@@ -2,18 +2,58 @@ import "./styles.css";
 import { useEffect, useState } from "react";
 import getProductos from "services/getProductos";
 import Card from "./Card";
+import Paginador from "./Paginador";
+import { useParams, Link } from "react-router-dom";
 
-const Inicio = () => {
+const PRODUCTOS_PER_PAGE = 9;
+
+const Inicio = ({ funcion }) => {
+	const { page } = useParams();
 	const [productos, setProductos] = useState({});
+	const [productosPaginados, setProductosPaginados] = useState({});
+	const [paginador, setPaginador] = useState(page || 1);
+	const [paginas, setPaginas] = useState(1);
+
+	// const [actualizar, setActualizar] = useState(false);
+	// const handleEstado = () => {
+	// 	actualizar ? setActualizar(false) : setActualizar(true);
+	// };
 
 	useEffect(() => {
-		getProductos().then((response) => setProductos(Object.values(response)));
+		getProductos().then((response) => {
+			setPaginas(Math.ceil(response.length / PRODUCTOS_PER_PAGE));
+			setProductos(Object.values(response));
+
+			let min = page ? (page - 1) * PRODUCTOS_PER_PAGE : 0;
+			// let max = page != paginas ? page * PRODUCTOS_PER_PAGE : undefined;
+			let max = page
+				? page != paginas
+					? page * PRODUCTOS_PER_PAGE
+					: undefined
+				: PRODUCTOS_PER_PAGE;
+			setProductosPaginados(Object.values(response).slice(min, max));
+		});
 	}, []);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+		let min = page ? (page - 1) * PRODUCTOS_PER_PAGE : 0;
+		let max = page
+			? page != paginas
+				? page * PRODUCTOS_PER_PAGE
+				: undefined
+			: PRODUCTOS_PER_PAGE;
+
+		setProductosPaginados(Object.values(productos).slice(min, max));
+		setPaginador(page || 1);
+	}, [page]);
 
 	return (
 		<div className="inicio-container">
 			<div className="inicio-filtros">
-				<p>{"Inicio > Chocolates"}</p>
+				<p>
+					<Link to="/">Inicio</Link>
+				</p>
 				<button className="inicio-filtros-btn">
 					<img
 						alt=""
@@ -23,13 +63,11 @@ const Inicio = () => {
 				</button>
 			</div>
 			<div className="inicio-cards">
-				{Object.values(productos).map((producto) => (
-					<Card key={producto.id_PR} producto={producto} />
+				{Object.values(productosPaginados).map((producto) => (
+					<Card key={producto.id_PR} producto={producto} funcion1={funcion} />
 				))}
 			</div>
-			<div className="inicio-paginador">
-				<p>{"< | 1 2 3 4 5 | >"}</p>
-			</div>
+			<Paginador paginador={paginador} paginas={paginas} />
 		</div>
 	);
 };
