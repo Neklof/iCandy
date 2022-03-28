@@ -78,13 +78,13 @@ const ModificarProducto = ({
 
           // value={jeison[1]}
 
-          defaultValue={jeison[1]}
+          value={jeison[1]}
         />
         <Campo
           register={register}
           name="precio_inversion"
           nombreCampo="Precio inversión:"
-          // value={poderosoJson[4]}
+          value={jeison[4]}
           //defaultValue={jeison[4]}
         />
         <Campo
@@ -92,14 +92,14 @@ const ModificarProducto = ({
           name="cantidad"
           nombreCampo="Cantidad:"
           type="number"
-          // value={poderosoJson[2]}
+          value={jeison[2]}
           //  defaultValue={jeison[2]}
         />
         <Campo
           register={register}
           name="precio_publico"
           nombreCampo="Precio público:"
-          // value={poderosoJson[3]}
+          value={jeison[3]}
           //  defaultValue={jeison[3]}
         />
         <Descripcion>
@@ -131,6 +131,7 @@ const ModificarProducto = ({
             name="unidadPeso_PR"
             {...register("unidadPeso_PR", { required: false })}
             onChange={tipounidad}
+            value={jeison[8]}
           >
             <option value="Caja">Caja</option>
             <option value="Gramos">Gramos</option>
@@ -140,6 +141,7 @@ const ModificarProducto = ({
           register={register}
           name="piezasCaja_PR"
           nombreCampo={unidad || "Caja"}
+          value={jeison[9]}
         />
         <Descripcion>
           <Texto>Descripción</Texto>

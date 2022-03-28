@@ -21,20 +21,21 @@ const RegistrarProducto = ({
   const [unidad, setUnidad] = useState("");
 
   const onSubmit = (info) => {
-    const myJSON = JSON.stringify(info);
+    //  const myJSON = JSON.stringify(info);
     //console.log(myJSON)
     //setAddProducto(!addProducto);
 
     addProductos(info).then((response) => {
       if (response) {
-        alert("se hizo la venta guapo");
+        alert("Producto registrado");
         console.log(response);
       } else {
-        alert("algo ta mal");
+        alert("Algo salio mal");
       }
     });
     setModalProducto(false);
-    //console.log("INFO->" + myJSON);
+    // console.log(info);
+    // console.log("INFO->" + myJSON);
 
     //console.log(unidad)
   };
@@ -134,7 +135,11 @@ const RegistrarProducto = ({
             height="30%"
             width="30%"
           />
-          <input type="file" />
+          <input
+            type="file"
+            name="url_imagen"
+            {...register("url_imagen", { required: false })}
+          />
         </Descripcion>
 
         <ButtonContainer>

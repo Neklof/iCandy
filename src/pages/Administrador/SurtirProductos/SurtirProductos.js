@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import getProductosInventario from "services/getProductosInventario";
 import { useEffect } from "react";
 import "./styles.css";
+import addSurtirProductos from "services/addSurtirProductos";
 
 const defaultState = {
   nombre: "",
@@ -76,29 +77,48 @@ export default function SurtirProductos() {
     copyRows.splice(index, 1);
     setRows(copyRows);
   };
+
   const surtirProducto = () => {
-    const surtir = JSON.stringify(rows);
-    console.log(surtir);
+    addSurtirProductos(rows).then((response) => {
+      if (response) {
+        alert("Los produtos se surtieron");
+      } else {
+        alert("No se realizó la operación");
+      }
+    });
+
+    // const surtir = JSON.stringify(rows);
+    // // console.log(rows);
+    // console.log(surtir);
   };
 
   return (
-    <div className="SurtirProdcto">
-      <h1>Surtir productos</h1>
-      {rows.map((row, index) => (
-        <Row
-          {...row}
-          onChange={(name, value) => handleOnChange(index, name, value)}
-          onRemove={() => handleOnRemove(index)}
-          key={index}
-        />
-      ))}
-      <button className="btn-agregar" onClick={handleOnAdd}>
-        +
-      </button>
-      <button className="btn-surtir" onClick={surtirProducto}>
-        {" "}
-        Surtir productos{" "}
-      </button>
+    <div className="SurtirProducto-Principal">
+      <div className="div-titulo">
+        <h3>Código</h3>
+        <h3>Producto</h3>
+        <h3>Cantidad</h3>
+      </div>
+      <div className="SurtirProdcto">
+        {rows.map((row, index) => (
+          <Row
+            {...row}
+            onChange={(name, value) => handleOnChange(index, name, value)}
+            onRemove={() => handleOnRemove(index)}
+            key={index}
+          />
+        ))}
+        <button className="btn-agregar" onClick={handleOnAdd}>
+          +
+        </button>
+      </div>
+
+      <div className="container-btn-surtir">
+        <button className="btn-surtir" onClick={surtirProducto}>
+          {" "}
+          Surtir productos{" "}
+        </button>
+      </div>
     </div>
   );
 }

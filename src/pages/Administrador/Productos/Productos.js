@@ -8,6 +8,7 @@ import DetallesProducto from "./DetallesProducto";
 import Table from "components/Table";
 import AdminBuscador from "components/AdminBuscador";
 import React, { Component } from "react";
+import delProductos from "services/delProductos";
 //import PubSub from "pubsub-js";
 
 const CAMPOS = [
@@ -20,7 +21,19 @@ const CAMPOS = [
   "Detalles",
 ];
 
-const eliminar = (e) => alert(e.target.className);
+const eliminar = (e) => {
+  // alert(e.target.className);
+  // console.log(JSON.stringify(e.target.className));
+  delProductos(e.target.className).then((response) => {
+    if (response) {
+      alert("Producto El producto se elimino");
+      console.log(response);
+    } else {
+      alert("Algo salio mal");
+    }
+  });
+};
+//alert(e.target.className);
 const detalles = (e) => alert(e.target.className);
 
 // const find = {};
