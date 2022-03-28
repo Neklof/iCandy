@@ -7,13 +7,17 @@ import { useParams, Link } from "react-router-dom";
 
 const PRODUCTOS_PER_PAGE = 9;
 
-const Inicio = () => {
+const Inicio = ({ funcion }) => {
 	const { page } = useParams();
-
 	const [productos, setProductos] = useState({});
 	const [productosPaginados, setProductosPaginados] = useState({});
 	const [paginador, setPaginador] = useState(page || 1);
 	const [paginas, setPaginas] = useState(1);
+
+	// const [actualizar, setActualizar] = useState(false);
+	// const handleEstado = () => {
+	// 	actualizar ? setActualizar(false) : setActualizar(true);
+	// };
 
 	useEffect(() => {
 		getProductos().then((response) => {
@@ -60,7 +64,7 @@ const Inicio = () => {
 			</div>
 			<div className="inicio-cards">
 				{Object.values(productosPaginados).map((producto) => (
-					<Card key={producto.id_PR} producto={producto} />
+					<Card key={producto.id_PR} producto={producto} funcion1={funcion} />
 				))}
 			</div>
 			<Paginador paginador={paginador} paginas={paginas} />

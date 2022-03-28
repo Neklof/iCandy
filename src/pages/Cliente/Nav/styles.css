@@ -1,354 +1,405 @@
 .nav-aux {
-	background-color: #f2cb57;
-	width: 100%;
-	margin: 0;
-	box-sizing: border-box;
-	z-index: 25;
+  background-color: #f2cb57;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 25;
 }
 
 .nav-container {
-	display: flex;
-	background-color: #f2cb57;
-	width: 100%;
-	min-height: 65px;
-	max-height: 65px;
-	justify-content: space-between;
-	position: relative;
-	align-items: center;
-	box-sizing: border-box;
-	margin: 0;
-	z-index: 25;
+  display: flex;
+  background-color: #f2cb57;
+  width: 100%;
+  min-height: 65px;
+  max-height: 65px;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  z-index: 25;
 }
 
 .nav-logo-container {
-	width: 15%;
-	max-width: 100px;
+  width: 15%;
+  max-width: 100px;
 }
 
 .nav-logo {
-	object-fit: cover;
-	width: 100%;
-	margin-left: 5px;
+  object-fit: cover;
+  width: 100%;
+  margin-left: 5px;
 }
 
 .nav-logo-escritorio {
-	visibility: hidden;
-	display: none;
+  visibility: hidden;
+  display: none;
 }
 
 .nav-icon {
-	background: none;
-	border: none;
-	margin: 0;
-	padding: 0;
-	width: 11%;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 11%;
 }
 
 .nav-search {
-	width: 100%;
-	height: 35px;
+  width: 100%;
+  height: 35px;
 }
 
 .nav-menu {
-	margin-right: 3.5%;
+  margin-right: 3.5%;
 }
 
 .nav-menu-img {
-	object-fit: cover;
-	width: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .nav-carrito {
-	margin-right: 7px;
-	cursor: pointer;
+  cursor: pointer;
+  left: 87%;
 }
 
 .nav-carrito-img {
-	object-fit: cover;
-	width: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .nav-menu-modal {
-	position: absolute;
-	top: 7.45vh;
-	width: 100vw;
-	background-color: #f2cb57;
-	z-index: 500;
+  position: absolute;
+  top: 7.45vh;
+  width: 100vw;
+  background-color: #f2cb57;
+  z-index: 500;
 }
 
 .nav-menu-link,
 .nav-menu-links {
-	text-decoration: none;
-	color: #000;
-	display: block;
-	padding: 10px;
-	font-size: 1em;
-	border-bottom: 1px solid #000;
-	position: relative;
+  text-decoration: none;
+  color: #000;
+  display: block;
+  padding: 10px;
+  font-size: 1em;
+  border-bottom: 1px solid #000;
+  position: relative;
 }
 
 .nav-menu-link-btn {
-	display: flex;
-	width: 100%;
-	justify-content: center;
-	padding: 10px;
-	margin: 0;
-	font-size: 1em;
-	font-weight: normal;
-	border: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
+  font-size: 1em;
+  font-weight: normal;
+  border: none;
 }
 
 .nav-menu-link-login {
-	text-decoration: none;
-	font-size: 1em;
-	color: #000;
+  text-decoration: none;
+  font-size: 1em;
+  color: #000;
 }
 
 .nav-menu-link-login-movil {
-	display: inline-block;
-	visibility: visible;
+  display: inline-block;
+  visibility: visible;
 }
 
 .nav-menu-link-login-escritorio {
-	display: none;
-	visibility: hidden;
+  display: none;
+  visibility: hidden;
 }
 
 .nav-menu-perfil {
-	display: none;
-	visibility: none;
+  display: none;
+  visibility: none;
 }
 
 .nav-menu-link-profile {
-	font-size: 1.6em;
-	padding-right: 13%;
+  font-size: 1.6em;
+  padding-right: 13%;
 }
 
 .nav-menu-link-img {
-	object-fit: cover;
-	width: 8.3vw;
+  object-fit: cover;
+  width: 8.3vw;
 }
 
 .componente-oculto {
-	visibility: hidden;
-	display: none;
+  visibility: hidden;
+  display: none;
 }
 
 .nav-perfil-menu-link-movil {
-	display: block;
-	visibility: visible;
-	background: none;
+  display: block;
+  visibility: visible;
+  background: none;
 }
 
 .nav-close-overlay {
-	position: fixed;
-	width: 100vw;
-	height: 100%;
-	z-index: 1;
-	background-color: #000;
-	opacity: 0.5;
-	bottom: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  z-index: 1;
+  background-color: #000;
+  opacity: 0.5;
+  bottom: 0;
+}
+.nav-carrito-cont {
+  position: absolute;
+  bottom: 7px;
+  left: 10px;
+  color: white;
+  font-size: 15px;
 }
 
+.carrito-productos {
+  width: 30%;
+  background-color: white;
+  position: absolute;
+  /* desaparece y aparece el div de carrito*/
+  display: none;
+  max-height: 600px;
+  min-height: 100px;
+  z-index: 1;
+  margin-left: 60%;
+  overflow-x: none;
+  overflow-y: auto;
+  box-shadow: 6px 24px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 10px 10px;
+}
+.carrito-productos::-webkit-scrollbar {
+  width: 4px;
+}
+
+.carrito-productos::-webkit-scrollbar-thumb {
+  background: #99beff;
+  border-radius: 15px;
+}
+
+.compra-carrito {
+  display: flex;
+  background-color: #f2aa57e5;
+  height: 40px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #000000;
+}
+.carrito-productos-link {
+  text-decoration: none;
+  color: #000000;
+}
+.carrito-productos-link:hover {
+  color: green;
+}
+
+.nav-carrito:hover > .carrito-productos {
+  display: block;
+}
 @media (min-width: 510px) and (max-width: 851px) {
-	.nav-container {
-		justify-content: space-between !important;
-	}
+  .nav-container {
+    justify-content: space-between !important;
+  }
 
-	.nav-logo-escritorio {
-		margin: 0;
-	}
+  .nav-logo-escritorio {
+    margin: 0;
+  }
 
-	.nav-carrito {
-		right: 10% !important;
-		bottom: max(24px, 16%) !important;
-	}
+  .nav-carrito {
+    right: 10% !important;
+    bottom: max(24px, 16%) !important;
+  }
 
-	.nav-search-aux {
-		width: 75% !important;
-	}
+  .nav-search-aux {
+    width: 75% !important;
+  }
 
-	.nav-search {
-		width: 300px !important;
-	}
+  .nav-search {
+    width: 300px !important;
+  }
 }
 
 @media (min-width: 510px) {
-	.nav-close-overlay {
-		position: fixed;
-	}
+  .nav-close-overlay {
+    position: fixed;
+  }
 
-	.nav-container {
-		display: flex;
-		min-height: 17vh;
-		max-height: 350px;
-		width: 100%;
-		/* min-width: 1000px; */
-		justify-content: flex-start;
-		align-items: center;
-		padding: 0 5%;
-		padding-top: 10px;
-		flex-wrap: wrap;
-		z-index: 5;
-	}
+  .nav-container {
+    display: flex;
+    min-height: 17vh;
+    max-height: 350px;
+    width: 100%;
+    /* min-width: 1000px; */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 5%;
+    padding-top: 10px;
+    flex-wrap: wrap;
+    z-index: 5;
+  }
 
-	.nav-aux {
-		background-color: #f2cb57;
-		margin: 0;
-		border-bottom: 2px solid #000000;
-		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-		z-index: 25;
-	}
+  .nav-aux {
+    background-color: #f2cb57;
+    margin: 0;
+    border-bottom: 2px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 25;
+  }
 
-	.nav-logo {
-		object-fit: cover;
-		width: 100%;
-	}
+  .nav-logo {
+    object-fit: cover;
+    width: 100%;
+  }
 
-	.nav-logo-escritorio {
-		visibility: visible;
-		display: block;
-	}
+  .nav-logo-escritorio {
+    visibility: visible;
+    display: block;
+  }
 
-	.nav-logo-movil {
-		visibility: hidden;
-		display: none;
-	}
+  .nav-logo-movil {
+    visibility: hidden;
+    display: none;
+  }
 
-	.nav-menu {
-		visibility: hidden;
-		display: none;
-	}
+  .nav-menu {
+    visibility: hidden;
+    display: none;
+  }
 
-	.nav-carrito-escritorio {
-		visibility: visible;
-	}
+  .nav-carrito-escritorio {
+    visibility: visible;
+  }
 
-	.nav-carrito {
-		position: absolute;
-		width: 25px;
-		right: min(14.5%, 215px);
-		bottom: 12%;
-		z-index: 505;
-		transition: width 0.5s;
-	}
+  .nav-carrito {
+    position: absolute;
+    width: 25px;
+    right: min(14.5%, 215px);
+    bottom: 12%;
+    z-index: 505;
+    transition: width 0.5s;
+  }
 
-	.nav-carrito:hover {
-		width: 30px;
-	}
+  .nav-carrito:hover {
+    width: 20px;
+  }
 
-	.nav-carrito-img {
-		object-fit: cover;
-		width: 100%;
-	}
+  .nav-carrito-img {
+    object-fit: cover;
+    width: 100%;
+  }
 
-	.nav-search {
-		justify-content: start;
-		width: 500px;
-		height: 40px;
-	}
+  .nav-search {
+    justify-content: start;
+    width: 500px;
+    height: 40px;
+  }
 
-	.nav-search-aux {
-		width: 85%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  .nav-search-aux {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-	.nav-menu-modal {
-		display: flex;
-		align-content: center;
-		justify-content: space-between;
-		position: relative;
-		width: 100%;
-		top: 0;
-		box-sizing: border-box;
-		visibility: visible;
-		padding-right: 150px;
-	}
+  .nav-menu-modal {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    top: 0;
+    box-sizing: border-box;
+    visibility: visible;
+    padding-right: 150px;
+  }
 
-	.nav-menu-group {
-		display: flex;
-	}
+  .nav-menu-group {
+    display: flex;
+  }
 
-	.nav-menu-link,
-	.nav-menu-links {
-		padding: 25px;
-		font-size: 1.1em;
-		border-bottom: none;
-	}
+  .nav-menu-link,
+  .nav-menu-links {
+    padding: 25px;
+    font-size: 1.1em;
+    border-bottom: none;
+  }
 
-	.nav-menu-link-login:hover {
-		color: rgb(87, 142, 224);
-	}
+  .nav-menu-link-login:hover {
+    color: rgb(87, 142, 224);
+  }
 
-	.nav-menu-link-login-movil {
-		display: none;
-		visibility: hidden;
-	}
+  .nav-menu-link-login-movil {
+    display: none;
+    visibility: hidden;
+  }
 
-	.nav-menu-link-login-escritorio {
-		display: flex;
-		visibility: visible;
-		background: none;
-		border: none;
-	}
+  .nav-menu-link-login-escritorio {
+    display: flex;
+    visibility: visible;
+    background: none;
+    border: none;
+  }
 
-	.nav-menu-link:hover {
-		color: rgb(87, 142, 224);
-	}
+  .nav-menu-link:hover {
+    color: rgb(87, 142, 224);
+  }
 
-	.nav-menu-link-profile {
-		display: flex;
-		position: relative;
-		max-width: 150px;
-		align-items: center;
-		padding-right: 0;
-		order: 15;
-		margin-right: 0;
-		margin: 0;
-	}
+  .nav-menu-link-profile {
+    display: flex;
+    position: relative;
+    max-width: 150px;
+    align-items: center;
+    padding-right: 0;
+    order: 15;
+    margin-right: 0;
+    margin: 0;
+  }
 
-	.nav-perfil-menu-link-movil {
-		display: none;
-		visibility: hidden;
-	}
+  .nav-perfil-menu-link-movil {
+    display: none;
+    visibility: hidden;
+  }
 
-	.nav-menu-link-img {
-		width: 12%;
-		min-width: 15px;
-		padding-right: 7px;
-	}
+  .nav-menu-link-img {
+    width: 12%;
+    min-width: 15px;
+    padding-right: 7px;
+  }
 
-	.nav-menu-perfil {
-		position: absolute;
-		display: flex;
-		flex-wrap: wrap;
-		width: 110%;
-		top: 75px;
-		left: 0;
-		background-color: #f2cb57;
-	}
-	.nav-menu-perfil-link {
-		text-decoration: none;
-		color: #000;
-		font-size: 1em;
-		font-weight: 400;
-		background: none;
-		width: 100%;
-		padding: 10px;
-		border: none;
-		border-bottom: 1px solid #000;
-		cursor: pointer;
-	}
-	.nav-menu-perfil-link:hover {
-		color: rgb(87, 142, 224);
-	}
+  .nav-menu-perfil {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 110%;
+    top: 75px;
+    left: 0;
+    background-color: #f2cb57;
+  }
+  .nav-menu-perfil-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1em;
+    font-weight: 400;
+    background: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+  }
+  .nav-menu-perfil-link:hover {
+    color: rgb(87, 142, 224);
+  }
 
-	.nav-logo-container {
-		width: 130px;
-		display: flex;
-		justify-content: center;
-		padding-left: 15px;
-	}
+  .nav-logo-container {
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    padding-left: 15px;
+  }
 }

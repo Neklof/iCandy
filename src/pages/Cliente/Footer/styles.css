@@ -22,6 +22,11 @@
 .pie-pagina .grupo-1 .box {
 	width: 100%;
 }
+.imagen {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 .pie-pagina .grupo-1 .box a {
 	width: 100%;
