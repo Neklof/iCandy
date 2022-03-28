@@ -11,7 +11,9 @@ const Cliente = () => {
 		<Componente>
 			<Nav />
 			<Routes>
-				<Route path="/" element={<Inicio />}></Route>
+				<Route path="/" element={<Inicio />}>
+					<Route path="/:page" element={<Inicio />}></Route>
+				</Route>
 				<Route path="/detalles/:id" element={<Detalles />}></Route>
 				<Route path="/historial" element={<Historial />}></Route>
 			</Routes>
@@ -23,6 +25,6 @@ const Cliente = () => {
 export default Cliente;
 
 const Componente = styled.div`
-	width: 100vw;
+	width: 100%;
 	height: 100%;
 `;

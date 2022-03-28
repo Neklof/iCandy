@@ -13,6 +13,8 @@ const DetallesCompra = ({
 	handleEditarPedido,
 	register,
 	handleSubmit,
+	usuario,
+	font,
 }) => {
 	const costoEnvio = 10;
 
@@ -23,91 +25,108 @@ const DetallesCompra = ({
 			encabezado={true}
 			titulo="Detalles de la compra"
 		>
-			<Content>
-				<CampoDetalles
-					nombre="Nombre: "
-					dato={pedidoDetalle[0].nombre}
-					width={"33%"}
-				/>
-				<CampoDetalles
-					nombre="Teléfono: "
-					dato={pedidoDetalle[0].telefono_C}
-					width={"33%"}
-				/>
-				{/* <CampoDetalles
-					nombre="Estatus: "
-					dato={pedidoDetalle[0].estado_VP}
-					width={"33%"}
-				/> */}
-				<Form width={"33%"} onSubmit={handleSubmit(handleEditarPedido)}>
-					<label>Status: </label>
-					<select
-						className={`estado_${pedidoDetalle[0].estado_VP}`}
-						{...register("status", { required: true })}
-						// defaultValue={pedidoDetalle[0].estado_VP || "Pendiente"}
-					>
-						<option className="estado_Pendiente" value="Pendiente">
-							Pendiente
-						</option>
-						<option className="estado_Activo" value="Activo">
-							Activo
-						</option>
-						<option className="estado_Cancelado" value="Cancelado">
-							Cancelado
-						</option>
-						<option className="estado_Entregado" value="Entregado">
-							Entregado
-						</option>
-					</select>
-					<button onSubmit={handleSubmit(handleEditarPedido)}>
-						<img src={editar} alt="editar" />
-					</button>
-				</Form>
-				<CampoDetalles
-					nombre="Fecha del pedido: "
-					dato={pedidoDetalle[0].fecha_VP}
-				/>
-				{/* <CampoDetalles
-					nombre="Fecha de entrega: "
-					dato={pedidoDetalle[0].fechaDeEntrega_VP}
-				/> */}
-				<Form onSubmit={handleSubmit(handleEditarPedido)}>
-					<label>Fecha de entrega: </label>
-					<input
-						{...register("fechaEntrega", { required: true })}
-						type="date"
-						// defaultValue={pedidoDetalle[0].fechaDeEntrega_VP || new Date()}
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "center",
+					overflowY: "auto",
+				}}
+			>
+				<Content font={font}>
+					<CampoDetalles
+						nombre="Nombre: "
+						dato={pedidoDetalle[0].nombre}
+						width={"33%"}
 					/>
-					<button onSubmit={handleSubmit(handleEditarPedido)}>
-						<img src={editar} alt="editar" />
-					</button>
-				</Form>
-				<CampoDetalles nombre="Moneda: " dato={"MXN"} width={"100%"} />
-				<CampoDetalles
-					nombre="Dirección: "
-					dato={pedidoDetalle[0].direccion_C}
-					width={"100%"}
-				/>
+					<CampoDetalles
+						nombre="Teléfono: "
+						dato={pedidoDetalle[0].telefono_C}
+						width={"33%"}
+					/>
+					{usuario == "Cliente" && (
+						<CampoDetalles
+							nombre="Estatus: "
+							dato={pedidoDetalle[0].estado_VP}
+							width={"33%"}
+						/>
+					)}
+					{usuario != "Cliente" && (
+						<Form width={"33%"} onSubmit={handleSubmit(handleEditarPedido)}>
+							<label>Status: </label>
+							<select
+								className={`estado_${pedidoDetalle[0].estado_VP}`}
+								{...register("status", { required: true })}
+								// defaultValue={pedidoDetalle[0].estado_VP || "Pendiente"}
+							>
+								<option className="estado_Pendiente" value="Pendiente">
+									Pendiente
+								</option>
+								<option className="estado_Activo" value="Activo">
+									Activo
+								</option>
+								<option className="estado_Cancelado" value="Cancelado">
+									Cancelado
+								</option>
+								<option className="estado_Entregado" value="Entregado">
+									Entregado
+								</option>
+							</select>
+							<button onSubmit={handleSubmit(handleEditarPedido)}>
+								<img src={editar} alt="editar" />
+							</button>
+						</Form>
+					)}
+					<CampoDetalles
+						nombre="Fecha del pedido: "
+						dato={pedidoDetalle[0].fecha_VP}
+					/>
+					{usuario == "Cliente" && (
+						<CampoDetalles
+							nombre="Fecha de entrega: "
+							dato={pedidoDetalle[0].fechaDeEntrega_VP}
+						/>
+					)}
+					{usuario != "Cliente" && (
+						<Form onSubmit={handleSubmit(handleEditarPedido)}>
+							<label>Fecha de entrega: </label>
+							<input
+								{...register("fechaEntrega", { required: true })}
+								type="date"
+								// defaultValue={pedidoDetalle[0].fechaDeEntrega_VP || new Date()}
+							/>
+							<button onSubmit={handleSubmit(handleEditarPedido)}>
+								<img src={editar} alt="editar" />
+							</button>
+						</Form>
+					)}
+					<CampoDetalles nombre="Moneda: " dato={"MXN"} width={"100%"} />
+					<CampoDetalles
+						nombre="Dirección: "
+						dato={pedidoDetalle[0].direccion_C}
+						width={"100%"}
+					/>
 
-				<h3>Productos</h3>
-				<TablaDetalles datos={pedidoProductos} />
-				<Totales>
-					<p>
-						Envio: <span>{`$${costoEnvio}.00`}</span>
-					</p>
-				</Totales>
-				<Totales border={true}>
-					<p>
-						Subtotal: <span>{`$${pedidoDetalle[0].total_VP}.00`}</span>
-					</p>
-				</Totales>
-				<Totales>
-					<p>
-						Total:{" "}
-						<span>{`$${+pedidoDetalle[0].total_VP + costoEnvio}.00`}</span>
-					</p>
-				</Totales>
-			</Content>
+					<h3>Productos</h3>
+					<TablaDetalles datos={pedidoProductos} />
+					<Totales>
+						<p>
+							Envio: <span>{`$${costoEnvio}.00`}</span>
+						</p>
+					</Totales>
+					<Totales border={true}>
+						<p>
+							Subtotal: <span>{`$${pedidoDetalle[0].total_VP}.00`}</span>
+						</p>
+					</Totales>
+					<Totales>
+						<p>
+							Total:{" "}
+							<span>{`$${+pedidoDetalle[0].total_VP + costoEnvio}.00`}</span>
+						</p>
+					</Totales>
+				</Content>
+			</div>
 		</Modal>
 	);
 };
@@ -120,7 +139,9 @@ const Content = styled.div`
 		min-width: 100%;
 		flex-wrap: wrap;
 		justify-content: space-around;
-		overflow: auto;
+		z-index: 100000;
+		font-size: ${(props) => props.font || ""};
+		overflow: "auto";
 	}
 
 	h3 {

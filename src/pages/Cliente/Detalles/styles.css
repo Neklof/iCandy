@@ -5,6 +5,7 @@
 	gap: 50px;
 	flex-wrap: wrap;
 	max-width: 100%;
+	padding-bottom: 100px;
 }
 
 .detalles-filtros {
@@ -15,14 +16,14 @@
 	height: 25px;
 }
 
-.detalles-filtros-btn {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	font-size: 1em;
-	background: none;
-	border: none;
-	gap: 5px;
+.detalles-filtros p a {
+	color: #000;
+	text-decoration: none;
+}
+
+.detalles-filtros p a:hover {
+	color: #46a;
+	text-decoration: underline;
 }
 
 .detalles-producto {
