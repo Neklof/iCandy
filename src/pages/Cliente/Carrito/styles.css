@@ -39,15 +39,17 @@
 
 .container-carrito__direccion {
   width: 95%;
-  height: 180px;
+
+  max-height: 400px;
   /* background-color: blueviolet; */
   margin-left: 2.5%;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 .container-carrito_dir {
-  width: 50%;
+  width: 200px;
   height: 170px;
   line-height: 5px;
   /* background-color: aquamarine; */
@@ -56,7 +58,7 @@
 }
 
 .container-carrito_total {
-  width: 50%;
+  width: 300px;
   height: 120px;
   /* background-color: brown; */
   display: flex;
