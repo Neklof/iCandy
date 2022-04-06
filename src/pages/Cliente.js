@@ -13,73 +13,86 @@ import "react-toastify/dist/ReactToastify.css";
 import getCarrito from "services/getCarrito";
 
 const Cliente = () => {
-	const correcto = (mensaje) => {
-		toast.success(mensaje, {
-			position: "bottom-left",
-			autoClose: 1000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: true,
-			progress: undefined,
-			theme: "colored",
-			transition: Flip,
-		});
-	};
-	const error = (mensaje) => {
-		toast.error(mensaje, {
-			position: "bottom-left",
-			autoClose: 1000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: true,
-			progress: undefined,
-			theme: "colored",
-			transition: Flip,
-		});
-	};
-	const id = { id_C: 2 };
-	const [datacarrito, setDatacarrito] = useState([]);
-	const [contCarrito, setContCarrito] = useState(0);
-	const [idproducto, setIdProducto] = useState(0);
-	const handleContadorCarrito = () => {
-		correcto("Se agrego al carrito");
-		setContCarrito(contCarrito + 1);
-	};
-	const handleQuitar = () => {
-		error("Se Elimino del carrito");
-		setContCarrito(contCarrito - 1);
-	};
-	useEffect(() => {
-		// console.log("renderizo");
-		getCarrito(id).then((response) => setDatacarrito(response));
-	}, [contCarrito]);
-	const tam = datacarrito.length;
-
-	return (
-		<Componente>
-			<Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
-			<Routes>
-				<Route path="/" element={<Inicio funcion={handleContadorCarrito} />}>
-					<Route
-						path="/:page"
-						element={<Inicio funcion={handleContadorCarrito} />}
-					></Route>
-				</Route>
-				<Route path="/detalles/:id" element={<Detalles />}></Route>
-				<Route path="/historial" element={<Historial />}></Route>
-				<Route path="/carrito" element={<Carrito />}></Route>
-			</Routes>
-			<Footer />
-			<ToastContainer />
-		</Componente>
-	);
+  const correcto = (mensaje) => {
+    toast.success(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const error = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const id = { id_C: 2 };
+  const [datacarrito, setDatacarrito] = useState([]);
+  const [contCarrito, setContCarrito] = useState(0);
+  const [idproducto, setIdProducto] = useState(0);
+  const handleContadorCarrito = () => {
+    correcto("Se agrego al carrito");
+    setContCarrito(contCarrito + 1);
+  };
+  const handleQuitar = (respuesta) => {
+    if (respuesta == "anadir") {
+      setContCarrito(contCarrito + 1);
+    } else if (respuesta == "Agregar") {
+      correcto("Se agrego al carrito");
+      setContCarrito(contCarrito + 1);
+    } else if (respuesta == "Quitar") {
+      setContCarrito(contCarrito - 1);
+    } else if (respuesta == "Eliminar") {
+      setContCarrito(contCarrito - 1);
+      error("Se Elimino del carrito");
+    }
+  };
+  useEffect(() => {
+    // console.log("renderizo");
+    getCarrito(id).then((response) => setDatacarrito(response));
+  }, [contCarrito]);
+  const tam = datacarrito.length;
+  return (
+    <Componente>
+      <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+      <Routes>
+        <Route path="/" element={<Inicio funcion={handleContadorCarrito} />}>
+          <Route
+            path="/:page"
+            element={<Inicio funcion={handleContadorCarrito} />}
+          ></Route>
+        </Route>
+        <Route path="/detalles/:id" element={<Detalles />}></Route>
+        <Route path="/historial" element={<Historial />}></Route>
+        <Route
+          path="/carrito"
+          element={
+            <Carrito data={datacarrito} tamano={tam} quitar={handleQuitar} />
+          }
+        ></Route>
+      </Routes>
+      <Footer />
+      <ToastContainer />
+    </Componente>
+  );
 };
 
 export default Cliente;
 
 const Componente = styled.div`
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 `;

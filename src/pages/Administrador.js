@@ -8,7 +8,7 @@ import Menu from "pages/Administrador/Menu/Menu";
 import Pedidos from "./Administrador/Pedidos/Pedidos";
 import Productos from "./Administrador/Productos/Productos";
 import SurtirProductos from "./Administrador/SurtirProductos/SurtirProductos";
-
+import Cortecaja from "./Administrador/CorteCaja/Cortecaja";
 const Administrador = () => {
   return (
     <MainContainer>
@@ -16,7 +16,7 @@ const Administrador = () => {
         <Menu></Menu>
       </NavAdminContainer>
       <Routes>
-        <Route path="/" element={<div />} />
+        <Route path="/" element={<Caja />} />
         <Route
           path="/productos"
           element={
@@ -41,7 +41,14 @@ const Administrador = () => {
             </AdminContainer>
           }
         />
-        <Route path="/caja" element={<Caja />} />
+        <Route
+          path="/caja"
+          element={
+            <AdminContainer>
+              <Cortecaja />
+            </AdminContainer>
+          }
+        />
         <Route path="/historial" element={<div />} />
         <Route
           path="/pedidos"
