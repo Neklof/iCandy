@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import deletCarrito from "services/deletCarrito";
+import anadir_carrito from "services/anadir_carrito";
 const CajaCarrito = ({ datos, funcion1 }) => {
   useEffect(() => {}, []);
 
@@ -10,13 +11,31 @@ const CajaCarrito = ({ datos, funcion1 }) => {
     const id = { id_PR: datos.id_PR };
     deletCarrito(id).then((response) => {
       if (response) {
-        funcion1();
+        funcion1("Eliminar");
+      } else {
+        // alertaError("¡ups algo salio mal!");
+      }
+    });
+  };
+  const Agregar = () => {
+    anadir_carrito(datos, "Agregar").then((response) => {
+      if (response) {
+        funcion1("anadir");
       } else {
         // alertaError("¡ups algo salio mal!");
       }
     });
   };
 
+  const Quitar = () => {
+    anadir_carrito(datos, "Quitar").then((response) => {
+      if (response) {
+        funcion1("Quitar");
+      } else {
+        // alertaError("¡ups algo salio mal!");
+      }
+    });
+  };
   return (
     <div className="contenedor-cajaCarrito">
       <img src={datos.foto_PR} alt="" className="imagenCarrito" />
@@ -31,11 +50,15 @@ const CajaCarrito = ({ datos, funcion1 }) => {
         </div>
 
         <div className="cajaCarrito-incremento">
-          <button id="rojo">-</button>
+          <button id="rojo" onClick={Quitar}>
+            -
+          </button>
           <div className="numeros">
-            <p>1</p>
+            <p>{datos.cantidad_CA}</p>
           </div>
-          <button id="azul">+</button>
+          <button id="azul" onClick={Agregar}>
+            +
+          </button>
         </div>
       </div>
     </div>

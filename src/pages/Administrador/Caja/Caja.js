@@ -32,6 +32,7 @@ const Caja = () => {
   const [disponibles, setDisponibles] = useState(0);
   const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState(0);
+  const [foto, setFoto] = useState("");
   //arreglo de tabla
   const [unidades, setUnidades] = useState(0);
   const [find, setFind] = useState({});
@@ -102,6 +103,7 @@ const Caja = () => {
       setDisponibles(find.cantidad_PR);
       setNombre(find.nombre_PR);
       setPrecio(find.precio_PR);
+      setFoto(find.foto_PR);
     } else {
       formatearValores();
     }
@@ -138,11 +140,7 @@ const Caja = () => {
         />
 
         <div className="contendorAumentar">
-          <img
-            src={imagenes}
-            alt="Imagenes de productos"
-            className="Imagenes"
-          />
+          <img src={foto} alt="Imagenes de productos" className="Imagenes" />
           <button className="diseñoBotonIncremento" onClick={handleAumentar}>
             +
           </button>
