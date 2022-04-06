@@ -48,16 +48,24 @@ const Cliente = () => {
     correcto("Se agrego al carrito");
     setContCarrito(contCarrito + 1);
   };
-  const handleQuitar = () => {
-    error("Se Elimino del carrito");
-    setContCarrito(contCarrito - 1);
+  const handleQuitar = (respuesta) => {
+    if (respuesta == "anadir") {
+      setContCarrito(contCarrito + 1);
+    } else if (respuesta == "Agregar") {
+      correcto("Se agrego al carrito");
+      setContCarrito(contCarrito + 1);
+    } else if (respuesta == "Quitar") {
+      setContCarrito(contCarrito - 1);
+    } else if (respuesta == "Eliminar") {
+      setContCarrito(contCarrito - 1);
+      error("Se Elimino del carrito");
+    }
   };
   useEffect(() => {
     // console.log("renderizo");
     getCarrito(id).then((response) => setDatacarrito(response));
   }, [contCarrito]);
   const tam = datacarrito.length;
-
   return (
     <Componente>
       <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
@@ -70,8 +78,13 @@ const Cliente = () => {
         </Route>
         <Route path="/detalles/:id" element={<Detalles />}></Route>
         <Route path="/historial" element={<Historial />}></Route>
-        <Route path="/carrito" element={<Carrito />}></Route>
         <Route path="/miPerfil" element={<Perfil />}></Route>
+        <Route
+          path="/carrito"
+          element={
+            <Carrito data={datacarrito} tamano={tam} quitar={handleQuitar} />
+          }
+        ></Route>
       </Routes>
       <Footer />
       <ToastContainer />
