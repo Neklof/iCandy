@@ -1,23 +1,82 @@
 import styled from "styled-components";
 import searchSvg from "assets/Img/search.png";
+import getProductos from "services/getProductos";
+import { useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import { Link } from "react-router-dom";
 
-const handleSearch = (e) => {
-	e.preventDefault();
-};
+const handleSearch = (e) => e.preventDefault();
 
-const Buscador = ({ keyword }) => {
-	const handleChange = (e) => {
-		keyword(e.target.value);
+const Buscador = () => {
+	const [keyword, setKeyword] = useState("");
+	const [results, setResults] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [searchBarFocus, setSearchBarFocus] = useState(false);
+
+	const handleWordChanging = useDebouncedCallback((searchInfo) => {
+		setKeyword(searchInfo.target.value);
+	}, 500);
+
+	const handleSearchFocus = () => {
+		setSearchBarFocus(true);
 	};
 
+	const handleSearchBlur = () => {
+		if (!keyword) setSearchBarFocus(false);
+	};
+
+	const handleSearchClick = () => {
+		setSearchBarFocus(false);
+	};
+
+	useEffect(() => {
+		if (keyword != "") {
+			setLoading(true);
+			getProductos().then((response) => {
+				let productosAux;
+				productosAux = response.filter((producto) => {
+					return producto.nombre_PR
+						.toLowerCase()
+						.includes(keyword.trim().toLowerCase());
+				});
+				setResults([...productosAux]);
+				setLoading(false);
+			});
+		} else {
+			setResults([]);
+		}
+	}, [keyword]);
+
 	return (
-		<Container>
+		<Container onFocus={handleSearchFocus} onBlur={handleSearchBlur}>
 			<div></div>
 			<Search onSubmit={handleSearch}>
-				<Input onChange={handleChange} placeholder="Buscar"></Input>
+				<Input onChange={handleWordChanging} placeholder="Buscar"></Input>
 				<Button onSubmit={handleSearch}>
 					<img alt="svgImg" src={searchSvg} />
 				</Button>
+				{searchBarFocus && (
+					<ResultsContainer>
+						{!loading ? (
+							results.length ? (
+								results.map((producto) => (
+									<Link
+										to={`/detalles/${producto.id_PR}`}
+										className="search-result-item"
+										key={producto.nombre_PR}
+										onClick={handleSearchClick}
+									>
+										{producto.nombre_PR}
+									</Link>
+								))
+							) : (
+								<p className="search-result-false">Sin coincidencias</p>
+							)
+						) : (
+							<p className="search-result-false">Cargando...</p>
+						)}
+					</ResultsContainer>
+				)}
 			</Search>
 		</Container>
 	);
@@ -44,6 +103,7 @@ const Search = styled.form`
 		width: 100%;
 		height: 100%;
 		flex-shrink: 1;
+		position: relative;
 	}
 `;
 
@@ -89,4 +149,18 @@ const Button = styled.button`
 		object-fit: cover;
 		width: 50%;
 	}
+`;
+
+const ResultsContainer = styled.div`
+	width: 80%;
+	min-height: 40px;
+	max-height: 150px;
+	overflow: auto;
+	background: white;
+	position: absolute;
+	z-index: 9999;
+	top: 100%;
+	right: 13.7%;
+	box-sizing: border-box;
+	border: 1px solid #000;
 `;

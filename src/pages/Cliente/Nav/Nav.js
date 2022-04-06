@@ -10,15 +10,18 @@ import { Link } from "react-router-dom";
 import CajaCarrito from "components/cajaCarrito/CajaCarito";
 
 const Nav = ({ data, tamano, funcion }) => {
-	const [search, setSearch] = useState("");
 	const [menuModal, setMenuModal] = useState(false);
 	const [menuPerfil, setMenuPerfil] = useState(false);
+	const [carrito, setCarrito] = useState(false);
+
 	const handleMenuBtn = () => setMenuModal(!menuModal);
 	const handlePerfilBtn = () => setMenuPerfil(!menuPerfil);
 	const handleModalOff = () => {
 		setMenuModal(false);
 		setMenuPerfil(false);
 	};
+	const handleCarrito = () => setCarrito(!carrito);
+
 	return (
 		<>
 			<div className="nav-aux">
@@ -37,13 +40,13 @@ const Nav = ({ data, tamano, funcion }) => {
 					</Link>
 					<div className="nav-search-aux">
 						<div className="nav-search">
-							<Buscador keyword={setSearch} filter={false} />
+							<Buscador filter={false} />
 						</div>
 					</div>
 					<button className="nav-menu nav-icon" onClick={handleMenuBtn}>
 						<img className="nav-menu-img" src={menu} alt="menu" />
 					</button>
-					<button className="nav-carrito nav-icon">
+					<button className="nav-carrito nav-icon" onClick={handleCarrito}>
 						<img className="nav-carrito-img" src={shoppingCart} alt="carrito" />
 						<p className="nav-carrito-cont">{tamano}</p>
 					</button>
@@ -131,25 +134,31 @@ const Nav = ({ data, tamano, funcion }) => {
 						</div>
 					</div>
 				</div>
-				<div className="carrito-productos">
-					<div className="compra-carrito">
-						<h3>Carrito de compras</h3>
-						<Link to="/carrito" className="carrito-productos-link">
-							Comprar carrito
-						</Link>
+				{carrito && (
+					<div className="carrito-productos">
+						<div className="compra-carrito">
+							<h3>Carrito de compras</h3>
+							<Link
+								to="/carrito"
+								onClick={() => setCarrito(false)}
+								className="carrito-productos-link"
+							>
+								Comprar carrito
+							</Link>
+						</div>
+						{!tamano ? (
+							<h1>El carrito esta vacio</h1>
+						) : (
+							data.map((carrito) => (
+								<CajaCarrito
+									key={carrito.id_PR}
+									datos={carrito}
+									funcion1={funcion}
+								/>
+							))
+						)}
 					</div>
-					{tamano == 0 ? (
-						<h1>El carrito esta vacio</h1>
-					) : (
-						data.map((carrito) => (
-							<CajaCarrito
-								key={carrito.id_PR}
-								datos={carrito}
-								funcion1={funcion}
-							/>
-						))
-					)}
-				</div>
+				)}
 			</div>
 			{(menuModal || menuPerfil) && (
 				<div className="nav-close-overlay" onClick={handleModalOff} />

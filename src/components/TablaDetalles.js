@@ -5,23 +5,16 @@ const TablaDetalles = ({ datos }) => {
 	// console.log(datos);
 
 	return (
-		<div
-			style={{
-				width: "100%",
-				display: "flex",
-				justifyContent: "center",
-				overflowY: "auto",
-			}}
-		>
+		<TablaContainer>
 			<Table>
 				<thead>
 					<tr>
 						<th>No</th>
 						<th>Código</th>
-						<th>Unidad</th>
 						<th>Producto</th>
-						<th>Cantidad</th>
 						<th>Precio</th>
+						<th>Unidad</th>
+						<th>Cantidad</th>
 						<th>Importe</th>
 					</tr>
 				</thead>
@@ -36,20 +29,30 @@ const TablaDetalles = ({ datos }) => {
 					))}
 				</tbody>
 			</Table>
-		</div>
+		</TablaContainer>
 	);
 };
 
 export default TablaDetalles;
 
+const TablaContainer = styled.div`
+	width: 100%;
+	display: flex;
+	overflow-y: auto;
+
+	@media (min-width: 650px) {
+		justify-content: center;
+	}
+`;
+
 const Table = styled.table`
 		
-		width: 85%;
-		font-size: 0.6em;
-		border-collapse: collapse;
-		margin-top: 10px;
-		margin-bottom: 15px;
-		overflow: auto;
+	width: 85%;
+	font-size: 0.6em;
+	border-collapse: collapse;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	overflow-: auto;
 		
 
 	td {
