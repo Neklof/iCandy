@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./StylesConfirmar.css";
 
 const Confirmar = () => {
   return (

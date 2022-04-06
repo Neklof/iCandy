@@ -1,4 +1,4 @@
-.div-contenedor-confirmar {
+.div-contenedor-recuperar {
   background: white;
   width: 100%;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
 }
-.div-fondo-confirmar {
+.div-fondo-recuperar {
   background-color: #f2cb57;
   width: 100%;
   height: 50%;
@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
 }
-.div-form-confirmar {
+.div-form-recuperar {
   position: absolute;
   top: 5%;
   display: flex;
@@ -40,14 +40,14 @@
     position: relative;
   } */
 
-.div-form-confirmar h1 {
+.div-form-recuperar h1 {
   text-align: center;
   padding: 5%;
   border-bottom: 1px solid silver;
   width: 100%;
 }
 
-.div-form-confirmar form {
+.div-form-recuperar form {
   padding: 0 10%;
   box-sizing: border-box;
   background: white;
@@ -139,7 +139,7 @@
   text-decoration: underline;
 }
 
-.container-btn-confirmar {
+.container-btn-recuperar {
   width: 50%;
   justify-content: center;
   align-items: center;
@@ -147,7 +147,7 @@
   position: absolute;
   height: 200px;
 }
-.btn-confirmar {
+.btn-recuperar {
   width: 50%;
   height: 50px;
   border: 1px solid;
@@ -161,7 +161,7 @@
   margin: 10%;
 }
 
-.btn-confirmar:hover {
+.btn-recuperar:hover {
   border-color: #2691d9;
   transition: 0.5s;
 }
