@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Cookies from "universal-cookie";
 const FORM_ID = "payment-form";
 
 export default function Product() {
@@ -25,12 +26,12 @@ export default function Product() {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src =
-        "https://www.mercadopago.cl/integrations/v1/web-payment-checkout.js";
+        "https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js";
       script.setAttribute("data-preference-id", preferenceId);
       const form = document.getElementById(FORM_ID);
       form.appendChild(script);
     }
   }, [preferenceId]);
 
-  return <form id={FORM_ID} method="GET"></form>;
+  return <form id={FORM_ID} method="POST"></form>;
 }

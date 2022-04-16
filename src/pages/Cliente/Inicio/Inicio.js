@@ -5,7 +5,7 @@ import Card from "./Card";
 import Paginador from "./Paginador";
 import { useParams, Link } from "react-router-dom";
 
-const PRODUCTOS_PER_PAGE = 9;
+const PRODUCTOS_PER_PAGE = 12;
 
 const Inicio = ({ funcion }) => {
   const { page } = useParams();
