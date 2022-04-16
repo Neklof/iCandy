@@ -1,7 +1,6 @@
-const URL = "http://localhost/icandy/API/deletProductoCarrito.php";
+const URL = "http://localhost/icandy/API/updateFondo.php";
 
-const deletCarrito = async (objecto) => {
-  // console.log(JSON.stringify(objecto));
+const updateFondo = async (objecto) => {
   const response = await fetch(URL, {
     method: "POST",
     body: JSON.stringify(objecto),
@@ -10,7 +9,7 @@ const deletCarrito = async (objecto) => {
     },
   });
   const repuestaJson = await response.json();
-  //console.log(repuestaJson);
   return repuestaJson;
 };
-export default deletCarrito;
+
+export default updateFondo;

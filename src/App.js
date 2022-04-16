@@ -8,10 +8,9 @@ import Confirmar from "pages/Cliente/RecuperarContra/Confirmar";
 
 function App() {
   const admin = false;
-
   return (
     <div className={`${admin ? "App_Admin" : "App_Cliente"}`}>
-      {admin ? <Administrador /> : <Confirmar />}
+      {admin ? <Administrador /> : <Cliente />}
     </div>
   );
 }

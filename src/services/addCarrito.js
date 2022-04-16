@@ -1,7 +1,7 @@
 const URL = "http://localhost/icandy/API/insertarCarrito.php";
 
 const addCarrito = async (objecto) => {
-  console.log(JSON.stringify(objecto));
+  // console.log(JSON.stringify(objecto));
   const response = await fetch(URL, {
     method: "POST",
     body: JSON.stringify(objecto),

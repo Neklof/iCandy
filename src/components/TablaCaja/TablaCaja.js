@@ -41,9 +41,17 @@ const TablaCaja = ({ arreglo, compra, rend }) => {
       .map((producto) => producto.total)
       .reduce((prev, curr) => prev + curr, 0);
 
+    var inversion_total = arreglo
+      .map((producto) => producto.inversion_PR * producto.unidades)
+      .reduce((prev, curr) => prev + curr, 0);
+
     dataCompra.productos = arreglo;
     dataCompra.totalCompra = total;
-
+    dataCompra.inversion_total = inversion_total;
+    /*aqui va el id del cliente en caso de que no se ponmga id en el input
+    se usara el id del empelado que realizo la venta
+    */
+    dataCompra.id_cliente = 2;
     addVentaCaja(dataCompra).then((response) => {
       if (response) {
         alertaSucees("¡Se realizo la compra con exito!");

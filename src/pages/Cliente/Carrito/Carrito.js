@@ -1,6 +1,10 @@
 import "./styles.css";
 import ProductoCarrito from "components/ProductoCarrito/ProductoCarrito";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Product from "services/mercadoPAgo";
+const FORM_ID = "payment-form";
+
 const Carrito = ({ data, tamano, quitar }) => {
   const [Total, setTotal] = useState(0);
   useEffect(() => {
@@ -40,7 +44,8 @@ const Carrito = ({ data, tamano, quitar }) => {
           </div>
         </div>
         <div className="container-carrito_botonComprar">
-          <button>Comprar</button>
+          {/* <button>Comprar</button> */}
+          <Product />
         </div>
       </div>
     </div>

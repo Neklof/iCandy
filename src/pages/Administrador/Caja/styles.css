@@ -36,9 +36,16 @@
   background: none;
   outline: none;
 }
+
+.contenedo-Imagenes-caja {
+  /* background-color: #000000; */
+  width: 160px;
+  height: 160px;
+}
 .Imagenes {
-  width: 35%;
   display: block;
+  width: 100%;
+  height: 100%;
 }
 .diseñoP {
   border-top: 1px solid #000000;

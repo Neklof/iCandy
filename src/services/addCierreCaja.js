@@ -1,7 +1,7 @@
-const URL = "http://localhost/icandy/API/deletProductoCarrito.php";
+const URL = "http://localhost/icandy/API/insertCierreCaja.php";
 
-const deletCarrito = async (objecto) => {
-  // console.log(JSON.stringify(objecto));
+const addCierreCaja = async (objecto) => {
+  console.log(JSON.stringify(objecto));
   const response = await fetch(URL, {
     method: "POST",
     body: JSON.stringify(objecto),
@@ -13,4 +13,4 @@ const deletCarrito = async (objecto) => {
   //console.log(repuestaJson);
   return repuestaJson;
 };
-export default deletCarrito;
+export default addCierreCaja;

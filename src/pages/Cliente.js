@@ -76,7 +76,12 @@ const Cliente = () => {
             element={<Inicio funcion={handleContadorCarrito} />}
           ></Route>
         </Route>
-        <Route path="/detalles/:id" element={<Detalles />}></Route>
+        <Route
+          path="/detalles/:id"
+          element={
+            <Detalles funcion={handleContadorCarrito} data={datacarrito} />
+          }
+        ></Route>
         <Route path="/historial" element={<Historial />}></Route>
         <Route path="/miPerfil" element={<Perfil />}></Route>
         <Route
