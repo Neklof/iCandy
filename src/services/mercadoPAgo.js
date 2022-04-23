@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Cookies from "universal-cookie";
+import mercaPventa from "./mercadoPventa";
 const FORM_ID = "payment-form";
 
-export default function Product() {
+export default function Product({ datos }) {
   const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
 
   useEffect(() => {
     // luego de montarse el componente, le pedimos al backend el preferenceId LO OBETENMOS CON LA COMUNICACION CON PHP
-    axios
-      .post("http://localhost/icandy/API/compra.php", {
-        productId: id,
-      })
-      .then((order) => {
-        console.log(order.data);
-        setPreferenceId(order.data);
-      });
-  }, [id]);
+    mercaPventa(datos).then((response) => {
+      setPreferenceId(response);
+      if (!response) {
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (preferenceId) {
@@ -33,5 +30,7 @@ export default function Product() {
     }
   }, [preferenceId]);
 
-  return <form id={FORM_ID} method="POST"></form>;
+  return (
+    <form id={FORM_ID} method="POST" action="http://localhost:3000/"></form>
+  );
 }

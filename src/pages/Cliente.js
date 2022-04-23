@@ -59,6 +59,9 @@ const Cliente = () => {
     } else if (respuesta == "Eliminar") {
       setContCarrito(contCarrito - 1);
       error("Se Elimino del carrito");
+    } else if (respuesta == "Compra") {
+      setContCarrito(contCarrito + 1);
+      correcto("Se realizo con exito la compra");
     }
   };
   useEffect(() => {
