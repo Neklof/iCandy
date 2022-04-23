@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Nav from "./Cliente/Nav/Nav";
 import Inicio from "./Cliente/Inicio/Inicio";
@@ -8,10 +8,11 @@ import Footer from "./Cliente/Footer/Footer";
 import Historial from "./Cliente/Historial/Historial";
 import Carrito from "./Cliente/Carrito/Carrito";
 import { ToastContainer, toast } from "react-toastify";
-import { Slide, Zoom, Flip, Bounce } from "react-toastify";
+import { Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getCarrito from "services/getCarrito";
 import Perfil from "./Cliente/Perfil/Perfil";
+import Contacto from "./Cliente/Contacto/Contacto";
 
 const Cliente = () => {
   const correcto = (mensaje) => {
@@ -65,7 +66,6 @@ const Cliente = () => {
     }
   };
   useEffect(() => {
-    // console.log("renderizo");
     getCarrito(id).then((response) => setDatacarrito(response));
   }, [contCarrito]);
   const tam = datacarrito.length;
@@ -85,6 +85,7 @@ const Cliente = () => {
             <Detalles funcion={handleContadorCarrito} data={datacarrito} />
           }
         ></Route>
+        <Route path="/contact" element={<Contacto />}></Route>
         <Route path="/historial" element={<Historial />}></Route>
         <Route path="/miPerfil" element={<Perfil />}></Route>
         <Route
