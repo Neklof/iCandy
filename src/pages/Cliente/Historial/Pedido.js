@@ -9,20 +9,26 @@ const Pedido = ({ datos, handleDetalles }) => {
 				</div>
 				<div className="caja-historial-item-info-container">
 					<p>
-						Pedido: <span>{datos.id_VP}</span>
+						Pedido: <span className="span-item">{datos.id_VP}</span>
 					</p>
 					<p>
-						{datos.estado_VP != "Cancelado"
-							? `Llega el día: ${datos.fechaDeEntrega_VP}`
-							: "N/A"}
+						Llega el día:{" "}
+						<span className="span-item">
+							{datos.estado_VP != "Cancelado" ? datos.fechaDeEntrega_VP : "N/A"}
+						</span>
 					</p>
 					<p>
-						{datos.estado_VP == "Pendiente" && "Pendiente de validar"}
-						{datos.estado_VP == "Cancelado" && "Pedido cancelado"}
-						{datos.estado_VP == "Activo" && "En preparación"}
-						{datos.estado_VP == "Entregado" && "Pedido entregado"}
+						<span className="span-item">
+							{datos.estado_VP == "Pendiente" && "Pendiente de validar"}
+							{datos.estado_VP == "Cancelado" && "Pedido cancelado"}
+							{datos.estado_VP == "Activo" && "En preparación"}
+							{datos.estado_VP == "Entregado" && "Pedido entregado"}
+						</span>
 					</p>
-					<p className="caja-historial-item-info-productos">Hola</p>
+					<p className="caja-historial-item-info-productos">
+						Tipo de venta:{" "}
+						<span className="span-item">{datos.tipoVenta_VP}</span>
+					</p>
 				</div>
 			</div>
 			<div className={`caja-historial-item-status estado_${datos.estado_VP}`}>

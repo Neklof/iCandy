@@ -150,10 +150,11 @@
 	font-size: 0.4em;
 	margin: 0;
 	padding: 0;
+	font-weight: bold;
 }
 
 .caja-historial-item-info-productos {
-	color: rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0);
 }
 
 .caja-historial-item-status {
@@ -180,6 +181,10 @@
 	min-width: 120px;
 	height: 35px;
 	color: #fff;
+}
+
+.span-item {
+	font-weight: normal;
 }
 
 @media (max-width: 700px) {
