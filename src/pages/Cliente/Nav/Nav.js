@@ -104,13 +104,13 @@ const Nav = ({ data, tamano, funcion }) => {
 							<Link onClick={handleModalOff} className="nav-menu-link" to="/">
 								Inicio
 							</Link>
-							<Link
+							<a
 								onClick={handleModalOff}
 								className="nav-menu-link"
-								to="/about"
+								href="#footer"
 							>
 								Sobre nosotros
-							</Link>
+							</a>
 							<Link
 								onClick={handleModalOff}
 								className="nav-menu-link"
