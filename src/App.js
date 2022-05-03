@@ -7,7 +7,7 @@ import Recuperar from "pages/Cliente/RecuperarContra/Recuperar";
 import Confirmar from "pages/Cliente/RecuperarContra/Confirmar";
 
 function App() {
-  const admin = false;
+  const admin = true;
   return (
     <div className={`${admin ? "App_Admin" : "App_Cliente"}`}>
       {admin ? <Administrador /> : <Cliente />}

@@ -3,11 +3,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import mercaPventa from "./mercadoPventa";
 const FORM_ID = "payment-form";
-
+var bandera = false;
 export default function Product({ datos }) {
   const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
-
   useEffect(() => {
     // luego de montarse el componente, le pedimos al backend el preferenceId LO OBETENMOS CON LA COMUNICACION CON PHP
     mercaPventa(datos).then((response) => {
@@ -15,7 +14,7 @@ export default function Product({ datos }) {
       if (!response) {
       }
     });
-  }, []);
+  }, [datos]);
 
   useEffect(() => {
     if (preferenceId) {

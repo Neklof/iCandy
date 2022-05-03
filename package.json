@@ -27,6 +27,7 @@
 		"universal-cookie": "4.0.4",
 		"use-debounce": "7.0.1"
 	},
+"homepage": "https://www.icandymx.xyz/",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",

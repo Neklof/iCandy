@@ -72,6 +72,7 @@ const Carrito = ({ data, tamano, quitar }) => {
         </div>
         <div className="container-carrito_botonComprar">
           {/* <button>Comprar</button> */}
+
           <Product datos={data} />
         </div>
       </div>
