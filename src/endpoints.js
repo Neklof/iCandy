@@ -11,6 +11,7 @@ const endpoints = {
   actualizarFondo: `${process.env.REACT_APP_API_URL}API/updateFondo.php`,
   getCarrito: `${process.env.REACT_APP_API_URL}API/consultaCarrito.php`,
   getCorteCaja: `${process.env.REACT_APP_API_URL}API/getCorteCaja.php`,
+  getMonto: `${process.env.REACT_APP_API_URL}API/getMonto.php`,
 };
 
 export default endpoints;

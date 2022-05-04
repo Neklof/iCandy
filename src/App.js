@@ -9,7 +9,7 @@ import Confirmar from "pages/Cliente/RecuperarContra/Confirmar";
 // const env = process.env.NODE_ENV;
 // console.log(endpoints.addCarrito);
 function App() {
-  const admin = false;
+  const admin = true;
   return (
     <div className={`${admin ? "App_Admin" : "App_Cliente"}`}>
       {admin ? <Administrador /> : <Cliente />}
