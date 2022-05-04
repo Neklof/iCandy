@@ -1,7 +1,8 @@
-const URL = "http://localhost/icandy/API/compra_carrito.php";
+import endpoints from "endpoints";
+//const URL = "http://localhost/icandy/API/compra_carrito.php";
 
 const realizarcompra = async (objecto) => {
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.compraCarrito, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {

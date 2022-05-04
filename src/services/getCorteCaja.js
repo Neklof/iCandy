@@ -1,7 +1,7 @@
-const URL = "http://localhost/icandy/API/getCorteCaja.php";
-
+// const URL = "http://localhost/icandy/API/getCorteCaja.php";
+import endpoints from "endpoints";
 const getCorteCaja = async (objecto) => {
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.getCorteCaja, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {

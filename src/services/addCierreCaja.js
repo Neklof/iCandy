@@ -1,8 +1,7 @@
-const URL = "http://localhost/icandy/API/insertCierreCaja.php";
-
+import endpoints from "endpoints";
 const addCierreCaja = async (objecto) => {
   console.log(JSON.stringify(objecto));
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.cierreCaja, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {

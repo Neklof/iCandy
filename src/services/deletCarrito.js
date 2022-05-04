@@ -1,8 +1,6 @@
-const URL = "http://localhost/icandy/API/deletProductoCarrito.php";
-
+import endpoints from "endpoints";
 const deletCarrito = async (objecto) => {
-  // console.log(JSON.stringify(objecto));
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.deletCarrito, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {

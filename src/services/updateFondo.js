@@ -1,7 +1,7 @@
-const URL = "http://localhost/icandy/API/updateFondo.php";
-
+//const URL = "http://localhost/icandy/API/updateFondo.php";
+import endpoints from "endpoints";
 const updateFondo = async (objecto) => {
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.actualizarFondo, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {
