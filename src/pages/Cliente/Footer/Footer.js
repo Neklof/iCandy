@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 const Footer = () => {
 	return (
-		<footer className="pie-pagina">
+		<footer className="pie-pagina" id="footer">
 			<div className="grupo-1">
 				<div className="box imagen">
 					<a href="#">

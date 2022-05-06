@@ -1,6 +1,8 @@
 import endpoints from "endpoints";
-const deletCarrito = async (objecto) => {
-  const response = await fetch(endpoints.deletCarrito, {
+//const URL = "http://localhost/icandy/API/compra_carrito.php";
+
+const realizarcompra = async (objecto) => {
+  const response = await fetch(endpoints.compraCarrito, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {
@@ -11,4 +13,4 @@ const deletCarrito = async (objecto) => {
   //console.log(repuestaJson);
   return repuestaJson;
 };
-export default deletCarrito;
+export default realizarcompra;

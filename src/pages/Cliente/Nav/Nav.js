@@ -107,7 +107,7 @@ const Nav = ({ data, tamano, funcion }) => {
               <Link
                 onClick={handleModalOff}
                 className="nav-menu-link"
-                to="/about"
+                to="#footer"
               >
                 Sobre nosotros
               </Link>

@@ -1,15 +1,46 @@
 import "./styles.css";
 import ProductoCarrito from "components/ProductoCarrito/ProductoCarrito";
 import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import Product from "services/mercadoPAgo";
+import realizarcompra from "services/realizarcompra";
+const FORM_ID = "payment-form";
+
 const Carrito = ({ data, tamano, quitar }) => {
   const [Total, setTotal] = useState(0);
+  let { search } = useLocation();
+  let query = new URLSearchParams(search);
+  let estado = query.get("status");
+  let id_pago = query.get("payment_id");
+  const dataCompra = {};
   useEffect(() => {
     setTotal(
       data
         .map((producto) => producto.precio_PR * producto.cantidad_CA)
         .reduce((prev, curr) => prev + curr, 0)
     );
+    if (estado == "approved") {
+      var total = data
+        .map((producto) => producto.precio_PR * producto.cantidad_CA)
+        .reduce((prev, curr) => prev + curr, 0);
+
+      var inversion_total = data
+        .map((producto) => producto.inversion_PR * producto.cantidad_CA)
+        .reduce((prev, curr) => prev + curr, 0);
+      dataCompra.id_cliente = 2;
+      dataCompra.productos = data;
+      dataCompra.totalCompra = total;
+      dataCompra.inversion_total = inversion_total;
+      console.log(JSON.stringify(dataCompra));
+      realizarcompra(dataCompra).then((response) => {
+        if (response) {
+          quitar("Compra");
+        } else {
+        }
+      });
+    }
   }, [data]);
+
   return (
     <div className="container-principal">
       <div className="container-carrito">
@@ -40,7 +71,9 @@ const Carrito = ({ data, tamano, quitar }) => {
           </div>
         </div>
         <div className="container-carrito_botonComprar">
-          <button>Comprar</button>
+          {/* <button>Comprar</button> */}
+
+          <Product datos={data} />
         </div>
       </div>
     </div>

@@ -169,8 +169,8 @@
   margin-left: 60%;
   overflow-x: none;
   overflow-y: auto;
-  box-shadow: 6px 24px 6px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 10px 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), -2px -2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 10px 10px 10px;
 }
 .carrito-productos::-webkit-scrollbar {
   width: 4px;
@@ -183,7 +183,7 @@
 
 .compra-carrito {
   display: flex;
-  background-color: #f2aa57e5;
+  /* background-color: #f2aa57e5; */
   height: 40px;
   width: 100%;
   align-items: center;

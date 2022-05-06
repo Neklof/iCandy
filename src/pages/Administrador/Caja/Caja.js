@@ -87,11 +87,13 @@ const Caja = () => {
       setDisponibles(disponibles + 1);
     }
   };
+  console.log(disponibles);
   const formatearValores = () => {
     setDisponibles(0);
     setNombre("");
     setPrecio("");
     setUnidades(0);
+    setFoto("");
   };
   const handleBuscador = () => {
     setUnidades(0);
@@ -140,7 +142,24 @@ const Caja = () => {
         />
 
         <div className="contendorAumentar">
-          <img src={foto} alt="Imagenes de productos" className="Imagenes" />
+          {foto === "" ? (
+            <div className="contenedo-Imagenes-caja">
+              <img
+                src="https://camexa-formularios.com/sector/beneficiosLogo/sin-imagen.jpg"
+                alt="Imagenes de productos"
+                className="Imagenes"
+              />
+            </div>
+          ) : (
+            <div className="contenedo-Imagenes-caja">
+              <img
+                src={foto}
+                alt="Imagenes de productos"
+                className="Imagenes"
+              />
+            </div>
+          )}
+
           <button className="diseñoBotonIncremento" onClick={handleAumentar}>
             +
           </button>

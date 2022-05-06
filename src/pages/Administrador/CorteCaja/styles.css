@@ -15,7 +15,7 @@
 }
 .corteCaja-opciones__fecha {
   display: flex;
-  justify-content: start;
+  justify-content: space-around;
   height: 60px;
   font-size: 80%;
   /* background-color: #3060bf; */
@@ -25,7 +25,7 @@
   height: 50px;
   display: flex;
   justify-content: space-around;
-  font-size: 80%;
+  font-size: 60%;
 }
 
 .Input_1 {
@@ -78,8 +78,9 @@
 }
 .corteCaja-contenedorTabla {
   width: 100%;
-  background-color: blue;
-  max-height: 350px;
+  /* background-color: blue; */
+  height: 55%;
+  max-height: 55%;
   overflow-y: auto;
   overflow-x: none;
   margin: 2%;

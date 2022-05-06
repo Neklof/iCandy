@@ -1,6 +1,7 @@
+//const URL = "http://localhost/icandy/API/updateFondo.php";
 import endpoints from "endpoints";
-const deletCarrito = async (objecto) => {
-  const response = await fetch(endpoints.deletCarrito, {
+const updateFondo = async (objecto) => {
+  const response = await fetch(endpoints.actualizarFondo, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {
@@ -8,7 +9,7 @@ const deletCarrito = async (objecto) => {
     },
   });
   const repuestaJson = await response.json();
-  //console.log(repuestaJson);
   return repuestaJson;
 };
-export default deletCarrito;
+
+export default updateFondo;

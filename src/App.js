@@ -1,6 +1,7 @@
 import "App.css";
 import Administrador from "pages/Administrador";
 import Cliente from "pages/Cliente";
+import endpoints from "endpoints";
 import Login from "pages/Cliente/Login/Login";
 import Registrarme from "pages/Cliente/Login/Registrarme";
 import Recuperar from "pages/Cliente/RecuperarContra/Recuperar";

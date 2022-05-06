@@ -1,9 +1,8 @@
-const URL = "http://localhost/icandy/API/addProductoCarrito.php";
-
+import endpoints from "endpoints";
 const anadir_carrito = async (objecto, tipo) => {
   const TIPO = { Type: tipo };
   TIPO["Productos"] = objecto;
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.anadirCarrito, {
     method: "POST",
     body: JSON.stringify(TIPO),
     headers: {

@@ -1,14 +1,17 @@
 import endpoints from "endpoints";
-const deletCarrito = async (objecto) => {
-  const response = await fetch(endpoints.deletCarrito, {
+
+const mercaPventa = async (objecto) => {
+  // console.log(objecto);
+  const response = await fetch(endpoints.mercadopagoVenta, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
   });
   const repuestaJson = await response.json();
   //console.log(repuestaJson);
   return repuestaJson;
 };
-export default deletCarrito;
+export default mercaPventa;

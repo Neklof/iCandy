@@ -8,11 +8,12 @@ import Footer from "./Cliente/Footer/Footer";
 import Historial from "./Cliente/Historial/Historial";
 import Carrito from "./Cliente/Carrito/Carrito";
 import { ToastContainer, toast } from "react-toastify";
-import { Slide, Zoom, Flip, Bounce } from "react-toastify";
+import { Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getCarrito from "services/getCarrito";
 import Perfil from "./Cliente/Perfil/Perfil";
 import Login from "./Cliente/Login/Login";
+import Contacto from "./Cliente/Contacto/Contacto";
 
 const Cliente = ({ session, setSession }) => {
   const { pathname } = useLocation();
@@ -67,10 +68,12 @@ const Cliente = ({ session, setSession }) => {
     } else if (respuesta == "Eliminar") {
       setContCarrito(contCarrito - 1);
       error("Se Elimino del carrito");
+    } else if (respuesta == "Compra") {
+      setContCarrito(contCarrito + 1);
+      correcto("Se realizo con exito la compra");
     }
   };
   useEffect(() => {
-    // console.log("renderizo");
     getCarrito(id).then((response) => setDatacarrito(response));
 
     const userJson = window.localStorage.getItem("loggedUser");
@@ -93,7 +96,13 @@ const Cliente = ({ session, setSession }) => {
             element={<Inicio funcion={handleContadorCarrito} />}
           ></Route>
         </Route>
-        <Route path="/detalles/:id" element={<Detalles />}></Route>
+        <Route
+          path="/detalles/:id"
+          element={
+            <Detalles funcion={handleContadorCarrito} data={datacarrito} />
+          }
+        ></Route>
+        <Route path="/contact" element={<Contacto />}></Route>
         <Route path="/historial" element={<Historial />}></Route>
         <Route path="/miPerfil" element={<Perfil userData={user} />}></Route>
         <Route

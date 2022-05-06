@@ -1,6 +1,7 @@
 import endpoints from "endpoints";
-const deletCarrito = async (objecto) => {
-  const response = await fetch(endpoints.deletCarrito, {
+const addCierreCaja = async (objecto) => {
+  console.log(JSON.stringify(objecto));
+  const response = await fetch(endpoints.cierreCaja, {
     method: "POST",
     body: JSON.stringify(objecto),
     headers: {
@@ -11,4 +12,4 @@ const deletCarrito = async (objecto) => {
   //console.log(repuestaJson);
   return repuestaJson;
 };
-export default deletCarrito;
+export default addCierreCaja;
