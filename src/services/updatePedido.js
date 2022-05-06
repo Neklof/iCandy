@@ -1,4 +1,6 @@
-const URL = "http://localhost/icandy/API/updatePedido.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.updatePedido;
 
 const updatePedido = async (pedido) => {
 	const response = await fetch(URL, {

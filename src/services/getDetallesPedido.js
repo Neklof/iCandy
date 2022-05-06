@@ -1,4 +1,6 @@
-const URL = "http://localhost/icandy/API/getDetallesPedido.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.getDetallesPedido;
 
 const getDetallesPedido = async (pedido) => {
 	const request = { pedidoID: pedido };

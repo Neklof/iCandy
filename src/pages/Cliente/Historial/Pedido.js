@@ -12,7 +12,9 @@ const Pedido = ({ datos, handleDetalles }) => {
 						Pedido: <span className="span-item">{datos.id_VP}</span>
 					</p>
 					<p>
-						Llega el día:{" "}
+						{datos.estado_VP.includes("Entregado")
+							? "Llegó el día: "
+							: "LLega el día: "}
 						<span className="span-item">
 							{datos.estado_VP != "Cancelado" ? datos.fechaDeEntrega_VP : "N/A"}
 						</span>
