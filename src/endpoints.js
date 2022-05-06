@@ -19,6 +19,13 @@ const endpoints = {
 	getProductoDetalles: `${process.env.REACT_APP_API_URL}API/getProductoDetalles.php`,
 	getUsuarios: `${process.env.REACT_APP_API_URL}API/getUsuarios.php`,
 	updatePedido: `${process.env.REACT_APP_API_URL}API/updatePedido.php`,
+	addProductos: `${process.env.REACT_APP_API_URL}API/insertarProducto.php`,
+	addSurtirProductos: `${process.env.REACT_APP_API_URL}API/surtir_producto.php`,
+	addUserRegistrar: `${process.env.REACT_APP_API_URL}API/registrar_usuario_cliente.php`,
+	delProductos: `${process.env.REACT_APP_API_URL}API/deleteProducto.php`,
+	getUsuarios: `${process.env.REACT_APP_API_URL}API/getPerfil.php`,
+	getProductos: `${process.env.REACT_APP_API_URL}API/productos.php`,
+	mercadoPago: `${process.env.REACT_APP_API_URL}`,
 };
 
 export default endpoints;

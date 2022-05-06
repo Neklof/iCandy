@@ -1,16 +1,18 @@
-const URL = "http://localhost/icandy/API/deleteProducto.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.delProductos;
 
 const delProductos = async (producto) => {
-  const response = await fetch(URL, {
-    method: "POST",
-    body: JSON.stringify(producto),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const responseJSON = await response.json();
+	const response = await fetch(URL, {
+		method: "POST",
+		body: JSON.stringify(producto),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	const responseJSON = await response.json();
 
-  return responseJSON;
+	return responseJSON;
 };
 
 export default delProductos;
