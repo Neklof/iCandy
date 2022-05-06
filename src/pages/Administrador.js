@@ -9,7 +9,8 @@ import Pedidos from "./Administrador/Pedidos/Pedidos";
 import Productos from "./Administrador/Productos/Productos";
 import SurtirProductos from "./Administrador/SurtirProductos/SurtirProductos";
 import Cortecaja from "./Administrador/CorteCaja/Cortecaja";
-const Administrador = () => {
+
+const Administrador = ({ session, setSession }) => {
   return (
     <MainContainer>
       <NavAdminContainer>
@@ -59,7 +60,6 @@ const Administrador = () => {
           }
         />
         <Route path="/configuracion" element={<div />} />
-
         <Route path="*" element={<div />}></Route>
       </Routes>
     </MainContainer>

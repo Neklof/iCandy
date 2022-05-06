@@ -10,161 +10,161 @@ import { Link } from "react-router-dom";
 import CajaCarrito from "components/cajaCarrito/CajaCarito";
 
 const Nav = ({ data, tamano, funcion }) => {
-	const [menuModal, setMenuModal] = useState(false);
-	const [menuPerfil, setMenuPerfil] = useState(false);
-	const [carrito, setCarrito] = useState(false);
+  const [menuModal, setMenuModal] = useState(false);
+  const [menuPerfil, setMenuPerfil] = useState(false);
+  const [carrito, setCarrito] = useState(false);
 
-	const handleMenuBtn = () => setMenuModal(!menuModal);
-	const handlePerfilBtn = () => setMenuPerfil(!menuPerfil);
-	const handleModalOff = () => {
-		setMenuModal(false);
-		setMenuPerfil(false);
-	};
-	const handleCarrito = () => setCarrito(!carrito);
+  const handleMenuBtn = () => setMenuModal(!menuModal);
+  const handlePerfilBtn = () => setMenuPerfil(!menuPerfil);
+  const handleModalOff = () => {
+    setMenuModal(false);
+    setMenuPerfil(false);
+  };
+  const handleCarrito = () => setCarrito(!carrito);
 
-	return (
-		<>
-			<div className="nav-aux">
-				<div className="nav-container">
-					<Link
-						onClick={handleModalOff}
-						className="nav-logo-container"
-						to={"/"}
-					>
-						<img
-							className="nav-logo nav-logo-escritorio"
-							src={logo}
-							alt="logo"
-						/>
-						<img className="nav-logo nav-logo-movil" src={logo_2} alt="logo" />
-					</Link>
-					<div className="nav-search-aux">
-						<div className="nav-search">
-							<Buscador filter={false} />
-						</div>
-					</div>
-					<button className="nav-menu nav-icon" onClick={handleMenuBtn}>
-						<img className="nav-menu-img" src={menu} alt="menu" />
-					</button>
-					<button className="nav-carrito nav-icon" onClick={handleCarrito}>
-						<img className="nav-carrito-img" src={shoppingCart} alt="carrito" />
-						<p className="nav-carrito-cont">{tamano}</p>
-					</button>
+  return (
+    <>
+      <div className="nav-aux">
+        <div className="nav-container">
+          <Link
+            onClick={handleModalOff}
+            className="nav-logo-container"
+            to={"/"}
+          >
+            <img
+              className="nav-logo nav-logo-escritorio"
+              src={logo}
+              alt="logo"
+            />
+            <img className="nav-logo nav-logo-movil" src={logo_2} alt="logo" />
+          </Link>
+          <div className="nav-search-aux">
+            <div className="nav-search">
+              <Buscador filter={false} />
+            </div>
+          </div>
+          <button className="nav-menu nav-icon" onClick={handleMenuBtn}>
+            <img className="nav-menu-img" src={menu} alt="menu" />
+          </button>
+          <button className="nav-carrito nav-icon" onClick={handleCarrito}>
+            <img className="nav-carrito-img" src={shoppingCart} alt="carrito" />
+            <p className="nav-carrito-cont">{tamano}</p>
+          </button>
 
-					<div
-						className={`nav-menu-modal ${!menuModal && "componente-oculto"}`}
-					>
-						<div className="nav-menu-links nav-menu-link-profile">
-							<Link
-								className="nav-menu-link-login nav-menu-link-login-movil"
-								onClick={handleMenuBtn}
-								to="/login"
-							>
-								<img
-									className="nav-menu-link-img"
-									src={defaultProfileImage}
-									alt="foto del perfil"
-								/>{" "}
-								Iniciar sesión
-							</Link>
-							<button
-								className="nav-menu-link-login nav-menu-link-login-escritorio"
-								onClick={handlePerfilBtn}
-							>
-								<img
-									className="nav-menu-link-img"
-									src={defaultProfileImage}
-									alt="foto del perfil"
-								/>{" "}
-								Iniciar sesión
-							</button>
-							{menuPerfil && (
-								<div className="nav-menu-perfil">
-									<Link
-										onClick={handlePerfilBtn}
-										className="nav-menu-perfil-link"
-										to={"/login"}
-									>
-										Ver Perfil
-									</Link>
-									<Link
-										onClick={handlePerfilBtn}
-										className="nav-menu-perfil-link"
-										to={"/historial"}
-									>
-										Historial de compras
-									</Link>
-									<button className="nav-menu-perfil-link" onClick={() => {}}>
-										Cerrar Sesión
-									</button>
-								</div>
-							)}
-						</div>
-						<div className="nav-menu-group">
-							<Link onClick={handleModalOff} className="nav-menu-link" to="/">
-								Inicio
-							</Link>
-							<Link
-								onClick={handleModalOff}
-								className="nav-menu-link"
-								to="/about"
-							>
-								Sobre nosotros
-							</Link>
-							<Link
-								onClick={handleModalOff}
-								className="nav-menu-link"
-								to="/contact"
-							>
-								Contacto
-							</Link>
-							<Link
-								onClick={handleModalOff}
-								className="nav-menu-link nav-perfil-menu-link-movil"
-								to={"/historial"}
-							>
-								Historial de compras
-							</Link>
-							<button
-								className="nav-menu-link-btn nav-perfil-menu-link-movil"
-								onClick={() => {}}
-							>
-								Cerrar Sesión
-							</button>
-						</div>
-					</div>
-				</div>
-				{carrito && (
-					<div className="carrito-productos">
-						<div className="compra-carrito">
-							<h3>Carrito de compras</h3>
-							<Link
-								to="/carrito"
-								onClick={() => setCarrito(false)}
-								className="carrito-productos-link"
-							>
-								Comprar carrito
-							</Link>
-						</div>
-						{!tamano ? (
-							<h1>El carrito esta vacio</h1>
-						) : (
-							data.map((carrito) => (
-								<CajaCarrito
-									key={carrito.id_PR}
-									datos={carrito}
-									funcion1={funcion}
-								/>
-							))
-						)}
-					</div>
-				)}
-			</div>
-			{(menuModal || menuPerfil) && (
-				<div className="nav-close-overlay" onClick={handleModalOff} />
-			)}
-		</>
-	);
+          <div
+            className={`nav-menu-modal ${!menuModal && "componente-oculto"}`}
+          >
+            <div className="nav-menu-links nav-menu-link-profile">
+              <Link
+                className="nav-menu-link-login nav-menu-link-login-movil"
+                onClick={handleMenuBtn}
+                to="/login"
+              >
+                <img
+                  className="nav-menu-link-img"
+                  src={defaultProfileImage}
+                  alt="foto del perfil"
+                />{" "}
+                Iniciar sesión
+              </Link>
+              <button
+                className="nav-menu-link-login nav-menu-link-login-escritorio"
+                onClick={handlePerfilBtn}
+              >
+                <img
+                  className="nav-menu-link-img"
+                  src={defaultProfileImage}
+                  alt="foto del perfil"
+                />{" "}
+                Iniciar sesión
+              </button>
+              {menuPerfil && (
+                <div className="nav-menu-perfil">
+                  <Link
+                    onClick={handlePerfilBtn}
+                    className="nav-menu-perfil-link"
+                    to={"/miPerfil"}
+                  >
+                    Ver Perfil
+                  </Link>
+                  <Link
+                    onClick={handlePerfilBtn}
+                    className="nav-menu-perfil-link"
+                    to={"/historial"}
+                  >
+                    Historial de compras
+                  </Link>
+                  <button className="nav-menu-perfil-link" onClick={() => {}}>
+                    Cerrar Sesión
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className="nav-menu-group">
+              <Link onClick={handleModalOff} className="nav-menu-link" to="/">
+                Inicio
+              </Link>
+              <Link
+                onClick={handleModalOff}
+                className="nav-menu-link"
+                to="/about"
+              >
+                Sobre nosotros
+              </Link>
+              <Link
+                onClick={handleModalOff}
+                className="nav-menu-link"
+                to="/contact"
+              >
+                Contacto
+              </Link>
+              <Link
+                onClick={handleModalOff}
+                className="nav-menu-link nav-perfil-menu-link-movil"
+                to={"/historial"}
+              >
+                Historial de compras
+              </Link>
+              <button
+                className="nav-menu-link-btn nav-perfil-menu-link-movil"
+                onClick={() => {}}
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          </div>
+        </div>
+        {carrito && (
+          <div className="carrito-productos">
+            <div className="compra-carrito">
+              <h3>Carrito de compras</h3>
+              <Link
+                to="/carrito"
+                onClick={() => setCarrito(false)}
+                className="carrito-productos-link"
+              >
+                Comprar carrito
+              </Link>
+            </div>
+            {!tamano ? (
+              <h1>El carrito esta vacio</h1>
+            ) : (
+              data.map((carrito) => (
+                <CajaCarrito
+                  key={carrito.id_PR}
+                  datos={carrito}
+                  funcion1={funcion}
+                />
+              ))
+            )}
+          </div>
+        )}
+      </div>
+      {(menuModal || menuPerfil) && (
+        <div className="nav-close-overlay" onClick={handleModalOff} />
+      )}
+    </>
+  );
 };
 
 export default Nav;

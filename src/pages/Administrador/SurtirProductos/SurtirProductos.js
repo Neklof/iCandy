@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import getProductosInventario from "services/getProductosInventario";
 import { useEffect } from "react";
 import "./styles.css";
@@ -12,6 +12,8 @@ const defaultState = {
 function Row({ onChange, onRemove, nombre, cantidad }) {
   const [producto, setProducto] = useState("");
   const [productos, setProductos] = useState([]);
+
+  const id_Producto = useRef();
 
   const buscador = (e) => {
     const find = productos.find(
@@ -36,6 +38,7 @@ function Row({ onChange, onRemove, nombre, cantidad }) {
         value={nombre}
         // onChange={(e) => onChange("nombre", e.target.value)}
         onChange={(e) => buscador(e)}
+        ref={id_Producto}
         placeholder="Código"
       />
       <input
@@ -81,7 +84,7 @@ export default function SurtirProductos() {
   const surtirProducto = () => {
     addSurtirProductos(rows).then((response) => {
       if (response) {
-        alert("Los produtos se surtieron");
+        alert("Los productos se surtieron");
       } else {
         alert("No se realizó la operación");
       }

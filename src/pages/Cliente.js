@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState, useRef } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./Cliente/Nav/Nav";
 import Inicio from "./Cliente/Inicio/Inicio";
 import Detalles from "./Cliente/Detalles/Detalles";
@@ -12,8 +12,13 @@ import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getCarrito from "services/getCarrito";
 import Perfil from "./Cliente/Perfil/Perfil";
+import Login from "./Cliente/Login/Login";
 
-const Cliente = () => {
+const Cliente = ({ session, setSession }) => {
+  const { pathname } = useLocation();
+  // console.log(pathname);
+  console.log(session);
+
   const correcto = (mensaje) => {
     toast.success(mensaje, {
       position: "bottom-left",
@@ -44,6 +49,9 @@ const Cliente = () => {
   const [datacarrito, setDatacarrito] = useState([]);
   const [contCarrito, setContCarrito] = useState(0);
   const [idproducto, setIdProducto] = useState(0);
+
+  const [user, setUser] = useState(null);
+
   const handleContadorCarrito = () => {
     correcto("Se agrego al carrito");
     setContCarrito(contCarrito + 1);
@@ -64,11 +72,20 @@ const Cliente = () => {
   useEffect(() => {
     // console.log("renderizo");
     getCarrito(id).then((response) => setDatacarrito(response));
+
+    const userJson = window.localStorage.getItem("loggedUser");
+
+    if (userJson) {
+      const user = JSON.parse(userJson);
+      setUser(user);
+    }
   }, [contCarrito]);
   const tam = datacarrito.length;
   return (
     <Componente>
-      <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+      {pathname != "/login" && (
+        <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+      )}
       <Routes>
         <Route path="/" element={<Inicio funcion={handleContadorCarrito} />}>
           <Route
@@ -78,15 +95,21 @@ const Cliente = () => {
         </Route>
         <Route path="/detalles/:id" element={<Detalles />}></Route>
         <Route path="/historial" element={<Historial />}></Route>
-        <Route path="/miPerfil" element={<Perfil />}></Route>
+        <Route path="/miPerfil" element={<Perfil userData={user} />}></Route>
         <Route
           path="/carrito"
           element={
             <Carrito data={datacarrito} tamano={tam} quitar={handleQuitar} />
           }
         ></Route>
+        {/* {user != null && ( */}
+        <Route
+          path="/login"
+          element={<Login session={session} setSession={setSession} />}
+        ></Route>
+        {/* )} */}
       </Routes>
-      <Footer />
+      {pathname != "/login" && <Footer />}
       <ToastContainer />
     </Componente>
   );
