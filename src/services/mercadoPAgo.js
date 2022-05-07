@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import mercaPventa from "./mercadoPventa";
+import endpoints from "endpoints";
 const FORM_ID = "payment-form";
-var bandera = false;
+
 export default function Product({ datos }) {
   const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
@@ -30,6 +30,6 @@ export default function Product({ datos }) {
   }, [preferenceId]);
 
   return (
-    <form id={FORM_ID} method="POST" action="http://localhost:3000/"></form>
+    <form id={FORM_ID} method="POST" action={endpoints.mercadoPago}></form>
   );
 }

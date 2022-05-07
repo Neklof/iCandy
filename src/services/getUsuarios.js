@@ -1,4 +1,6 @@
-const URL = "http://localhost/icandy/API/getUsuarios.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.getUsuarios;
 
 const getUsuarios = async () => {
 	const response = await fetch(URL, {

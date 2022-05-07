@@ -49,7 +49,7 @@ const Cliente = ({ session, setSession, what }) => {
       transition: Flip,
     });
   };
-  const id = { id_C: 2 };
+  const id = { id_C: user1.id_C };
   const [datacarrito, setDatacarrito] = useState([]);
   const [contCarrito, setContCarrito] = useState(0);
   const [idproducto, setIdProducto] = useState(0);
@@ -77,11 +77,11 @@ const Cliente = ({ session, setSession, what }) => {
     }
   };
   useEffect(() => {
-    getCarrito(id).then((response) => setDatacarrito(response));
-
-    const userJson = window.localStorage.getItem("loggedUser");
-
     if (userJson) {
+      getCarrito(id).then((response) => setDatacarrito(response));
+
+      const userJson = window.localStorage.getItem("loggedUser");
+
       const user = JSON.parse(userJson);
       setUser(user);
     }

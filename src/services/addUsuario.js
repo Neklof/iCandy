@@ -1,4 +1,6 @@
-const URL = "http://localhost/icandy/API/addUsuarioAdmin.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.addUsuario;
 
 const addUsuario = async (user) => {
 	const response = await fetch(URL, {

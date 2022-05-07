@@ -18,7 +18,6 @@ const Perfil = ({ userData }) => {
     let fd_login = new FormData();
 
     alert(userData.id_C);
-    fd_login.append("id_C", userData.id_C);
 
     // Funciona (en este no se usa el addUserRegistrar.js)
     const res = await axios.post(

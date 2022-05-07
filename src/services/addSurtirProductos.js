@@ -1,8 +1,8 @@
 import endpoints from "endpoints";
-// const URL = "http://localhost/icandy/API/surtir_producto.php";
 
+const URL = endpoints.surtirProducto;
 const addSurtirProductos = async (data) => {
-  const response = await fetch(endpoints.surtirProducto, {
+  const response = await fetch(URL, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {

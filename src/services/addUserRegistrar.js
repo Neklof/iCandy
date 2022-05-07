@@ -1,14 +1,16 @@
-const URL = "http://localhost/icandy/API/registrar_usuario_cliente.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.addUserRegistrar;
 
 const addUserRegistrar = async (data) => {
-  const response = await fetch(URL, {
-    method: "POST",
-    body: data,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const responseJson = await response.json();
-  return responseJson;
+	const response = await fetch(URL, {
+		method: "POST",
+		body: data,
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	const responseJson = await response.json();
+	return responseJson;
 };
 export default addUserRegistrar;

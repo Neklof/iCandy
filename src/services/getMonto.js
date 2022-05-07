@@ -1,17 +1,16 @@
-// const URL = "http://localhost/icandy/API/getMonto.php";
 import endpoints from "endpoints";
 const getMonto = async (data) => {
-  const response = await fetch(endpoints.getMonto, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+	const response = await fetch(endpoints.getMonto, {
+		method: "POST",
+		body: JSON.stringify(data),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
 
-  const responseJSON = await response.json();
+	const responseJSON = await response.json();
 
-  return responseJSON;
+	return responseJSON;
 };
 
 export default getMonto;

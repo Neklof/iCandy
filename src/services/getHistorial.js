@@ -1,4 +1,6 @@
-const URL = "http://localhost/icandy/API/getHistorial.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.getHistorial;
 
 const getHistorial = async (usuario) => {
 	const usuarioJSON = { id: usuario };

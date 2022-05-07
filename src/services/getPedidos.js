@@ -1,4 +1,6 @@
-const URL = "http://localhost/icandy/API/getPedidos.php";
+import endpoints from "endpoints";
+
+const URL = endpoints.getPedidos;
 
 const getPedidos = async () => {
 	const response = await fetch(URL, {
