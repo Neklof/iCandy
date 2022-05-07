@@ -2,11 +2,16 @@ import "./styles.css";
 import { Helmet } from "react-helmet";
 import React, { useState } from "react";
 import axios from "axios";
+import endpoints from "endpoints";
+import { Navigate, useNavigate } from "react-router-dom";
+
 // import ScriptTag from "react-script-tag";
 
 const Recuperar = () => {
   //   <ScriptTag src="https://www.google.com/recaptcha/api.js" async defer />;
   const [correo, setCorreo] = useState("");
+
+  const navigate = useNavigate();
 
   async function request_Password(e) {
     e.preventDefault();
@@ -16,15 +21,16 @@ const Recuperar = () => {
 
     // Funciona (en este no se usa el addUserRegistrar.js)
     const res = await axios.post(
-      "http://localhost/icandy/API/recuperar_contrasena_cliente.php",
+      endpoints.recuperarContrasenaCliente,
       fd_login
     );
 
-    alert("Respuesta: " + res.data);
+    // alert("Respuesta: " + res.data);
 
     if (res.data == "Uno") {
       //alert("Respuesta: " + res.data);
       alert("Se envio un crreo");
+      navigate("/login");
     } else {
       alert(res.data);
       //alert("Respuesta: " + res.data);

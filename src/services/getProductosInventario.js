@@ -1,9 +1,11 @@
-const URL = "http://localhost/icandy/productos.php";
+import endpoints from "endpoints";
+
+// const URL = "http://localhost/icandy/API/productos.php";
 const TIPO = { Type: "Read" };
 
 const getProductos = async () => {
   TIPO["User"] = "N/A";
-  const response = await fetch(URL, {
+  const response = await fetch(endpoints.getProductosInventario, {
     method: "POST",
     body: JSON.stringify(TIPO),
     headers: {

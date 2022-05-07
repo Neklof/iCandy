@@ -1,12 +1,18 @@
 import "./styles.css";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import endpoints from "endpoints";
+import { faAnkh } from "@fortawesome/free-solid-svg-icons";
+import App from "App";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ session, setSession }) => {
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
   // const [session, setSession] = useState(0);
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   async function logUser(e) {
     e.preventDefault();
@@ -17,15 +23,20 @@ const Login = ({ session, setSession }) => {
 
     // Funciona (en este no se usa el addUserRegistrar.js)
     const res = await axios.post(
-      "http://localhost/icandy/API/login_SSO.php",
+      endpoints.addLogin, //"http://localhost/icandy/API/login_SSO.php",
       fd_login
     );
 
     if (res.data != null) {
       setUser(res.data);
-      setSession(res.data);
-
+      //  setSession(res.data);
+      window.localStorage.setItem("loggedUser", "");
       window.localStorage.setItem("loggedUser", JSON.stringify(res.data));
+      alert("Ecsitoso");
+      setSession(!session);
+      navigate("/");
+    } else {
+      alert("nel");
     }
     // console.log(res.data);
     // console.log(res.data.tipo_C);
@@ -75,7 +86,9 @@ const Login = ({ session, setSession }) => {
             <span></span>
             <label>Contraseña</label>
           </div>
-          <div className="pass">¿Olvidaste tu contraseña?</div>
+          <div className="pass">
+            <a href="/recuperar_contrasena">¿Olvidaste tu contraseña?</a>
+          </div>
           <button
             className="btn-login"
             type="submit"
@@ -84,7 +97,7 @@ const Login = ({ session, setSession }) => {
             Login
           </button>
           <div className="signup_link">
-            Crear una cuenta <a href="#">aquí</a>
+            Crear una cuenta <a href="/registrarme">aquí</a>
           </div>
         </form>
       </div>

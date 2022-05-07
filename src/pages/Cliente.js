@@ -14,10 +14,13 @@ import getCarrito from "services/getCarrito";
 import Perfil from "./Cliente/Perfil/Perfil";
 import Login from "./Cliente/Login/Login";
 import Contacto from "./Cliente/Contacto/Contacto";
+import Registrarme from "./Cliente/Login/Registrarme";
+import Recuperar from "./Cliente/RecuperarContra/Recuperar";
+import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 
-const Cliente = ({ session, setSession }) => {
+const Cliente = ({ session, setSession, what }) => {
   const { pathname } = useLocation();
-  // console.log(pathname);
+
   console.log(session);
 
   const correcto = (mensaje) => {
@@ -84,11 +87,15 @@ const Cliente = ({ session, setSession }) => {
     }
   }, [contCarrito]);
   const tam = datacarrito.length;
+
   return (
     <Componente>
-      {pathname != "/login" && (
-        <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
-      )}
+      {pathname !== "/login" &&
+        pathname !== "/registrarme" &&
+        pathname !== "/recuperar_contrasena" && (
+          <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+        )}
+
       <Routes>
         <Route path="/" element={<Inicio funcion={handleContadorCarrito} />}>
           <Route
@@ -117,8 +124,20 @@ const Cliente = ({ session, setSession }) => {
           element={<Login session={session} setSession={setSession} />}
         ></Route>
         {/* )} */}
+
+        <Route
+          path="/registrarme"
+          element={<Registrarme session={session} setSession={setSession} />}
+        ></Route>
+        <Route
+          path="/recuperar_contrasena"
+          element={<Recuperar session={session} setSession={setSession} />}
+        ></Route>
       </Routes>
-      {pathname != "/login" && <Footer />}
+
+      {pathname !== "/login" &&
+        pathname !== "/registrarme" &&
+        pathname !== "/recuperar_contrasena" && <Footer />}
       <ToastContainer />
     </Componente>
   );

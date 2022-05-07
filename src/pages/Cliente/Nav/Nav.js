@@ -8,17 +8,26 @@ import logo from "assets/Img/logo.png";
 import defaultProfileImage from "assets/Img/default-profile-image.png";
 import { Link } from "react-router-dom";
 import CajaCarrito from "components/cajaCarrito/CajaCarito";
+import { useNavigate } from "react-router-dom";
 
 const Nav = ({ data, tamano, funcion }) => {
   const [menuModal, setMenuModal] = useState(false);
   const [menuPerfil, setMenuPerfil] = useState(false);
   const [carrito, setCarrito] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleMenuBtn = () => setMenuModal(!menuModal);
   const handlePerfilBtn = () => setMenuPerfil(!menuPerfil);
   const handleModalOff = () => {
     setMenuModal(false);
     setMenuPerfil(false);
+  };
+
+  const handleCloseSession = () => {
+    window.localStorage.setItem("loggedUser", "");
+    handleModalOff();
+    navigate("/");
   };
   const handleCarrito = () => setCarrito(!carrito);
 
@@ -94,7 +103,10 @@ const Nav = ({ data, tamano, funcion }) => {
                   >
                     Historial de compras
                   </Link>
-                  <button className="nav-menu-perfil-link" onClick={() => {}}>
+                  <button
+                    className="nav-menu-perfil-link"
+                    onClick={handleCloseSession}
+                  >
                     Cerrar Sesión
                   </button>
                 </div>
@@ -127,7 +139,7 @@ const Nav = ({ data, tamano, funcion }) => {
               </Link>
               <button
                 className="nav-menu-link-btn nav-perfil-menu-link-movil"
-                onClick={() => {}}
+                onClick={handleCloseSession}
               >
                 Cerrar Sesión
               </button>

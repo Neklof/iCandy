@@ -2,6 +2,7 @@ import "./registrarmeStyles.css";
 import React, { useEffect, useRef, useState } from "react";
 import addUserRegistrar from "services/addUserRegistrar";
 import axios from "axios";
+import endpoints from "endpoints";
 
 const Registrarme = () => {
   const nombre_ref = useRef();
@@ -46,10 +47,7 @@ const Registrarme = () => {
     // });
 
     // Funciona (en este no se usa el addUserRegistrar.js)
-    const res = await axios.post(
-      "http://localhost/icandy/API/registrar_usuario_cliente.php",
-      fd
-    );
+    const res = await axios.post(endpoints.registrarUsuarioCliente, fd);
     console.log(res.data);
     alert("Respuesta: " + res.data);
   }
@@ -205,7 +203,7 @@ const Registrarme = () => {
             Crear cuenta
           </button>
           <div className="signup_link">
-            Ya tengo cuenta, inicia <a href="#">aquí</a>
+            Ya tengo cuenta, inicia <a href="/login">aquí</a>
           </div>
         </form>
       </div>
