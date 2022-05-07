@@ -1,29 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import shoppingCart from "assets/Img/shopping-cart.png";
 import newProduct from "assets/Img/new_product.png";
 import addCarrito from "services/addCarrito";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-
+const userJson = window.localStorage.getItem("loggedUser");
+let user = {};
+user = userJson ? JSON.parse(userJson) : null;
 const Card = ({ producto, funcion1 }) => {
+  const navigate = useNavigate();
   //const [tempcantidad, setTempcantidad] = useState(0);
   const objcarrito = {};
   const handleProductoCarrito = () => {
-    objcarrito.id_C = 2;
-    objcarrito.id_PR = producto.id_PR;
-    objcarrito.cantidad_PR = 1;
-    objcarrito.estado = "carrito";
-    addCarrito(objcarrito).then((response) => {
-      if (response) {
-        funcion1();
-      } else {
-        // alertaError("¡ups algo salio mal!");
-      }
-    });
-    // console.log(JSON.stringify(objcarrito));
-
-    //setTempcantidad(tempcantidad + 1);
+    if (userJson) {
+      objcarrito.id_C = user.id_C;
+      objcarrito.id_PR = producto.id_PR;
+      objcarrito.cantidad_PR = 1;
+      objcarrito.estado = "carrito";
+      addCarrito(objcarrito).then((response) => {
+        if (response) {
+          funcion1();
+        } else {
+          //alerta de error
+        }
+      });
+    } else {
+      console.log("/login");
+      navigate("/login");
+    }
   };
   return (
     <div className="inicio-card-container">

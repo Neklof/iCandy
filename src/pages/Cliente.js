@@ -16,6 +16,14 @@ import Login from "./Cliente/Login/Login";
 import Contacto from "./Cliente/Contacto/Contacto";
 
 const Cliente = ({ session, setSession }) => {
+  let user1 = {};
+
+  const userJson = window.localStorage.getItem("loggedUser");
+
+  if (userJson) {
+    user1 = JSON.parse(userJson);
+  }
+
   const { pathname } = useLocation();
   // console.log(pathname);
   console.log(session);
@@ -46,7 +54,7 @@ const Cliente = ({ session, setSession }) => {
       transition: Flip,
     });
   };
-  const id = { id_C: 2 };
+  const id = { id_C: user1.id_C };
   const [datacarrito, setDatacarrito] = useState([]);
   const [contCarrito, setContCarrito] = useState(0);
   const [idproducto, setIdProducto] = useState(0);
@@ -74,11 +82,11 @@ const Cliente = ({ session, setSession }) => {
     }
   };
   useEffect(() => {
-    getCarrito(id).then((response) => setDatacarrito(response));
-
-    const userJson = window.localStorage.getItem("loggedUser");
-
     if (userJson) {
+      getCarrito(id).then((response) => setDatacarrito(response));
+
+      const userJson = window.localStorage.getItem("loggedUser");
+
       const user = JSON.parse(userJson);
       setUser(user);
     }

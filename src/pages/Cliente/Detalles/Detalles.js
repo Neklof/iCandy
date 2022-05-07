@@ -3,10 +3,17 @@ import { useState, useEffect } from "react";
 import newProduct from "assets/Img/new_product.png";
 import getProductoDetalles from "services/getProductoDetalles";
 import Card from "../Inicio/Card";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import addCarrito from "services/addCarrito";
+let user = {};
 
+const userJson = window.localStorage.getItem("loggedUser");
+
+if (userJson) {
+  user = JSON.parse(userJson);
+}
 const Detalles = ({ funcion, data }) => {
+  const navigate = useNavigate();
   const [cantidad, setCantidad] = useState(0);
   const [productoActual, setProductoActual] = useState({});
   const [productos, setProductos] = useState([]);
@@ -31,21 +38,22 @@ const Detalles = ({ funcion, data }) => {
   const handleDecrement = () => setCantidad(cantidad <= 0 ? 0 : cantidad - 1);
 
   const agregarCarritoDetalles = () => {
-    const objcarrito = {};
-    objcarrito.id_C = 2;
-    objcarrito.id_PR = productoActual.id_PR;
-    objcarrito.cantidad_PR = cantidad;
-    objcarrito.estado = "detalles";
-    addCarrito(objcarrito).then((response) => {
-      if (response) {
-        funcion();
-      } else {
-        // alertaError("¡ups algo salio mal!");
-      }
-    });
-    // console.log(JSON.stringify(objcarrito));
-
-    //setTempcantidad(tempcantidad + 1);
+    if (userJson) {
+      const objcarrito = {};
+      objcarrito.id_C = user.id_C;
+      objcarrito.id_PR = productoActual.id_PR;
+      objcarrito.cantidad_PR = cantidad;
+      objcarrito.estado = "detalles";
+      addCarrito(objcarrito).then((response) => {
+        if (response) {
+          funcion();
+        } else {
+          // alertaError("¡ups algo salio mal!");
+        }
+      });
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
