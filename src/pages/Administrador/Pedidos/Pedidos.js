@@ -62,12 +62,12 @@ const Pedidos = () => {
 		!modalDetalles &&
 			getPedidos().then((response) => {
 				setPedidos(response);
+				console.log(response);
 			});
 	}, [reset, pedidoActualizado]);
 
 	const handleDetalles = (e) => {
 		const pedidoID = e.target.name;
-		console.log(pedidoID);
 		setPedidoActual(pedidoID);
 
 		getDetallesPedido(pedidoID).then((response) => {

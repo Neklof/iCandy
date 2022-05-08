@@ -31,9 +31,7 @@ const Table = ({ campos, datos, filtro, search, tipo, funciones }) => {
 								<Tr key={fila.id || fila.id_PR || fila.id_VP}>
 									{Object.keys(fila).map((dato) => (
 										<td
-											key={`${fila[dato]}_${
-												fila.id || fila.id_PR || fila.id_VP
-											}`}
+											key={Math.random()}
 											className={
 												dato == "estado_VP" ? `estado_${fila[dato]}` : ""
 											}
