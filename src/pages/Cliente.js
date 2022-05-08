@@ -95,7 +95,13 @@ const Cliente = ({ session, setSession }) => {
 			{pathname !== "/login" &&
 				pathname !== "/registrarme" &&
 				pathname !== "/recuperar_contrasena" && (
-					<Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+					<Nav
+						data={datacarrito}
+						tamano={tam}
+						funcion={handleQuitar}
+						session={session}
+						setSession={setSession}
+					/>
 				)}
 
 			<Routes>

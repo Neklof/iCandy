@@ -8,7 +8,6 @@ const Menu = () => {
 		<>
 			<div className="nav-admin-perfil"></div>
 			<div className="nav-admin-links">
-				
 				<Link
 					to="/"
 					className={`nav-admin-links-item ${
@@ -48,14 +47,6 @@ const Menu = () => {
 					}`}
 				>
 					Caja
-				</Link>
-				<Link
-					to="/historial"
-					className={`nav-admin-links-item ${
-						pathname === "/historial" && "nav-admin-links-focus"
-					}`}
-				>
-					Historial de ventas
 				</Link>
 				<Link
 					to="/pedidos"

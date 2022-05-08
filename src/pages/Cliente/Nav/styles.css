@@ -158,15 +158,16 @@
 }
 
 .carrito-productos {
-	width: 460px;
+	/* width: 460px; */
+	width: clap(20%, 200px, 30%);
+	padding: 10px;
 	background-color: white;
 	position: absolute;
-	/* desaparece y aparece el div de carrito*/
-	/* display: flex; */
 	max-height: 600px;
 	min-height: 100px;
+	right: 0;
 	z-index: 1;
-	margin-left: 60%;
+	/* margin-left: 60vw; */
 	overflow-x: none;
 	overflow-y: auto;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), -2px -2px 4px rgba(0, 0, 0, 0.25);
@@ -365,6 +366,7 @@
 
 	.nav-menu-link-login-escritorio {
 		display: flex;
+		align-items: center;
 		visibility: visible;
 		background: none;
 		border: none;
