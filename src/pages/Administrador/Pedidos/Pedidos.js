@@ -62,7 +62,6 @@ const Pedidos = () => {
 		!modalDetalles &&
 			getPedidos().then((response) => {
 				setPedidos(response);
-				console.log(response);
 			});
 	}, [reset, pedidoActualizado]);
 
