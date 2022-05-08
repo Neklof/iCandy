@@ -100,3 +100,9 @@
 	background: linear-gradient(180deg, #ed5353 0%, #ff423d 100%);
 	transition: all 0.3s;
 }
+
+@media (max-width: 540px) {
+	.nav-carrito-cont {
+		display: none;
+	}
+}
