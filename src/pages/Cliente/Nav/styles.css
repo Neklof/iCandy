@@ -226,7 +226,7 @@
   color: rgb(170, 162, 162);
 }
 
-@media (min-width: 510px) and (max-width: 851px) {
+@media (min-width: 540px) and (max-width: 851px) {
   .nav-container {
     justify-content: space-between !important;
   }
@@ -249,7 +249,7 @@
   }
 }
 
-@media (min-width: 510px) {
+@media (min-width: 540px) {
   .nav-close-overlay {
     position: fixed;
   }
