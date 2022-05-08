@@ -5,14 +5,15 @@ import getProductoDetalles from "services/getProductoDetalles";
 import Card from "../Inicio/Card";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import addCarrito from "services/addCarrito";
-let user = {};
 
-const userJson = window.localStorage.getItem("loggedUser");
-
-if (userJson) {
-  user = JSON.parse(userJson);
-}
 const Detalles = ({ funcion, data }) => {
+  let user = {};
+
+  const userJson = window.localStorage.getItem("loggedUser");
+
+  if (userJson) {
+    user = JSON.parse(userJson);
+  }
   const navigate = useNavigate();
   const [cantidad, setCantidad] = useState(0);
   const [productoActual, setProductoActual] = useState({});

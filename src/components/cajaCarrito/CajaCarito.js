@@ -5,8 +5,6 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import deletCarrito from "services/deletCarrito";
 import anadir_carrito from "services/anadir_carrito";
 const CajaCarrito = ({ datos, funcion1 }) => {
-  useEffect(() => {}, []);
-
   const Eliminar = () => {
     const id = { id_PR: datos.id_PR };
     deletCarrito(id).then((response) => {
