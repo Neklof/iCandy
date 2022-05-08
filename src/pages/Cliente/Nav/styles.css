@@ -165,7 +165,7 @@
 	position: absolute;
 	max-height: 600px;
 	min-height: 100px;
-	right: 0;
+	right: 5%;
 	z-index: 1;
 	/* margin-left: 60vw; */
 	overflow-x: none;
@@ -226,6 +226,11 @@
 	padding-left: 15px;
 	color: rgb(170, 162, 162);
 }
+@media (max-width: 851px) {
+	.carrito-productos {
+		right: 0;
+	}
+}
 
 @media (min-width: 540px) and (max-width: 851px) {
 	.nav-container {
@@ -247,6 +252,9 @@
 
 	.nav-search {
 		width: 300px !important;
+	}
+	.carrito-productos {
+		right: 0;
 	}
 }
 
