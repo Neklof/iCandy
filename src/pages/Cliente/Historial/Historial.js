@@ -17,7 +17,8 @@ const Historial = () => {
 	const [keyword, setKeyword] = useState("");
 
 	const [fechas, setFechas] = useState([]);
-	const CLIENTE = 2;
+	const dataLocal = JSON.parse(localStorage.getItem("loggedUser"));
+	const CLIENTE = dataLocal ? dataLocal.id_C : "";
 
 	const handleDetalles = (e) => {
 		getDetallesPedido(e.target.name).then((response) => {
@@ -96,6 +97,11 @@ const Historial = () => {
 						</div>
 					</div>
 					<div className="historial-pedidos-container">
+						{fechas.length == 0 && (
+							<h1 className="historial-sin-pedidos">
+								No existen pedidos en esta cuenta todavía
+							</h1>
+						)}
 						{fechas.map((fecha) => (
 							<ContenedorHistorial key={fecha} fecha={fecha}>
 								{Object.values(historialCliente)

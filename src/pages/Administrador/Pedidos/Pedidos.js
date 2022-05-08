@@ -67,7 +67,6 @@ const Pedidos = () => {
 
 	const handleDetalles = (e) => {
 		const pedidoID = e.target.name;
-		console.log(pedidoID);
 		setPedidoActual(pedidoID);
 
 		getDetallesPedido(pedidoID).then((response) => {

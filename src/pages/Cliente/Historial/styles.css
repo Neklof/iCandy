@@ -79,6 +79,13 @@
 	gap: 50px;
 }
 
+.historial-sin-pedidos {
+	text-align: center;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
 .caja-historial {
 	display: flex;
 	width: 100%;
