@@ -4,15 +4,18 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Product from "services/mercadoPAgo";
 import realizarcompra from "services/realizarcompra";
+import getCliente from "services/getCliente";
 const FORM_ID = "payment-form";
 
 const Carrito = ({ data, tamano, quitar }) => {
   let user = {};
-
+  const id_usuario = {};
   const userJson = window.localStorage.getItem("loggedUser");
+  const [dataUser, setDatauser] = useState([]);
 
   if (userJson) {
     user = JSON.parse(userJson);
+    id_usuario.id_cliente = user.id_C;
   }
   const [Total, setTotal] = useState(0);
   let { search } = useLocation();
@@ -20,6 +23,20 @@ const Carrito = ({ data, tamano, quitar }) => {
   let estado = query.get("status");
   let id_pago = query.get("payment_id");
   const dataCompra = {};
+
+  useEffect(() => {
+    if (userJson) {
+      getCliente(id_usuario).then((response) => {
+        if (response) {
+          response.map((usuario) => {
+            setDatauser(usuario);
+          });
+        } else {
+        }
+      });
+    } else {
+    }
+  }, []);
   useEffect(() => {
     setTotal(
       data
@@ -68,9 +85,9 @@ const Carrito = ({ data, tamano, quitar }) => {
         <div className="container-carrito__direccion">
           <div className="container-carrito_dir">
             <h3>Direccion de envio</h3>
-            <p>Federico Allende 3928</p>
-            <p>col.Jardines de la barranca</p>
-            <p>C.P 44729</p>
+            <p>{dataUser.direccion_C} </p>
+            <p>col.{dataUser.colonia_C}</p>
+            <p>C.P {dataUser.cp_C}</p>
           </div>
           <div className="container-carrito_total">
             <h3>Total De productos</h3>

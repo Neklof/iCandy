@@ -5,7 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const TablaCaja = ({ arreglo, compra, rend }) => {
+const TablaCaja = ({ arreglo, compra, rend, compradorid }) => {
+  console.log(compradorid);
   const alertaSucees = (mensaje) => {
     toast.success(mensaje, {
       position: "bottom-left",
@@ -51,7 +52,8 @@ const TablaCaja = ({ arreglo, compra, rend }) => {
     /*aqui va el id del cliente en caso de que no se ponmga id en el input
     se usara el id del empelado que realizo la venta
     */
-    dataCompra.id_cliente = 2;
+
+    dataCompra.id_cliente = compradorid;
     addVentaCaja(dataCompra).then((response) => {
       if (response) {
         alertaSucees("¡Se realizo la compra con exito!");

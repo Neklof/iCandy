@@ -23,8 +23,6 @@ const Cliente = ({ session, setSession }) => {
 
   const { pathname } = useLocation();
 
-  console.log(session);
-
   const correcto = (mensaje) => {
     toast.success(mensaje, {
       position: "bottom-left",
