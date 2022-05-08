@@ -5,10 +5,11 @@ import addCarrito from "services/addCarrito";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-const userJson = window.localStorage.getItem("loggedUser");
-let user = {};
-user = userJson ? JSON.parse(userJson) : null;
+
 const Card = ({ producto, funcion1 }) => {
+  const userJson = window.localStorage.getItem("loggedUser");
+  let user = {};
+  user = userJson ? JSON.parse(userJson) : null;
   const navigate = useNavigate();
   //const [tempcantidad, setTempcantidad] = useState(0);
   const objcarrito = {};

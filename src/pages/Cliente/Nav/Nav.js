@@ -11,6 +11,13 @@ import CajaCarrito from "components/cajaCarrito/CajaCarito";
 import { useNavigate } from "react-router-dom";
 
 const Nav = ({ data, tamano, funcion, session, setSession }) => {
+	let user = {};
+
+	const userJson = window.localStorage.getItem("loggedUser");
+
+	if (userJson) {
+		user = JSON.parse(userJson);
+	}
 	const [menuModal, setMenuModal] = useState(false);
 	const [menuPerfil, setMenuPerfil] = useState(false);
 	const [carrito, setCarrito] = useState(false);
@@ -167,7 +174,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 						<div className="compra-carrito">
 							<h3>Carrito de compras</h3>
 							<Link
-								to="/carrito"
+								to={userJson ? "/carrito" : "/login"}
 								onClick={() => setCarrito(false)}
 								className="carrito-productos-link"
 							>

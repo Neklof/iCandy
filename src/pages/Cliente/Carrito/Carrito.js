@@ -7,6 +7,13 @@ import realizarcompra from "services/realizarcompra";
 const FORM_ID = "payment-form";
 
 const Carrito = ({ data, tamano, quitar }) => {
+  let user = {};
+
+  const userJson = window.localStorage.getItem("loggedUser");
+
+  if (userJson) {
+    user = JSON.parse(userJson);
+  }
   const [Total, setTotal] = useState(0);
   let { search } = useLocation();
   let query = new URLSearchParams(search);
@@ -27,7 +34,7 @@ const Carrito = ({ data, tamano, quitar }) => {
       var inversion_total = data
         .map((producto) => producto.inversion_PR * producto.cantidad_CA)
         .reduce((prev, curr) => prev + curr, 0);
-      dataCompra.id_cliente = 2;
+      dataCompra.id_cliente = user.id_C;
       dataCompra.productos = data;
       dataCompra.totalCompra = total;
       dataCompra.inversion_total = inversion_total;
