@@ -86,7 +86,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 							<Link
 								className="nav-menu-link-login nav-menu-link-login-movil"
 								onClick={handleMenuBtn}
-								to="/login"
+								to={userJson ? "miPerfil" : "/login"}
 							>
 								<img
 									className="nav-menu-link-img"
