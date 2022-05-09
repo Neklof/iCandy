@@ -72,7 +72,7 @@ const Historial = () => {
 				<div className="historial-container">
 					<div className="historial-filtros">
 						<p>
-							<Link to="/profile">Usuario</Link> {" > "}{" "}
+							<Link to="/miPerfil">Usuario</Link> {" > "}{" "}
 							<Link to="/historial">Historial</Link>
 						</p>
 						{/* <div className="historial-filtros-select-container">
