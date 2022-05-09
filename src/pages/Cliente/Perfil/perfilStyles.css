@@ -15,6 +15,12 @@
   left: 0; */
 }
 
+.img_cliente {
+  width: 50%;
+  height: 50%;
+  border-radius: 150px;
+}
+
 @media (min-width: 461px) {
   .div-form-perfil {
     /* position: absolute;

@@ -9,8 +9,11 @@ import Pedidos from "./Administrador/Pedidos/Pedidos";
 import Productos from "./Administrador/Productos/Productos";
 import SurtirProductos from "./Administrador/SurtirProductos/SurtirProductos";
 import Cortecaja from "./Administrador/CorteCaja/Cortecaja";
+import Perfil from "./Cliente/Perfil/Perfil";
 
 const Administrador = ({ session, setSession }) => {
+  const userJson = window.localStorage.getItem("loggedUser");
+  const user1 = userJson ? JSON.parse(userJson) : {};
   return (
     <MainContainer>
       <NavAdminContainer>
@@ -59,7 +62,14 @@ const Administrador = ({ session, setSession }) => {
             </AdminContainer>
           }
         />
-        <Route path="/configuracion" element={<div />} />
+        <Route
+          path="/configuracion"
+          element={
+            <AdminContainer>
+              <Perfil userData={user1} />
+            </AdminContainer>
+          }
+        />
         <Route path="*" element={<div />}></Route>
       </Routes>
     </MainContainer>

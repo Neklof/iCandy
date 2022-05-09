@@ -9,7 +9,39 @@ import Table from "components/Table";
 import AdminBuscador from "components/AdminBuscador";
 import React, { Component } from "react";
 import delProductos from "services/delProductos";
+import { useForm } from "react-hook-form";
+import { FormState } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import { Flip } from "react-toastify";
+
 //import PubSub from "pubsub-js";
+
+const correcto = (mensaje) => {
+  toast.success(mensaje, {
+    position: "bottom-left",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Flip,
+  });
+};
+const error = (mensaje) => {
+  toast.error(mensaje, {
+    position: "bottom-left",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Flip,
+  });
+};
 
 const CAMPOS = [
   "ID",
@@ -22,22 +54,17 @@ const CAMPOS = [
 ];
 
 const eliminar = (e) => {
-  // alert(e.target.className);
-  // console.log(JSON.stringify(e.target.className));
   delProductos(e.target.className).then((response) => {
     if (response) {
       alert("Producto El producto se elimino");
-      console.log(response);
+      correcto("El producto se elimino");
     } else {
-      alert("Algo salio mal");
+      error("Ocurrió un error al eliminar");
     }
   });
 };
-//alert(e.target.className);
-const detalles = (e) => alert(e.target.className);
 
-// const find = {};
-//const funciones = [handleUpdate, eliminar,detalles];
+const detalles = (e) => alert(e.target.className);
 
 const Productos = () => {
   const [modalProducto, setModalProducto] = useState(false);
@@ -52,6 +79,13 @@ const Productos = () => {
   const [modalModificarProducto, setModalModificarProducto] = useState(false);
   const [modalDetallesProducto, setModalDetallesProducto] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
   //Funcion para modal de modificar
   const handleUpdate = (e) => {
     //const id = e.target.className;
@@ -59,6 +93,16 @@ const Productos = () => {
     const find = productos.find(
       (producto) => producto.id_PR === e.target.className
     );
+
+    reset({
+      nombre: find.nombre_PR,
+      precio_inversion: find.inversion_PR,
+      cantidad: find.cantidad_PR,
+      precio_publico: find.precio_PR,
+      unidadPeso_PR: find.unidadPeso_PR,
+      piezasCaja_PR: find.piezasCaja_PR,
+      descripcion_pro: find.descripcion_PR,
+    });
     setIdProducto(e.target.className);
     setModalModificarProducto(!modalModificarProducto);
     setPoderosoJson(Object.values(find));
@@ -74,6 +118,18 @@ const Productos = () => {
     const find = productos.find(
       (producto) => producto.id_PR === e.target.className
     );
+
+    reset({
+      nombre: find.nombre_PR,
+      precio_inversion: find.inversion_PR,
+      cantidad: find.cantidad_PR,
+      precio_publico: find.precio_PR,
+      unidadPeso_PR: find.unidadPeso_PR,
+      piezasCaja_PR: find.piezasCaja_PR,
+      descripcion_pro: find.descripcion_PR,
+      foto_PR: find.foto_PR,
+    });
+
     setIdProducto(e.target.className);
     setModalDetallesProducto(!modalModificarProducto);
     setPoderosoJson(Object.values(find));
@@ -89,8 +145,6 @@ const Productos = () => {
     cantidad_PR: producto.cantidad_PR,
     precio_PR: producto.precio_PR,
   }));
-
-  // console.log(nuevas_propiedades);
 
   return (
     <>
@@ -122,6 +176,10 @@ const Productos = () => {
         setAddProducto={setAddProducto}
         idProducto={idProducto}
         poderosoJson={poderosoJson}
+        register={register}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        reset
       />
       <DetallesProducto
         modalDetallesProducto={modalDetallesProducto}
@@ -130,6 +188,10 @@ const Productos = () => {
         setAddProducto={setAddProducto}
         idProducto={idProducto}
         poderosoJson={poderosoJson}
+        register={register}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        reset
       />
     </>
   );

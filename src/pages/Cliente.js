@@ -18,136 +18,136 @@ import Registrarme from "./Cliente/Login/Registrarme";
 import Recuperar from "./Cliente/RecuperarContra/Recuperar";
 
 const Cliente = ({ session, setSession }) => {
-	const userJson = window.localStorage.getItem("loggedUser");
-	const user1 = userJson ? JSON.parse(userJson) : {};
+  const userJson = window.localStorage.getItem("loggedUser");
+  const user1 = userJson ? JSON.parse(userJson) : {};
 
-	const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-	console.log(session);
+  console.log(session);
 
-	const correcto = (mensaje) => {
-		toast.success(mensaje, {
-			position: "bottom-left",
-			autoClose: 1000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: true,
-			progress: undefined,
-			theme: "colored",
-			transition: Flip,
-		});
-	};
-	const error = (mensaje) => {
-		toast.error(mensaje, {
-			position: "bottom-left",
-			autoClose: 1000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: true,
-			progress: undefined,
-			theme: "colored",
-			transition: Flip,
-		});
-	};
-	const id = { id_C: user1.id_C };
-	const [datacarrito, setDatacarrito] = useState([]);
-	const [contCarrito, setContCarrito] = useState(0);
-	const [idproducto, setIdProducto] = useState(0);
+  const correcto = (mensaje) => {
+    toast.success(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const error = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const id = { id_C: user1.id_C };
+  const [datacarrito, setDatacarrito] = useState([]);
+  const [contCarrito, setContCarrito] = useState(0);
+  const [idproducto, setIdProducto] = useState(0);
 
-	const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-	const handleContadorCarrito = () => {
-		correcto("Se agrego al carrito");
-		setContCarrito(contCarrito + 1);
-	};
-	const handleQuitar = (respuesta) => {
-		if (respuesta == "anadir") {
-			setContCarrito(contCarrito + 1);
-		} else if (respuesta == "Agregar") {
-			correcto("Se agrego al carrito");
-			setContCarrito(contCarrito + 1);
-		} else if (respuesta == "Quitar") {
-			setContCarrito(contCarrito - 1);
-		} else if (respuesta == "Eliminar") {
-			setContCarrito(contCarrito - 1);
-			error("Se Elimino del carrito");
-		} else if (respuesta == "Compra") {
-			setContCarrito(contCarrito + 1);
-			correcto("Se realizo con exito la compra");
-		}
-	};
-	useEffect(() => {
-		if (userJson) {
-			getCarrito(id).then((response) => setDatacarrito(response));
+  const handleContadorCarrito = () => {
+    correcto("Se agrego al carrito");
+    setContCarrito(contCarrito + 1);
+  };
+  const handleQuitar = (respuesta) => {
+    if (respuesta == "anadir") {
+      setContCarrito(contCarrito + 1);
+    } else if (respuesta == "Agregar") {
+      correcto("Se agrego al carrito");
+      setContCarrito(contCarrito + 1);
+    } else if (respuesta == "Quitar") {
+      setContCarrito(contCarrito - 1);
+    } else if (respuesta == "Eliminar") {
+      setContCarrito(contCarrito - 1);
+      error("Se Elimino del carrito");
+    } else if (respuesta == "Compra") {
+      setContCarrito(contCarrito + 1);
+      correcto("Se realizo con exito la compra");
+    }
+  };
+  useEffect(() => {
+    if (userJson) {
+      getCarrito(id).then((response) => setDatacarrito(response));
 
-			const userJson = window.localStorage.getItem("loggedUser");
+      const userJson = window.localStorage.getItem("loggedUser");
 
-			const user = JSON.parse(userJson);
-			setUser(user);
-		}
-	}, [contCarrito]);
-	const tam = datacarrito.length;
+      const user = JSON.parse(userJson);
+      setUser(user);
+    }
+  }, [contCarrito]);
+  const tam = datacarrito.length;
 
-	return (
-		<Componente>
-			{pathname !== "/login" &&
-				pathname !== "/registrarme" &&
-				pathname !== "/recuperar_contrasena" && (
-					<Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
-				)}
+  return (
+    <Componente>
+      {pathname !== "/login" &&
+        pathname !== "/registrarme" &&
+        pathname !== "/recuperar_contrasena" && (
+          <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+        )}
 
-			<Routes>
-				<Route path="/" element={<Inicio funcion={handleContadorCarrito} />}>
-					<Route
-						path="/:page"
-						element={<Inicio funcion={handleContadorCarrito} />}
-					></Route>
-				</Route>
-				<Route
-					path="/detalles/:id"
-					element={
-						<Detalles funcion={handleContadorCarrito} data={datacarrito} />
-					}
-				></Route>
-				<Route path="/contact" element={<Contacto />}></Route>
-				<Route path="/historial" element={<Historial />}></Route>
-				<Route path="/miPerfil" element={<Perfil userData={user} />}></Route>
-				<Route
-					path="/carrito"
-					element={
-						<Carrito data={datacarrito} tamano={tam} quitar={handleQuitar} />
-					}
-				></Route>
-				{/* {user != null && ( */}
-				<Route
-					path="/login"
-					element={<Login session={session} setSession={setSession} />}
-				></Route>
-				{/* )} */}
+      <Routes>
+        <Route path="/" element={<Inicio funcion={handleContadorCarrito} />}>
+          <Route
+            path="/:page"
+            element={<Inicio funcion={handleContadorCarrito} />}
+          ></Route>
+        </Route>
+        <Route
+          path="/detalles/:id"
+          element={
+            <Detalles funcion={handleContadorCarrito} data={datacarrito} />
+          }
+        ></Route>
+        <Route path="/contact" element={<Contacto />}></Route>
+        <Route path="/historial" element={<Historial />}></Route>
+        <Route path="/miPerfil" element={<Perfil userData={user1} />}></Route>
+        <Route
+          path="/carrito"
+          element={
+            <Carrito data={datacarrito} tamano={tam} quitar={handleQuitar} />
+          }
+        ></Route>
+        {/* {user != null && ( */}
+        <Route
+          path="/login"
+          element={<Login session={session} setSession={setSession} />}
+        ></Route>
+        {/* )} */}
 
-				<Route
-					path="/registrarme"
-					element={<Registrarme session={session} setSession={setSession} />}
-				></Route>
-				<Route
-					path="/recuperar_contrasena"
-					element={<Recuperar session={session} setSession={setSession} />}
-				></Route>
-			</Routes>
+        <Route
+          path="/registrarme"
+          element={<Registrarme session={session} setSession={setSession} />}
+        ></Route>
+        <Route
+          path="/recuperar_contrasena"
+          element={<Recuperar session={session} setSession={setSession} />}
+        ></Route>
+      </Routes>
 
-			{pathname !== "/login" &&
-				pathname !== "/registrarme" &&
-				pathname !== "/recuperar_contrasena" && <Footer />}
-			<ToastContainer />
-		</Componente>
-	);
+      {pathname !== "/login" &&
+        pathname !== "/registrarme" &&
+        pathname !== "/recuperar_contrasena" && <Footer />}
+      <ToastContainer />
+    </Componente>
+  );
 };
 
 export default Cliente;
 
 const Componente = styled.div`
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 `;

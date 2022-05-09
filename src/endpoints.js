@@ -23,7 +23,7 @@ const endpoints = {
   addSurtirProductos: `${process.env.REACT_APP_API_URL}API/surtir_producto.php`,
   addUserRegistrar: `${process.env.REACT_APP_API_URL}API/registrar_usuario_cliente.php`,
   delProductos: `${process.env.REACT_APP_API_URL}API/deleteProducto.php`,
-  getUsuarios: `${process.env.REACT_APP_API_URL}API/getPerfil.php`,
+  getPerfilUsuario: `${process.env.REACT_APP_API_URL}API/getPerfilUsuario.php`,
   getProductos: `${process.env.REACT_APP_API_URL}API/productos.php`,
   addLogin: `${process.env.REACT_APP_API_URL}API/login_SSO.php`,
   getProductosInventario: `${process.env.REACT_APP_API_URL}API/productos.php`,
@@ -31,6 +31,10 @@ const endpoints = {
   recuperarContrasenaCliente: `${process.env.REACT_APP_API_URL}API/recuperar_contrasena_cliente.php`,
   deleteProducto: `${process.env.REACT_APP_API_URL}API/deleteProducto.php`,
   surtirProducto: `${process.env.REACT_APP_API_URL}API/surtir_producto.php`,
+  updatePerfilCliente: `${process.env.REACT_APP_API_URL}API/updatePerfilCliente.php`,
+  updateClientePassword: `${process.env.REACT_APP_API_URL}API/updateClientePassword.php`,
+  updateProductos: `${process.env.REACT_APP_API_URL}API/updateProductos.php`,
+
   mercadoPago: `${process.env.REACT_APP_API_URL}`,
 };
 

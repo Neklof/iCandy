@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import endpoints from "endpoints";
 import { Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { Flip } from "react-toastify";
 
 // import ScriptTag from "react-script-tag";
 
@@ -12,6 +14,33 @@ const Recuperar = () => {
   const [correo, setCorreo] = useState("");
 
   const navigate = useNavigate();
+
+  const correcto = (mensaje) => {
+    toast.success(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const error = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
 
   async function request_Password(e) {
     e.preventDefault();
@@ -29,10 +58,11 @@ const Recuperar = () => {
 
     if (res.data == "Uno") {
       //alert("Respuesta: " + res.data);
-      alert("Se envio un crreo");
+      correcto("iCandy te envió un correo para recuperar tu contraseña");
       navigate("/login");
     } else {
-      alert(res.data);
+      error("Ocurrió un error, intentalo más tarde.");
+      //alert(res.data);
       //alert("Respuesta: " + res.data);
     }
   }
