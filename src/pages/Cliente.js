@@ -23,8 +23,6 @@ const Cliente = ({ session, setSession }) => {
 
   const { pathname } = useLocation();
 
-  console.log(session);
-
   const correcto = (mensaje) => {
     toast.success(mensaje, {
       position: "bottom-left",
@@ -86,8 +84,10 @@ const Cliente = ({ session, setSession }) => {
 
       const user = JSON.parse(userJson);
       setUser(user);
+    } else {
+      setDatacarrito({});
     }
-  }, [contCarrito]);
+  }, [contCarrito, userJson]);
   const tam = datacarrito.length;
 
   return (
@@ -95,7 +95,13 @@ const Cliente = ({ session, setSession }) => {
       {pathname !== "/login" &&
         pathname !== "/registrarme" &&
         pathname !== "/recuperar_contrasena" && (
-          <Nav data={datacarrito} tamano={tam} funcion={handleQuitar} />
+          <Nav
+            data={datacarrito}
+            tamano={tam}
+            funcion={handleQuitar}
+            session={session}
+            setSession={setSession}
+          />
         )}
 
       <Routes>

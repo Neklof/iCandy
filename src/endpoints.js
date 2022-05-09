@@ -36,6 +36,7 @@ const endpoints = {
   updateProductos: `${process.env.REACT_APP_API_URL}API/updateProductos.php`,
 
   mercadoPago: `${process.env.REACT_APP_API_URL}`,
+  obtenerCliente: `${process.env.REACT_APP_API_URL}API/getCliente.php`,
 };
 
 export default endpoints;

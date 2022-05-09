@@ -2,6 +2,7 @@ import "./styles.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import { sendForm } from "emailjs-com";
+import { Link } from "react-router-dom";
 
 const successAlert = (mensaje) => {
 	toast.success(mensaje, {
@@ -53,6 +54,13 @@ const Contacto = () => {
 	return (
 		<>
 			<div className="contact-form-container">
+				<div className="inicio-filtros contact-filtros">
+					<p>
+						<Link to="/">Inicio</Link>
+						{" > "}
+						<Link to="/contact">Contacto</Link>
+					</p>
+				</div>
 				<h2 className="contact-form-title">Formulario de contacto</h2>
 				<form onSubmit={handleSendEmail} className="contact-form">
 					<input

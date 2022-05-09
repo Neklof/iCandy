@@ -13,11 +13,11 @@ const DetallesCompra = ({
 	handleEditarPedido,
 	register,
 	handleSubmit,
-	usuario,
 	font,
 }) => {
 	const costoEnvio = 10;
-
+	const data = JSON.parse(localStorage.getItem("loggedUser"));
+	const usuario = data ? data.tipo_C : "Cliente";
 	return (
 		<Modal
 			ventanaModal={modalDetalles}

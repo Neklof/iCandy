@@ -221,7 +221,7 @@ margin: 12% 5%; /*when responsive: margin: 15% 5%; width: 100%;*/
 background: white;
 */
 
-*/ .g-recaptcha {
+.g-recaptcha {
   /* transform: scale(0.9); */
   /* transform-origin: 0 0; */
 }

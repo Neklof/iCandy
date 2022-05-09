@@ -6,24 +6,17 @@ import getProductos from "services/getProductos";
 import { ToastContainer, toast } from "react-toastify";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import getCliente from "services/getCliente";
+let bandera = false;
 const Caja = () => {
-  const alerta = (mensaje) => {
-    toast.error(mensaje, {
-      position: "bottom-left",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      transition: Slide,
-    });
-  };
+  //obtenemos al usuairo logueado
+  const userJson = window.localStorage.getItem("loggedUser");
+  let user = {};
+
+  user = userJson ? JSON.parse(userJson) : null;
 
   var objecto = {};
-
+  const id_usuario = {};
   //donde lamacenamos los productosd
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
@@ -41,6 +34,50 @@ const Caja = () => {
   const idProducto = useRef();
   //variables globales
   var total = unidades * precio;
+  //cliente manejador
+  /*****************OBTENEMOS LO DATOS DE CLIENTE DE COMPRA FISICA*************************************/
+  const entrada = useRef();
+  const [clienteid, setClienteid] = useState();
+  const [idcompra, setIdcompra] = useState();
+  const [datacomprador, setdatacomprador] = useState();
+
+  const handleInput = (e) => {
+    setClienteid(e.target.value);
+  };
+
+  useEffect(() => {
+    //OBETNER DATOS DE BD CLIENTES
+    id_usuario.id_cliente = clienteid;
+    if (id_usuario.id_cliente) {
+      getCliente(id_usuario).then((response) => {
+        if (response) {
+          response.map((usuario) => {
+            setdatacomprador(usuario);
+          });
+        } else {
+        }
+      });
+      bandera = true;
+    } else {
+      console.log("no hay nada escrito");
+      bandera = false;
+      setdatacomprador({});
+    }
+  }, [clienteid]);
+
+  const alerta = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Slide,
+    });
+  };
 
   useEffect(() => {
     getProductos().then((response) => {
@@ -49,7 +86,6 @@ const Caja = () => {
         alerta("Error en base de datos");
       }
     });
-    //console.log("useEffect");
   }, [prueba]);
 
   const renderizar = () => {
@@ -87,7 +123,6 @@ const Caja = () => {
       setDisponibles(disponibles + 1);
     }
   };
-  console.log(disponibles);
   const formatearValores = () => {
     setDisponibles(0);
     setNombre("");
@@ -119,12 +154,22 @@ const Caja = () => {
       <div className="contenedor_Buscador_Caja">
         <h3>Datos Cliente</h3>
 
-        <input type="text" className="inputs_caja" placeholder="Codigo" />
+        <input
+          type="text"
+          className="inputs_caja"
+          placeholder="Codigo"
+          onChange={handleInput}
+          ref={entrada}
+        />
+
         <input
           type="text"
           className="inputs_caja"
           placeholder="Nombre Cliente"
+          value={bandera ? datacomprador.nombre_C : ""}
+          disabled="disabled"
         />
+
         <h3>Datos productos</h3>
         <input
           type="text"
@@ -191,7 +236,21 @@ const Caja = () => {
         </button>
       </div>
       <div className="contendorTablaCaja">
-        <Tabla arreglo={carrito} compra={cancelarCompra} rend={renderizar} />
+        {bandera ? (
+          <Tabla
+            arreglo={carrito}
+            compra={cancelarCompra}
+            rend={renderizar}
+            compradorid={datacomprador.id_C}
+          />
+        ) : (
+          <Tabla
+            arreglo={carrito}
+            compra={cancelarCompra}
+            rend={renderizar}
+            compradorid={user.id_C}
+          />
+        )}
       </div>
       <ToastContainer />
     </div>

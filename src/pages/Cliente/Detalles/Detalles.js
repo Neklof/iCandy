@@ -5,29 +5,42 @@ import getProductoDetalles from "services/getProductoDetalles";
 import Card from "../Inicio/Card";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import addCarrito from "services/addCarrito";
-let user = {};
 
-const userJson = window.localStorage.getItem("loggedUser");
-
-if (userJson) {
-  user = JSON.parse(userJson);
-}
 const Detalles = ({ funcion, data }) => {
+  let user = {};
+
+  const userJson = window.localStorage.getItem("loggedUser");
+
+  if (userJson) {
+    user = JSON.parse(userJson);
+  }
   const navigate = useNavigate();
   const [cantidad, setCantidad] = useState(0);
   const [productoActual, setProductoActual] = useState({});
   const [productos, setProductos] = useState([]);
   const { id } = useParams();
+  const id_cliente = 0;
   useEffect(() => {
+    if (userJson) {
+      getProductoDetalles(id, user.id_C).then((response) => {
+        setProductoActual(response[0][0]);
+        setProductos(response[1]);
+        if (!response[2][0]) {
+        } else {
+          setCantidad(parseInt(response[2][0].cantidad_CA));
+        }
+      });
+    } else {
+      getProductoDetalles(id, 1).then((response) => {
+        setProductoActual(response[0][0]);
+        setProductos(response[1]);
+        if (!response[2][0]) {
+        } else {
+          setCantidad(parseInt(response[2][0].cantidad_CA));
+        }
+      });
+    }
     window.scrollTo(0, 0);
-    getProductoDetalles(id, 2).then((response) => {
-      setProductoActual(response[0][0]);
-      setProductos(response[1]);
-      if (!response[2][0]) {
-      } else {
-        setCantidad(parseInt(response[2][0].cantidad_CA));
-      }
-    });
   }, [id]);
   const handleIncrement = () =>
     setCantidad(
