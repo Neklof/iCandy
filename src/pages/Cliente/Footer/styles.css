@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
+.link-to-contact-form {
+	/* text-decoration: none; */
+	color: #fff;
+	font-size: 19px;
+}
+
+.link-to-contact-form:hover {
+	color: rgb(92, 92, 243);
+}
+
 .pie-pagina {
 	font-family: "Open Sans", sans-serif;
 	width: 100%;
