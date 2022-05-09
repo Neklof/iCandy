@@ -53,7 +53,7 @@ const RegistrarProducto = ({
     addProductos(info).then((response) => {
       if (response) {
         correcto("Producto registrado");
-        // setAddProducto(!addProducto);
+        setAddProducto(!addProducto);
       } else {
         error("Ocurrió un erroe al registrar el producto");
       }

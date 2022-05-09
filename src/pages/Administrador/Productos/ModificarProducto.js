@@ -55,11 +55,13 @@ const ModificarProducto = ({
   };
 
   const onSubmit = (infoMod) => {
+    infoMod.id_PR = idProducto;
+
     updateProductos(infoMod).then((response) => {
       if (response) {
         correcto("Producto actualizado");
-        setAddProducto(!addProducto);
-        console.log(response);
+        //setAddProducto(!addProducto);
+        //console.log(response);
       } else {
         error("Ocurrió un error al actualizar");
       }

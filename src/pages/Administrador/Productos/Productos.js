@@ -94,6 +94,8 @@ const Productos = () => {
       (producto) => producto.id_PR === e.target.className
     );
 
+    setIdProducto(e.target.className);
+
     reset({
       nombre: find.nombre_PR,
       precio_inversion: find.inversion_PR,
@@ -103,7 +105,7 @@ const Productos = () => {
       piezasCaja_PR: find.piezasCaja_PR,
       descripcion_pro: find.descripcion_PR,
     });
-    setIdProducto(e.target.className);
+
     setModalModificarProducto(!modalModificarProducto);
     setPoderosoJson(Object.values(find));
 
@@ -137,7 +139,7 @@ const Productos = () => {
 
   useEffect(() => {
     getProductosInventario().then((response) => setProductos(response));
-  }, []);
+  }, [productos]);
 
   const nuevas_propiedades = productos.map((producto) => ({
     id_PR: producto.id_PR,
@@ -193,6 +195,7 @@ const Productos = () => {
         errors={errors}
         reset
       />
+      <ToastContainer></ToastContainer>
     </>
   );
 };
