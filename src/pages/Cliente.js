@@ -119,7 +119,7 @@ const Cliente = ({ session, setSession }) => {
         ></Route>
         <Route path="/contact" element={<Contacto />}></Route>
         <Route path="/historial" element={<Historial />}></Route>
-        <Route path="/miPerfil" element={<Perfil userData={user} />}></Route>
+        <Route path="/miPerfil" element={<Perfil userData={user1} />}></Route>
         <Route
           path="/carrito"
           element={

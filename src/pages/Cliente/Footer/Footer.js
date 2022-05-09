@@ -10,6 +10,7 @@ import {
 	faWhatsapp,
 	faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<footer className="pie-pagina" id="footer">
@@ -22,13 +23,22 @@ const Footer = () => {
 				<div className="box">
 					<h2>Sobre nosotros</h2>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-						labore.
+						Somos una tienda dedicada a la venta de todo tipo de dulces y
+						estamos empezando a incursionar en el mundo del e-commerce para
+						llegar a más gente.
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-						labore.
+						Si llegas a encontrar alguna falla con la página o tienes alguna
+						duda...
 					</p>
+					<br />
+					<Link
+						onClick={() => window.scrollTo(0, 0)}
+						className="link-to-contact-form"
+						to="/contact"
+					>
+						¡Contactanos!
+					</Link>
 				</div>
 				<div className="box">
 					<h2>SIGUENOS</h2>

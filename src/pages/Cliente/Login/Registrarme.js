@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import addUserRegistrar from "services/addUserRegistrar";
 import axios from "axios";
 import endpoints from "endpoints";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { Flip } from "react-toastify";
 
 const Registrarme = () => {
   const nombre_ref = useRef();
@@ -23,6 +26,35 @@ const Registrarme = () => {
   const [correo, setCorreo] = useState("");
   const [telefono, setTelefono] = useState("");
   const [contrasena, setContrasena] = useState("");
+
+  const navigate = useNavigate();
+
+  const correcto = (mensaje) => {
+    toast.success(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const error = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
 
   async function addImagen(e) {
     e.preventDefault();
@@ -49,7 +81,14 @@ const Registrarme = () => {
     // Funciona (en este no se usa el addUserRegistrar.js)
     const res = await axios.post(endpoints.registrarUsuarioCliente, fd);
     console.log(res.data);
-    alert("Respuesta: " + res.data);
+
+    if (res.data == "1") {
+      correcto("¡Cuenta creada, bienvenido! ");
+      navigate("/login");
+    } else {
+      alert();
+      error("Ocurrió un error al registrarte.");
+    }
   }
 
   const handle = (e) => {
@@ -74,6 +113,7 @@ const Registrarme = () => {
     addUserRegistrar(dataRegistrarme).then((response) => {
       if (response) {
         alert("¡Te registraste!");
+        navigate("/login");
       } else {
         alert("Algo salio mal");
       }

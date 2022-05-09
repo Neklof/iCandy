@@ -5,6 +5,8 @@ import Campo from "../../../components/Campo";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import addProductos from "services/addProductos";
+import { ToastContainer, toast } from "react-toastify";
+import { Flip } from "react-toastify";
 
 const RegistrarProducto = ({
   modalProducto,
@@ -20,24 +22,43 @@ const RegistrarProducto = ({
 
   const [unidad, setUnidad] = useState("");
 
-  const onSubmit = (info) => {
-    //  const myJSON = JSON.stringify(info);
-    //console.log(myJSON)
-    //setAddProducto(!addProducto);
+  const correcto = (mensaje) => {
+    toast.success(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const error = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
 
+  const onSubmit = (info) => {
     addProductos(info).then((response) => {
       if (response) {
-        alert("Producto registrado");
-        console.log(response);
+        correcto("Producto registrado");
+        setAddProducto(!addProducto);
       } else {
-        alert("Algo salio mal");
+        error("Ocurrió un erroe al registrar el producto");
       }
     });
     setModalProducto(false);
-    // console.log(info);
-    // console.log("INFO->" + myJSON);
-
-    //console.log(unidad)
   };
 
   const tipounidad = (event) => setUnidad(event.target.value);

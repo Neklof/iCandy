@@ -42,21 +42,33 @@ const Table = ({ campos, datos, filtro, search, tipo, funciones }) => {
 
 									{tipo === 2 && (
 										<td>
-											<button className={fila.id_PR} onClick={funciones[0]}>
+											<button
+												id="button-table-productos"
+												className={fila.id_PR}
+												onClick={funciones[0]}
+											>
 												Modificar
 											</button>
 										</td>
 									)}
 									{tipo === 2 && (
 										<td>
-											<button className={fila.id_PR} onClick={funciones[1]}>
+											<button
+												id="button-table-productos"
+												className={fila.id_PR}
+												onClick={funciones[1]}
+											>
 												Eliminar
 											</button>
 										</td>
 									)}
 									{tipo === 2 && (
 										<td>
-											<button className={fila.id_PR} onClick={funciones[2]}>
+											<button
+												id="button-table-productos"
+												className={fila.id_PR}
+												onClick={funciones[2]}
+											>
 												Detalles
 											</button>
 										</td>

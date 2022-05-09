@@ -9,6 +9,8 @@ import defaultProfileImage from "assets/Img/default-profile-image.png";
 import { Link } from "react-router-dom";
 import CajaCarrito from "components/cajaCarrito/CajaCarito";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import endpoints from "endpoints";
 
 const Nav = ({ data, tamano, funcion, session, setSession }) => {
 	let user = {};
@@ -21,6 +23,9 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 	const [menuModal, setMenuModal] = useState(false);
 	const [menuPerfil, setMenuPerfil] = useState(false);
 	const [carrito, setCarrito] = useState(false);
+	const [nombre, setNombre] = useState("");
+	// const [apellido, setApellido] = useState("");
+	const [foto, setFoto] = useState("");
 
 	const navigate = useNavigate();
 
@@ -30,6 +35,21 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 		setMenuModal(false);
 		setMenuPerfil(false);
 	};
+
+	async function getPerfil() {
+		const fd_login = new FormData();
+		fd_login.append("id_C", user.id_C);
+
+		const res = await axios.post(endpoints.getPerfilUsuario, fd_login);
+		if (res.data != null) {
+			setNombre(`${res.data.nombre_C} ${res.data.apellidos_C}`);
+			setFoto(res.data.foto_C);
+		}
+	}
+
+	useEffect(() => {
+		if (localStorage.getItem("loggedUser")) getPerfil();
+	}, [nombre, foto]);
 
 	const handleCloseSession = () => {
 		window.localStorage.setItem("loggedUser", "");
@@ -86,14 +106,14 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 							<Link
 								className="nav-menu-link-login nav-menu-link-login-movil"
 								onClick={handleMenuBtn}
-								to="/login"
+								to={userJson ? "miPerfil" : "/login"}
 							>
 								<img
 									className="nav-menu-link-img"
 									src={defaultProfileImage}
 									alt="foto del perfil"
 								/>{" "}
-								Iniciar sesión
+								{userJson ? nombre : "Iniciar sesión"}
 							</Link>
 							<button
 								className="nav-menu-link-login nav-menu-link-login-escritorio"
@@ -104,7 +124,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 									src={defaultProfileImage}
 									alt="foto del perfil"
 								/>{" "}
-								Iniciar sesión
+								{userJson ? nombre : "Iniciar sesión"}
 							</button>
 							{menuPerfil && (
 								<div className="nav-menu-perfil">

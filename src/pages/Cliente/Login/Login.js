@@ -5,6 +5,8 @@ import endpoints from "endpoints";
 import { faAnkh } from "@fortawesome/free-solid-svg-icons";
 import App from "App";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { Flip } from "react-toastify";
 
 const Login = ({ session, setSession }) => {
   const [correo, setCorreo] = useState("");
@@ -13,6 +15,33 @@ const Login = ({ session, setSession }) => {
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
+
+  const correcto = (mensaje) => {
+    toast.success(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
+  const error = (mensaje) => {
+    toast.error(mensaje, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Flip,
+    });
+  };
 
   async function logUser(e) {
     e.preventDefault();
@@ -32,11 +61,11 @@ const Login = ({ session, setSession }) => {
       //  setSession(res.data);
       window.localStorage.setItem("loggedUser", "");
       window.localStorage.setItem("loggedUser", JSON.stringify(res.data));
-      alert("Ecsitoso");
+      correcto("Bienvenido a iCandy");
       setSession(!session);
       navigate("/");
     } else {
-      alert("nel");
+      error("No puedes iniciar sesión");
     }
     // console.log(res.data);
     // console.log(res.data.tipo_C);
