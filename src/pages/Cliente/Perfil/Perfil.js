@@ -139,7 +139,8 @@ const Perfil = ({ userData }) => {
 						<div className="div_img_cliente">
 							<img
 								className="img_cliente"
-								src={`http://localhost/icandy/API/` + foto}
+								// src={`http://localhost/icandy/API/` + foto}
+								src="https://iteragrow.com/wp-content/uploads/2018/04/buyer-persona-e1545248524290.jpg"
 							></img>
 						</div>
 						<div className="txt_dato_div">
@@ -163,7 +164,7 @@ const Perfil = ({ userData }) => {
 								required
 							/>
 							<span></span>
-							<label>Apelldio(s):</label>
+							<label>Apellido(s):</label>
 						</div>
 						<div className="txt_dato_div">
 							<input
