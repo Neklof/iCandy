@@ -1,6 +1,8 @@
-import image from "assets/Img/editar.png";
+// import image from "assets/Img/editar.png";
 
 const Pedido = ({ datos, handleDetalles }) => {
+	const image = "https://cdn-icons-png.flaticon.com/512/1554/1554561.png";
+
 	return (
 		<div className="caja-historial-item">
 			<div className="caja-historial-item-info">
