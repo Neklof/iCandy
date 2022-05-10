@@ -35,7 +35,7 @@ const endpoints = {
   updateClientePassword: `${process.env.REACT_APP_API_URL}icandy/API/updateClientePassword.php`,
   updateProductos: `${process.env.REACT_APP_API_URL}icandy/API/updateProductos.php`,
 
-  mercadoPago: `${process.env.REACT_APP_API_MERCADOPAGO}/carrito`,
+  mercadoPago: `${process.env.REACT_APP_API_MERCADOPAGO}carrito`,
   obtenerCliente: `${process.env.REACT_APP_API_URL}icandy/API/getCliente.php`,
 };
 
