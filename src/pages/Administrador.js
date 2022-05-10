@@ -3,7 +3,7 @@ import NavAdminContainer from "components/NavAdminContainer";
 import MainContainer from "components/MainContainer";
 import Usuarios from "pages/Administrador/Usuarios/Usuarios";
 import Caja from "pages/Administrador/Caja/Caja";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Menu from "pages/Administrador/Menu/Menu";
 import Pedidos from "./Administrador/Pedidos/Pedidos";
 import Productos from "./Administrador/Productos/Productos";
@@ -66,11 +66,11 @@ const Administrador = ({ session, setSession }) => {
 					path="/configuracion"
 					element={
 						<AdminContainer>
-							<Perfil userData={user1} />
+							<Perfil userData={user1} type={true} />
 						</AdminContainer>
 					}
 				/>
-				<Route path="*" element={<div />}></Route>
+				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		</MainContainer>
 	);

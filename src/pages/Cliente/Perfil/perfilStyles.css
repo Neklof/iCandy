@@ -6,6 +6,11 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.perfil-admin {
+	width: 100% !important;
+}
+
 .div-fondo-perfil {
 	background-color: #f2cb57;
 	width: 100%;
