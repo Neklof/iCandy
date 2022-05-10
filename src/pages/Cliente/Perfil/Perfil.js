@@ -143,8 +143,8 @@ const Perfil = ({ userData, type = false }) => {
               <img
                 className="img_cliente"
                 // src="https://iteragrow.com/wp-content/uploads/2018/04/buyer-persona-e1545248524290.jpg"
-                // src={`http://localhost/icandy/API/` + foto}
-                src={`https://icandymx.xyz/icandy/API/clientes/` + foto}
+                //src={`http://localhost/icandy/API/` + foto}
+                src={`https://icandymx.xyz/icandy/API/` + foto}
               ></img>
             </div>
             <div className="txt_dato_div">
