@@ -5,12 +5,15 @@ import menu from "assets/Img/menu.png";
 import shoppingCart from "assets/Img/shopping-cart.png";
 import logo_2 from "assets/Img/logo_2.png";
 import logo from "assets/Img/logo.png";
-import defaultProfileImage from "assets/Img/default-profile-image.png";
+// import defaultProfileImage from "assets/Img/default-profile-image.png";
 import { Link } from "react-router-dom";
 import CajaCarrito from "components/cajaCarrito/CajaCarito";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import endpoints from "endpoints";
+
+const defaultProfileImage =
+	"https://i.pinimg.com/736x/66/97/f6/6697f630e8e49f6b0b447c403a33470e.jpg";
 
 const Nav = ({ data, tamano, funcion, session, setSession }) => {
 	let user = {};
@@ -109,7 +112,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 							>
 								<img
 									className="nav-menu-link-img"
-									src={defaultProfileImage}
+									src={user && foto ? foto : defaultProfileImage}
 									alt="foto del perfil"
 								/>{" "}
 								{userJson ? nombre : "Iniciar sesión"}
@@ -120,7 +123,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 							>
 								<img
 									className="nav-menu-link-img"
-									src={defaultProfileImage}
+									src={user && foto ? foto : defaultProfileImage}
 									alt="foto del perfil"
 								/>{" "}
 								{userJson ? nombre : "Iniciar sesión"}

@@ -107,6 +107,10 @@
 .nav-menu-link-login-movil {
 	display: inline-block;
 	visibility: visible;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 15px;
 }
 
 .nav-menu-link-login-escritorio {
@@ -121,12 +125,12 @@
 
 .nav-menu-link-profile {
 	font-size: 1.6em;
-	padding-right: 13%;
 }
 
 .nav-menu-link-img {
 	object-fit: cover;
 	width: 8.3vw;
+	padding-right: 15px;
 }
 
 .componente-oculto {
@@ -242,7 +246,7 @@
 	}
 
 	.nav-carrito {
-		right: 10% !important;
+		right: 15% !important;
 		bottom: max(24px, 16%) !important;
 	}
 
@@ -313,7 +317,7 @@
 		position: absolute;
 		width: 25px;
 		right: min(14.5%, 215px);
-		bottom: 12%;
+		bottom: 17%;
 		z-index: 505;
 		transition: width 0.5s;
 	}
@@ -401,8 +405,9 @@
 	}
 
 	.nav-menu-link-img {
-		width: 12%;
-		min-width: 15px;
+		width: 25%;
+		min-width: 25%;
+		object-fit: scale-down;
 		padding-right: 7px;
 	}
 
@@ -411,7 +416,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		width: 110%;
-		top: 75px;
+		top: 94px;
 		left: 0;
 		background-color: #f2cb57;
 	}
@@ -424,7 +429,7 @@
 		width: 100%;
 		padding: 10px;
 		border: none;
-		border-bottom: 1px solid #000;
+		border-top: 1px solid #000;
 		cursor: pointer;
 	}
 	.nav-menu-perfil-link:hover {
