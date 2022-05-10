@@ -13,7 +13,7 @@ import axios from "axios";
 import endpoints from "endpoints";
 
 const defaultProfileImage =
-	"https://i.pinimg.com/736x/66/97/f6/6697f630e8e49f6b0b447c403a33470e.jpg";
+	"https://us.123rf.com/450wm/kritchanut/kritchanut1401/kritchanut140100054/25251050-imagen-de-perfil-del-hombre-de-negocios-avatar.jpg?ver=6";
 
 const Nav = ({ data, tamano, funcion, session, setSession }) => {
 	let user = {};
