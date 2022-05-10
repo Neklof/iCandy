@@ -6,6 +6,7 @@ import endpoints from "endpoints";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Flip } from "react-toastify";
+import logo from "assets/Img/logo.png";
 
 // import ScriptTag from "react-script-tag";
 
@@ -70,6 +71,9 @@ const Recuperar = () => {
   return (
     <div className="div-contenedor-recuperar">
       <div className="div-fondo-recuperar"></div>
+      <a href="/">
+        <img className="logo-logo" src={logo} alt="logo" />
+      </a>
       <div className="div-form-recuperar">
         <h1>Recuperar contraseña</h1>
         <form method="post">

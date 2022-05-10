@@ -16,9 +16,16 @@
 }
 
 @media (min-width: 461px) {
+  .logo-logo {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 10%;
+    height: 15%;
+  }
   .div-form-recuperar {
     position: absolute;
-    top: 5%;
+    top: 12%;
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -38,9 +45,16 @@
 }
 
 @media (max-width: 460px) {
+  .logo-logo {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 15%;
+    height: 10%;
+  }
   .div-form-recuperar {
     position: absolute;
-    top: 5%;
+    top: 15%;
     display: flex;
     flex-wrap: wrap;
     width: 80%;
