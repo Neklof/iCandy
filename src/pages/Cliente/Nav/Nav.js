@@ -24,7 +24,6 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 	const [menuPerfil, setMenuPerfil] = useState(false);
 	const [carrito, setCarrito] = useState(false);
 	const [nombre, setNombre] = useState("");
-	// const [apellido, setApellido] = useState("");
 	const [foto, setFoto] = useState("");
 
 	const navigate = useNavigate();
@@ -42,7 +41,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 
 		const res = await axios.post(endpoints.getPerfilUsuario, fd_login);
 		if (res.data != null) {
-			setNombre(`${res.data.nombre_C} ${res.data.apellidos_C}`);
+			setNombre(`${res.data.nombre_C}`);
 			setFoto(res.data.foto_C);
 		}
 	}
