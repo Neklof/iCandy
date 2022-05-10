@@ -9,7 +9,6 @@ const realizarcompra = async (objecto) => {
 		},
 	});
 	const repuestaJson = await response.json();
-	//console.log(repuestaJson);
 	return repuestaJson;
 };
 export default realizarcompra;

@@ -54,7 +54,6 @@ const Inicio = ({ funcion }) => {
 				.filter((product) => product.discontinuo_PR == "0")
 				.slice(min, max)
 		);
-		console.log(Object.values(productos).slice(min, max));
 		setPaginador(page || 1);
 	}, [page]);
 

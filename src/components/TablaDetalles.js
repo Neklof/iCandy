@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const TablaDetalles = ({ datos }) => {
 	let no = 1;
-	// console.log(datos);
 
 	return (
 		<TablaContainer>

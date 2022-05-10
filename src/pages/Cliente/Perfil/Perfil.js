@@ -92,7 +92,6 @@ const Perfil = ({ userData, type = false }) => {
 			fd_update
 		);
 
-		console.log(respuesta.data);
 		if (respuesta.data == "1") {
 			correcto("¡Perfil actualizado!");
 		} else {
@@ -113,7 +112,6 @@ const Perfil = ({ userData, type = false }) => {
 			endpoints.updateClientePassword,
 			fd_password
 		);
-		console.log(respuestaPass.data);
 
 		if (respuestaPass.data == "1") {
 			correcto("¡Actualizaste tu contraseña!");
