@@ -144,7 +144,13 @@ const Perfil = ({ userData, type = false }) => {
                 className="img_cliente"
                 // src="https://iteragrow.com/wp-content/uploads/2018/04/buyer-persona-e1545248524290.jpg"
                 //src={`http://localhost/icandy/API/` + foto}
-                src={`https://icandymx.xyz/icandy/API/` + foto}
+                //src={`https://icandymx.xyz/icandy/API/` + foto} https://us.123rf.com/450wm/kritchanut/kritchanut1401/kritchanut140100054/25251050-imagen-de-perfil-del-hombre-de-negocios-avatar.jpg?ver=6
+
+                src={
+                  foto != ""
+                    ? `https://icandymx.xyz/icandy/API/` + foto
+                    : "https://us.123rf.com/450wm/kritchanut/kritchanut1401/kritchanut140100054/25251050-imagen-de-perfil-del-hombre-de-negocios-avatar.jpg?ver=6"
+                }
               ></img>
             </div>
             <div className="txt_dato_div">
