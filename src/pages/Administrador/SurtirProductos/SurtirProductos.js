@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import getProductosInventario from "services/getProductosInventario";
 import { useEffect } from "react";
 import "./styles.css";
 import addSurtirProductos from "services/addSurtirProductos";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDebouncedCallback } from "use-debounce";
 
 const defaultState = {
 	nombre: "",
@@ -43,8 +44,6 @@ function Row({ onChange, onRemove, nombre, cantidad }) {
 	const [producto, setProducto] = useState("");
 	const [productos, setProductos] = useState([]);
 
-	const id_Producto = useRef();
-
 	const buscador = (e) => {
 		const find = productos.find(
 			(producto) => producto.id_PR === e.target.value
@@ -62,15 +61,13 @@ function Row({ onChange, onRemove, nombre, cantidad }) {
 		getProductosInventario().then((response) => setProductos(response));
 	}, []);
 
+	const handleSearchProduct = useDebouncedCallback((e) => {
+		buscador(e);
+	}, 1000);
+
 	return (
 		<div className="card-container">
-			<input
-				value={nombre}
-				// onChange={(e) => onChange("nombre", e.target.value)}
-				onChange={(e) => buscador(e)}
-				ref={id_Producto}
-				placeholder="Código"
-			/>
+			<input onChange={handleSearchProduct} placeholder="Código" />
 			<input
 				placeholder="Producto"
 				defaultValue={producto}
