@@ -45,7 +45,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 		const res = await axios.post(endpoints.getPerfilUsuario, fd_login);
 		if (res.data != null) {
 			setNombre(`${res.data.nombre_C}`);
-			setFoto(res.data.foto_C);
+			setFoto("https://icandymx.xyz/icandy/API/" + res.data.foto_C);
 		}
 	}
 
