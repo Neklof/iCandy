@@ -8,7 +8,6 @@ const getCorteCaja = async (objecto) => {
 		},
 	});
 	const repuestaJson = await response.json();
-	//console.log(repuestaJson);
 	return repuestaJson;
 };
 export default getCorteCaja;

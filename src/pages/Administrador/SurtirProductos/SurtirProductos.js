@@ -118,8 +118,6 @@ export default function SurtirProductos() {
 		});
 
 		// const surtir = JSON.stringify(rows);
-		// // console.log(rows);
-		// console.log(surtir);
 	};
 
 	return (

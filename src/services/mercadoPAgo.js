@@ -25,7 +25,6 @@ export default function Product({ datos }) {
 			script.src =
 				"https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js";
 			script.setAttribute("data-preference-id", preferenceId);
-			console.log(script);
 			if (btn_element) btn_element.parentNode.replaceChild(script, btn_element);
 			else {
 				const form = document.getElementById(FORM_ID);
