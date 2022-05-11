@@ -9,8 +9,8 @@ export default function Product({ datos }) {
   useEffect(() => {
     // luego de montarse el componente, le pedimos al backend el preferenceId LO OBETENMOS CON LA COMUNICACION CON PHP
     mercaPventa(datos).then((response) => {
-      setPreferenceId(response);
-      if (!response) {
+      if (response) {
+        setPreferenceId(response);
       }
     });
   }, [datos]);
@@ -25,7 +25,7 @@ export default function Product({ datos }) {
       script.src =
         "https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js";
       script.setAttribute("data-preference-id", preferenceId);
-      console.log(script);
+
       if (btn_element) btn_element.parentNode.replaceChild(script, btn_element);
       else {
         const form = document.getElementById(FORM_ID);
