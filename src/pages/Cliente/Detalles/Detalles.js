@@ -5,7 +5,7 @@ import getProductoDetalles from "services/getProductoDetalles";
 import Card from "../Inicio/Card";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import addCarrito from "services/addCarrito";
-
+import Product from "services/mercadoPAgo";
 const Detalles = ({ funcion, data }) => {
   let user = {};
 
@@ -15,16 +15,19 @@ const Detalles = ({ funcion, data }) => {
     user = JSON.parse(userJson);
   }
   const navigate = useNavigate();
-  const [cantidad, setCantidad] = useState(0);
+  const [cantidad, setCantidad] = useState(1);
   const [productoActual, setProductoActual] = useState({});
   const [productos, setProductos] = useState([]);
+
   const { id } = useParams();
+  const variable = [];
   const id_cliente = 0;
   useEffect(() => {
     if (userJson) {
       getProductoDetalles(id, user.id_C).then((response) => {
         setProductoActual(response[0][0]);
         setProductos(response[1]);
+
         if (!response[2][0]) {
         } else {
           setCantidad(parseInt(response[2][0].cantidad_CA));
@@ -42,13 +45,24 @@ const Detalles = ({ funcion, data }) => {
     }
     window.scrollTo(0, 0);
   }, [id]);
-  const handleIncrement = () =>
+
+  productoActual.cantidad_CA = cantidad;
+  variable.push(productoActual);
+
+  const handleIncrement = () => {
     setCantidad(
       cantidad == productoActual.cantidad_PR
         ? productoActual.cantidad_PR
         : cantidad + 1
     );
+    variable.length = 0;
+  };
   const handleDecrement = () => setCantidad(cantidad <= 0 ? 0 : cantidad - 1);
+  // console.log(variable);
+  const comprarAhora = () => {
+    agregarCarritoDetalles();
+    navigate("/carrito");
+  };
 
   const agregarCarritoDetalles = () => {
     if (userJson) {
@@ -131,7 +145,13 @@ const Detalles = ({ funcion, data }) => {
             {productoActual.cantidad_PR} Disponibles
           </p>
           <div className="detalles-producto-botones">
-            <button className="detalles-producto-comprar-btn">Comprar</button>
+            {/* {variable ? <Product datos={variable} /> : null} */}
+            <button
+              className="detalles-producto-comprar-btn"
+              onClick={comprarAhora}
+            >
+              Comprar
+            </button>
             <button
               className="detalles-producto-carrito-btn"
               onClick={agregarCarritoDetalles}
