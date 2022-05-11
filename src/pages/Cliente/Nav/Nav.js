@@ -55,9 +55,10 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 
 	const handleCloseSession = () => {
 		window.localStorage.setItem("loggedUser", "");
+		setFoto("");
 		handleModalOff();
-		navigate("/");
 		setSession(!session);
+		navigate("/");
 	};
 	const handleCarrito = () => setCarrito(!carrito);
 
@@ -204,7 +205,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 							</Link>
 						</div>
 						{!tamano ? (
-							<h1>El carrito esta vacio</h1>
+							<h1>El carrito esta vacío</h1>
 						) : (
 							data.map((carrito) => (
 								<CajaCarrito

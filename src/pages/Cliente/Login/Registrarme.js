@@ -112,7 +112,7 @@ const Registrarme = () => {
 							onChange={(e) => setApellido(e.target.value)}
 						/>
 						<span></span>
-						<label>Apelldio(s):</label>
+						<label>Apellido(s):</label>
 					</div>
 					<div className="txt_dato caca">
 						<input

@@ -120,6 +120,7 @@
 .nav-menu-link-login-escritorio {
 	display: none;
 	visibility: hidden;
+	white-space: nowrap;
 }
 
 .nav-menu-perfil {
@@ -420,7 +421,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		width: 110%;
-		top: 94px;
+		top: 74px;
 		left: 0;
 		background-color: #f2cb57;
 	}
