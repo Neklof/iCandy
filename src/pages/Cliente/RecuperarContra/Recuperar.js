@@ -86,7 +86,7 @@ const Recuperar = () => {
             <span></span>
             <label>Correo electrónico:</label>
           </div>
-          <div className="captcha-container">
+          {/* <div className="captcha-container">
             <div
               className="g-recaptcha"
               data-sitekey="6LdSnkcfAAAAABp3MDj27-hm5K0uMGYWD1GRk7Ow"
@@ -99,7 +99,7 @@ const Recuperar = () => {
                 />
               </Helmet>
             </div>
-          </div>
+          </div> */}
           <button
             className="btn-recuperar"
             type="submit"
