@@ -3,10 +3,12 @@ import Modal from "../../../components/Modal";
 import Button from "../../../components/Button";
 import Campo from "../../../components/Campo";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import addProductos from "services/addProductos";
 import { ToastContainer, toast } from "react-toastify";
 import { Flip } from "react-toastify";
+import axios from "axios";
+import endpoints from "endpoints";
 
 const RegistrarProducto = ({
   modalProducto,
@@ -21,6 +23,8 @@ const RegistrarProducto = ({
   } = useForm();
 
   const [unidad, setUnidad] = useState("");
+  let imagen = null;
+  // const [imagen, setImagen] = useState(null);
 
   const correcto = (mensaje) => {
     toast.success(mensaje, {
@@ -48,16 +52,44 @@ const RegistrarProducto = ({
       transition: Flip,
     });
   };
+  async function addImagen() {
+    // e.preventDefault();
+    let fd = new FormData();
+
+    fd.append("url_imagen", imagen);
+
+    // alert(imagen);
+
+    //console.log(imagen);
+
+    // Funciona (en este no se usa el addUserRegistrar.js)
+    const res = await axios.post(endpoints.updateImagenProductos, fd);
+  }
 
   const onSubmit = (info) => {
-    addProductos(info).then((response) => {
-      if (response) {
-        correcto("Producto registrado");
-        setAddProducto(!addProducto);
-      } else {
-        error("Ocurrió un erroe al registrar el producto");
-      }
-    });
+    const xxx = info;
+    xxx.url_imagen = info.url_imagen[0];
+    imagen = xxx.url_imagen;
+
+    // console.log(info);
+    // console.log(xxx.url_imagen);
+    // console.log(imagen);
+
+    //console.log(xxx);
+
+    addProductos(xxx)
+      .then((response) => {
+        if (response) {
+          correcto("Producto registrado");
+          addImagen();
+          setAddProducto(!addProducto);
+        } else {
+          error("Ocurrió un error al registrar el producto");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     setModalProducto(false);
   };
 
@@ -98,7 +130,7 @@ const RegistrarProducto = ({
 
         <Descripcion>
           <Texto>
-            Disponible:
+            No disponible:
             <input
               name="disponibilidad"
               type="checkbox"
@@ -159,6 +191,9 @@ const RegistrarProducto = ({
           <input
             type="file"
             name="url_imagen"
+            // accept=".jpg,.jpeg,.png"
+            // className="url_imagen"
+            onChange={(e) => (imagen = e.target.files[0])} //(e) => setImagen(e.target.files[0])
             {...register("url_imagen", { required: false })}
           />
         </Descripcion>
