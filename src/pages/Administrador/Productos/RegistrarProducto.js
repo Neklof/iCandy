@@ -82,7 +82,6 @@ const RegistrarProducto = ({
         if (response) {
           correcto("Producto registrado");
           addImagen();
-
           setAddProducto(!addProducto);
         } else {
           error("Ocurrió un error al registrar el producto");
@@ -91,7 +90,7 @@ const RegistrarProducto = ({
       .catch((error) => {
         console.log(error);
       });
-    // setModalProducto(false);
+    setModalProducto(false);
   };
 
   const tipounidad = (event) => setUnidad(event.target.value);
