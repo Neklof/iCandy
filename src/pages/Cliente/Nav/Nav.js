@@ -113,7 +113,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 								<img
 									className="nav-menu-link-img"
 									src={user && foto ? foto : defaultProfileImage}
-									alt="foto del perfil"
+									alt="perfil"
 								/>{" "}
 								{userJson ? nombre : "Iniciar sesión"}
 							</Link>
@@ -124,7 +124,7 @@ const Nav = ({ data, tamano, funcion, session, setSession }) => {
 								<img
 									className="nav-menu-link-img"
 									src={user && foto ? foto : defaultProfileImage}
-									alt="foto del perfil"
+									alt="perfil"
 								/>{" "}
 								{userJson ? nombre : "Iniciar sesión"}
 							</button>
