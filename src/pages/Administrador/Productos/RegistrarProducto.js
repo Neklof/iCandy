@@ -131,7 +131,7 @@ const RegistrarProducto = ({
 
         <Descripcion>
           <Texto>
-            Disponible:
+            No disponible:
             <input
               name="disponibilidad"
               type="checkbox"
